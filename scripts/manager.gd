@@ -1,5 +1,7 @@
 extends Node
 
+class_name Manager
+
 var startcards = []
 var cards = {
 	0 : "Reisende",
@@ -53,17 +55,21 @@ func _ready():
 #player [0;3]
 func draw(player):
 	var playe = players[player]
-	var hand = playe[1]
 	var new = playe[0]
-	for i in 4:
-		hand.append(new[0])
-		new.remove_at(0)	
-	print(hand)
+	var hand = playe[1]
+	var old = playe[2]
+	if hand.size() < 4:
+		if new.size() !=0:
+			hand.append(new[0])
+			new.remove_at(0)	
+			print(hand)
+		else:
+			print("No cards left - Shuffle")
+			for x in 8:
+				var card = old.pick_random()
+				new.append(card)
+				old.erase(card)
+	else:
+		print("Already have 4 cards")
 
 
-func _on_p_1_pressed():
-	draw(0)
-
-
-func _on_p_2_pressed():
-	draw(1)
