@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var startcards = []
 var cards = {
@@ -30,12 +30,21 @@ var p4 = [h4, n4, o4]
 var players = [p1, p2, p3, p4]
 
 func _ready():
+	#shuffle starter cards into hands
 	for i in range(4):
 		startcards = [0, 0, 0, 0, 1, 1, 1, 2]
 		var player = players[i]
+		var new = player[1]
 		var hand = player[0]
-		for x in range(8):
+		for x in 8:
 			var card = startcards.pick_random()
-			hand.append(card)
+			new.append(card)
 			startcards.erase(card)
-	print(players)
+		#put 4 cards in hand
+		for x in range(4):
+			hand.append(new[0])
+			new.remove_at(0)
+		
+		
+	print(n1,n2,n3,n4)
+	print(h1,h2,h3,h4)
