@@ -1,5 +1,10 @@
-[gd_scene format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
+
+[ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Manager" type="Node" parent="."]
+script = ExtResource("1_6hv34")
