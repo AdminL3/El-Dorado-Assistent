@@ -79,11 +79,8 @@ func playcard(card, player):
 	var hand = playe[1]
 	var old = playe[2]
 	if hand.has(card):
-		print(hand)
 		old.append(card)
 		hand.erase(card)
-		print(old)
-		print(hand)
 		print("played: "+ str(cards[card]))
 	else:
 		print("Dont have card")
