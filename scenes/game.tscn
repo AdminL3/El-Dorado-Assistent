@@ -1,25 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=4 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
+[ext_resource type="PackedScene" uid="uid://dwfwlg8llps47" path="res://scenes/draw.tscn" id="2_iktyp"]
+[ext_resource type="PackedScene" uid="uid://dsv4k87mb3pm4" path="res://scenes/playcard.tscn" id="3_fcegi"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Manager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_6hv34")
 
-[node name="p1" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "draw player1"
+[node name="Draw" parent="." instance=ExtResource("2_iktyp")]
+offset_left = 10.0
+offset_top = -1.0
+offset_right = 18.0
+offset_bottom = 7.0
+text = "Player1"
 
-[node name="p2" type="Button" parent="."]
-offset_left = 4.0
-offset_top = 52.0
-offset_right = 113.0
-offset_bottom = 83.0
-text = "draw player2"
+[node name="Draw2" parent="." instance=ExtResource("2_iktyp")]
+offset_left = 9.0
+offset_top = 42.0
+offset_right = 75.0
+offset_bottom = 73.0
+text = "Player2"
+player = 1
 
-[connection signal="pressed" from="p1" to="Manager" method="_on_p_1_pressed"]
-[connection signal="pressed" from="p2" to="Manager" method="_on_p_2_pressed"]
+[node name="Playcard" parent="." instance=ExtResource("3_fcegi")]
+offset_left = 14.0
+offset_top = 90.0
+offset_right = 22.0
+offset_bottom = 98.0
+text = "PLayer1
+card0"
+
+[node name="Playcard2" parent="." instance=ExtResource("3_fcegi")]
+offset_left = 6.0
+offset_top = 157.0
+offset_right = 76.0
+offset_bottom = 211.0
+text = "PLayer1
+card1"
+card = 1

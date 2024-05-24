@@ -73,3 +73,17 @@ func draw(player):
 		print("Already have 4 cards")
 
 
+func playcard(card, player):
+	var playe = players[player]
+	var new = playe[0]
+	var hand = playe[1]
+	var old = playe[2]
+	if hand.has(card):
+		print(hand)
+		old.append(card)
+		hand.erase(card)
+		print(old)
+		print(hand)
+		print("played: "+ str(cards[card]))
+	else:
+		print("Dont have card")

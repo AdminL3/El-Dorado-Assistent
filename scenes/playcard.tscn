@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsv4k87mb3pm4"]
+
+[ext_resource type="Script" path="res://scripts/playcard.gd" id="1_a8dvv"]
+
+[node name="Playcard" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_a8dvv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
