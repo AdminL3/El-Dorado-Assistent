@@ -6,7 +6,25 @@ var startcards = []
 var cards = {
 	0 : "Reisende",
 	1 : "Forscher",
-	2 : "Matrose"
+	2 : "Matrose",
+	3 : "Kundschafter",
+	4 : "Entdecker",
+	5 : "Tausendsassa",
+	6 : "Fotografin",
+	7 : "Schatztruhe",
+	8 : "Fernsprechgerät",
+	9 : "Propellerflugzeug",
+	10 : "Abenteurerin",
+	11 : "Pionier",
+	12 : "Mächtige Machete",
+	13 : "Journalistin",
+	14 : "Millionärin",
+	15 : "Kartograph",
+	16 : "Kompass",
+	17 : "Wissenschaftlerin",
+	18 : "Reisetagebuch",
+	19 : "Ureinwohner",
+	20 : "Kaptain"
 }
 
 var h1 = []
