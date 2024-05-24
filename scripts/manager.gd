@@ -103,12 +103,29 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 
+
 func checkvalue(player):
-	var hand = player[1]
+	var playe = players[player]
+	var hand = playe[1]
 	var value = 0
 	for x in hand:
 		if x == 0:
 			value += 1
-			print("0")
+			print("Reisende")
+		elif x == 6:
+			value += 2
+			print("Fotografin")
+		elif x == 7:
+			value += 4
+			print("Schatztruhe")
+		elif x == 13:
+			value += 3
+			print("Journalistin")
+		elif x == 14:
+			value += 4
+			print("Millionärin")
 	return value
 	
+func buycard(card, player):
+	var value = checkvalue(player)
+	print(value)

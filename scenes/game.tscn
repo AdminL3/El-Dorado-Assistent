@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=5 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="PackedScene" uid="uid://dwfwlg8llps47" path="res://scenes/draw.tscn" id="2_iktyp"]
 [ext_resource type="PackedScene" uid="uid://dsv4k87mb3pm4" path="res://scenes/playcard.tscn" id="3_fcegi"]
+[ext_resource type="PackedScene" uid="uid://b0raxsd6u4k5l" path="res://scenes/buy_card.tscn" id="4_a2ejp"]
 
 [node name="Game" type="Node2D"]
 
@@ -43,3 +44,10 @@ offset_bottom = 211.0
 text = "PLayer1
 card1"
 card = 1
+
+[node name="buy card" parent="." instance=ExtResource("4_a2ejp")]
+offset_left = 136.0
+offset_top = 104.0
+offset_right = 247.0
+offset_bottom = 135.0
+text = "Buy card 1 ,1 "
