@@ -108,24 +108,36 @@ func checkvalue(player):
 	var playe = players[player]
 	var hand = playe[1]
 	var value = 0
+	var size = hand.size()
 	for x in hand:
 		if x == 0:
 			value += 1
+			size -= 1
 			print("Reisende")
 		elif x == 6:
 			value += 2
+			size -= 1
 			print("Fotografin")
 		elif x == 7:
 			value += 4
+			size -= 1
 			print("Schatztruhe")
 		elif x == 13:
 			value += 3
+			size -= 1
 			print("Journalistin")
 		elif x == 14:
 			value += 4
+			size -= 1
 			print("Millionärin")
+	value = value + size*0.5
+	#if 0.5 make full
 	return value
+
+
+
 	
 func buycard(card, player):
 	var value = checkvalue(player)
-	print(value)
+	print("Money: " + str(value))
+	
