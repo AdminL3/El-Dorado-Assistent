@@ -84,3 +84,13 @@ func playcard(card, player):
 		print("played: "+ str(cards[card]))
 	else:
 		print("Dont have card")
+
+func checkvalue(player):
+	var hand = player[1]
+	var value = 0
+	for x in hand:
+		if x == 0:
+			value += 1
+			print("0")
+	return value
+	
