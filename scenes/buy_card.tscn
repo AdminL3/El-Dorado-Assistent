@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0raxsd6u4k5l"]
+
+[ext_resource type="Script" path="res://scripts/buy_card.gd" id="1_g5kkg"]
+
+[node name="buy card" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_g5kkg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
