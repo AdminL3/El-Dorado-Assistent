@@ -48,3 +48,22 @@ func _ready():
 		
 	print(n1,n2,n3,n4)
 	print(h1,h2,h3,h4)
+
+
+#player [0;3]
+func draw(player):
+	var playe = players[player]
+	var hand = playe[1]
+	var new = playe[0]
+	for i in 4:
+		hand.append(new[0])
+		new.remove_at(0)	
+	print(hand)
+
+
+func _on_p_1_pressed():
+	draw(0)
+
+
+func _on_p_2_pressed():
+	draw(1)

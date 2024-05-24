@@ -8,3 +8,18 @@
 
 [node name="Manager" type="Node" parent="."]
 script = ExtResource("1_6hv34")
+
+[node name="p1" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "draw player1"
+
+[node name="p2" type="Button" parent="."]
+offset_left = 4.0
+offset_top = 52.0
+offset_right = 113.0
+offset_bottom = 83.0
+text = "draw player2"
+
+[connection signal="pressed" from="p1" to="Manager" method="_on_p_1_pressed"]
+[connection signal="pressed" from="p2" to="Manager" method="_on_p_2_pressed"]
