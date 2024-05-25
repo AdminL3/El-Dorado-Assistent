@@ -49,6 +49,7 @@ var p4 = [h4, n4, o4]
 
 var players = [p1, p2, p3, p4]
 
+var store = []
 func _ready():
 	#shuffle starter cards into hands
 	for i in range(4):
@@ -65,10 +66,14 @@ func _ready():
 			hand.append(new[0])
 			new.remove_at(0)
 		
-		
+	print("Drawer:")
 	print(n1,n2,n3,n4)
+	print("Hands:")
 	print(h1,h2,h3,h4)
-
+	
+	#add store cards
+	for i in 18:
+		store.append(3)
 
 #player [0;3]
 func draw(player):
@@ -113,23 +118,23 @@ func checkvalue(player):
 		if x == 0:
 			value += 1
 			size -= 1
-			print("Reisende")
+			print("You have Reisende")
 		elif x == 6:
 			value += 2
 			size -= 1
-			print("Fotografin")
+			print("You have Fotografin")
 		elif x == 7:
 			value += 4
 			size -= 1
-			print("Schatztruhe")
+			print("You have Schatztruhe")
 		elif x == 13:
 			value += 3
 			size -= 1
-			print("Journalistin")
+			print("You have Journalistin")
 		elif x == 14:
 			value += 4
 			size -= 1
-			print("Millionärin")
+			print("You have Millionärin")
 	#add half value cards
 	value = value + size*0.5
 	
