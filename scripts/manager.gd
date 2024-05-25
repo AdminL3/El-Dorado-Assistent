@@ -155,4 +155,11 @@ func checkvalue(player):
 func buycard(shopcard, player):
 	var cardvalue = checkvalue(player)
 	print("Card Value: " + str(cardvalue))
-	
+	#is card available?
+	var amount = store[shopcard]
+	print(amount)
+	if amount == 0:
+		print("No have")
+	else:
+		store[shopcard] = store[shopcard]-1
+	print(store[shopcard])
