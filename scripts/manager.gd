@@ -76,10 +76,11 @@ func _ready():
 		store.append(3)
 
 
-	#buyycard for testing purposes
-	buycard(0,0)
-
-
+func showcards(player):
+	var playe = players[player]
+	print("Hand: " + str(playe[0]))
+	print("New: " + str(playe[1]))
+	print("Old: " + str(playe[2]))
 
 #player [0;3]
 func draw(player):

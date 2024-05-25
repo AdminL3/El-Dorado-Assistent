@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=6 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="PackedScene" uid="uid://dwfwlg8llps47" path="res://scenes/draw.tscn" id="2_iktyp"]
 [ext_resource type="PackedScene" uid="uid://dsv4k87mb3pm4" path="res://scenes/playcard.tscn" id="3_fcegi"]
 [ext_resource type="PackedScene" uid="uid://b0raxsd6u4k5l" path="res://scenes/buy_card.tscn" id="4_a2ejp"]
+[ext_resource type="Script" path="res://scripts/showcards.gd" id="5_wpfdb"]
 
 [node name="Game" type="Node2D"]
 
@@ -18,36 +19,43 @@ offset_left = 10.0
 offset_top = -1.0
 offset_right = 18.0
 offset_bottom = 7.0
-text = "Player1"
-
-[node name="Draw2" parent="." instance=ExtResource("2_iktyp")]
-offset_left = 9.0
-offset_top = 42.0
-offset_right = 75.0
-offset_bottom = 73.0
-text = "Player2"
-player = 1
+text = "draw Player1"
 
 [node name="Playcard" parent="." instance=ExtResource("3_fcegi")]
-offset_left = 14.0
-offset_top = 90.0
-offset_right = 22.0
-offset_bottom = 98.0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 81.0
+offset_bottom = 94.0
 text = "PLayer1
-card0"
+play
+reisende"
 
 [node name="Playcard2" parent="." instance=ExtResource("3_fcegi")]
-offset_left = 6.0
-offset_top = 157.0
-offset_right = 76.0
-offset_bottom = 211.0
+offset_left = 18.0
+offset_top = 126.0
+offset_right = 88.0
+offset_bottom = 203.0
 text = "PLayer1
-card1"
+play
+forscher"
 card = 1
 
 [node name="buy card" parent="." instance=ExtResource("4_a2ejp")]
-offset_left = 136.0
-offset_top = 104.0
-offset_right = 247.0
-offset_bottom = 135.0
-text = "Buy card 1 ,1 "
+offset_left = 250.0
+offset_top = 13.0
+offset_right = 361.0
+offset_bottom = 44.0
+text = "Buy card 
+player 0
+card 0"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 231.0
+offset_top = 176.0
+offset_right = 326.0
+offset_bottom = 207.0
+text = "show cards
+"
+script = ExtResource("5_wpfdb")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
