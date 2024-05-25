@@ -75,6 +75,12 @@ func _ready():
 	for i in 18:
 		store.append(3)
 
+
+	#buyycard for testing purposes
+	buycard(0,0)
+
+
+
 #player [0;3]
 func draw(player):
 	var playe = players[player]
@@ -145,8 +151,8 @@ func checkvalue(player):
 
 
 
-	
-func buycard(card, player):
+	#shopcard means its the x card in the shop
+func buycard(shopcard, player):
 	var cardvalue = checkvalue(player)
 	print("Card Value: " + str(cardvalue))
 	
