@@ -130,14 +130,18 @@ func checkvalue(player):
 			value += 4
 			size -= 1
 			print("Millionärin")
+	#add half value cards
 	value = value + size*0.5
+	
 	#if 0.5 make full
+	value = floor(value)
+	
 	return value
 
 
 
 	
 func buycard(card, player):
-	var value = checkvalue(player)
-	print("Money: " + str(value))
+	var cardvalue = checkvalue(player)
+	print("Card Value: " + str(cardvalue))
 	
