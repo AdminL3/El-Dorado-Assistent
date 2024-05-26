@@ -166,3 +166,6 @@ func buycard(shopcard, player):
 	else:
 		store[shopcard] = store[shopcard]-1
 	print(store[shopcard])
+
+
+
