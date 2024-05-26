@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=7 format=3 uid="uid://m1y7bg1lro0b"]
 
+[ext_resource type="PackedScene" uid="uid://d0f7lpoptlh8h" path="res://scenes/intro.tscn" id="1_0cpk6"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="PackedScene" uid="uid://dwfwlg8llps47" path="res://scenes/draw.tscn" id="2_iktyp"]
 [ext_resource type="PackedScene" uid="uid://dsv4k87mb3pm4" path="res://scenes/playcard.tscn" id="3_fcegi"]
@@ -8,8 +9,24 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="IntroCAM" type="Camera2D" parent="."]
+position = Vector2(-1152, 0)
 anchor_mode = 0
+
+[node name="Player1CAM" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player2CAM" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player3CAM" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player4CAM" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Intro" parent="." instance=ExtResource("1_0cpk6")]
+position = Vector2(-553, 310)
 
 [node name="Manager" type="Node" parent="."]
 unique_name_in_owner = true
