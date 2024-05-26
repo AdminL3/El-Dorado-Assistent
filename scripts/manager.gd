@@ -2,6 +2,8 @@ extends Node
 
 class_name Manager
 
+var player
+
 var startcards = []
 var cards = {
 	0 : "Reisende",
