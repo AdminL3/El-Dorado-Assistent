@@ -75,46 +75,30 @@ script = ExtResource("5_wpfdb")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Player2CAM" type="Camera2D" parent="."]
-position = Vector2(1152, 0)
-anchor_mode = 0
-enabled = false
+[node name="TextEdit" type="TextEdit" parent="Player1CAM"]
+offset_left = 825.0
+offset_top = 331.0
+offset_right = 1016.0
+offset_bottom = 548.0
 
-[node name="Label2" type="Label" parent="Player2CAM"]
-offset_left = 460.0
-offset_top = 335.0
-offset_right = 522.0
-offset_bottom = 358.0
-text = "Player 2"
-
-[node name="Player3CAM" type="Camera2D" parent="."]
-position = Vector2(2304, 0)
-anchor_mode = 0
-enabled = false
-
-[node name="Label3" type="Label" parent="Player3CAM"]
-offset_left = 597.0
-offset_top = 348.0
-offset_right = 659.0
-offset_bottom = 371.0
-text = "Player 3"
-
-[node name="Player4CAM" type="Camera2D" parent="."]
-position = Vector2(3456, 0)
-anchor_mode = 0
-enabled = false
-
-[node name="Label4" type="Label" parent="Player4CAM"]
-offset_left = 581.0
-offset_top = 335.0
-offset_right = 643.0
-offset_bottom = 358.0
-text = "Player 4"
+[node name="Button2" type="Button" parent="Player1CAM"]
+offset_left = 721.0
+offset_top = 369.0
+offset_right = 770.0
+offset_bottom = 400.0
+text = "multi"
 
 [node name="HostCAM" type="Camera2D" parent="."]
 position = Vector2(0, -648)
 anchor_mode = 0
 enabled = false
+
+[node name="Button3" type="Button" parent="HostCAM"]
+offset_left = 578.0
+offset_top = 403.0
+offset_right = 627.0
+offset_bottom = 434.0
+text = "multi"
 
 [node name="Label5" type="Label" parent="HostCAM"]
 offset_left = 525.0
@@ -129,3 +113,5 @@ unique_name_in_owner = true
 script = ExtResource("1_6hv34")
 
 [connection signal="pressed" from="Player1CAM/Button" to="Player1CAM/Button" method="_on_pressed"]
+[connection signal="pressed" from="Player1CAM/Button2" to="Manager" method="_on_button_2_pressed"]
+[connection signal="pressed" from="HostCAM/Button3" to="Manager" method="_on_button_2_pressed"]
