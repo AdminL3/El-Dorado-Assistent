@@ -13,25 +13,42 @@ extends Node2D
 func _on_button_pressed():
 	loadscene(0)
 	player_1cam.enabled = true
+	joinroom()
 
 func _on_button_2_pressed():
 	loadscene(1)
 	player_2cam.enabled = true
-
+	joinroom()
 func _on_button_3_pressed():
 	loadscene(2)
 	player_3cam.enabled = true
+	joinroom()
 
 func _on_button_4_pressed():
 	loadscene(3)
 	player_4cam.enabled = true
+	joinroom()
 
 func _on_host_pressed():
 	loadscene(4)
 	host_cam.enabled = true
+	create_host()
+
+func create_host():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_server(1477)
+	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
+	multiplayer.multiplayer_peer = peer
+	
+func joinroom():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client("79.199.160.21", 1477)
+	get_tree().set_multiplayer(SceneMultiplayer.new(),self.get_path())
+	multiplayer.multiplayer_peer = peer
+
 
 
 func loadscene(player):
 	intro_cam.enabled = false
 	manager.player = player
-	print(manager.player)
+	print("Player: " + str(manager.player))
