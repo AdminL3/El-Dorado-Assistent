@@ -39,12 +39,14 @@ func create_host():
 	peer.create_server(1477)
 	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
 	multiplayer.multiplayer_peer = peer
+	print("created host")
 	
 func joinroom():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client("79.199.160.21", 1477)
 	get_tree().set_multiplayer(SceneMultiplayer.new(),self.get_path())
 	multiplayer.multiplayer_peer = peer
+	print("joined room")
 
 
 

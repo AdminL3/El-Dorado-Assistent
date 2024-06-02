@@ -80,13 +80,7 @@ offset_left = 825.0
 offset_top = 331.0
 offset_right = 1016.0
 offset_bottom = 548.0
-
-[node name="Button2" type="Button" parent="Player1CAM"]
-offset_left = 721.0
-offset_top = 369.0
-offset_right = 770.0
-offset_bottom = 400.0
-text = "multi"
+editable = false
 
 [node name="HostCAM" type="Camera2D" parent="."]
 position = Vector2(0, -648)
@@ -113,5 +107,4 @@ unique_name_in_owner = true
 script = ExtResource("1_6hv34")
 
 [connection signal="pressed" from="Player1CAM/Button" to="Player1CAM/Button" method="_on_pressed"]
-[connection signal="pressed" from="Player1CAM/Button2" to="Manager" method="_on_button_2_pressed"]
-[connection signal="pressed" from="HostCAM/Button3" to="Manager" method="_on_button_2_pressed"]
+[connection signal="pressed" from="HostCAM/Button3" to="Manager" method="_on_send_pressed"]

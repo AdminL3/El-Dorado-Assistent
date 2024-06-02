@@ -28,11 +28,7 @@ func _on_join_pressed():
 	
 
 func _on_send_pressed():
-	if multiplayer.multiplayer_peer.get_connection_status() == ENetMultiplayerPeer.CONNECTION_CONNECTED:
-		rpc("msg_rpc", usrn , message.text)
-		print("sent")
-	else:
-		print("Peer is not connected")
+	rpc("msg_rpc", usrn , message.text)
 
 	
 @rpc ("any_peer","call_local")

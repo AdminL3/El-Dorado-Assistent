@@ -118,6 +118,24 @@ func playcard(card, player):
 		print("Dont have card")
 
 
+
+
+@onready var text_edit = $"../Player1CAM/TextEdit"
+
+
+	
+
+func _on_send_pressed():
+	rpc("msg_rpc", "text")
+	print("sent message")
+	
+
+@rpc ("any_peer","call_local")
+func msg_rpc(data):
+	text_edit.text += str(data)
+	print("set message")
+	
+	
 func checkvalue(player):
 	var playe = players[player]
 	var hand = playe[0]
@@ -166,3 +184,4 @@ func buycard(shopcard, player):
 	else:
 		store[shopcard] = store[shopcard]-1
 	print(store[shopcard])
+
