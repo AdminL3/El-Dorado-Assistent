@@ -118,22 +118,20 @@ func playcard(card, player):
 		print("Dont have card")
 
 
-
-
 @onready var text_edit = $"../Player1CAM/TextEdit"
-
-
+var numver = 0
 	
 
 func _on_send_pressed():
-	rpc("msg_rpc", "text")
-	print("sent message")
+	rpc("add_int_rpc", 5)
 	
 
-@rpc ("any_peer","call_local")
-func msg_rpc(data):
-	text_edit.text += str(data)
-	print("set message")
+
+@rpc("any_peer", "call_local")
+func add_int_rpc(value: int):
+	numver = numver + value
+	text_edit.text = str(numver)
+	print(numver)
 	
 	
 func checkvalue(player):

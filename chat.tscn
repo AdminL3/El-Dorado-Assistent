@@ -17,33 +17,26 @@ offset_right = 41.0
 offset_bottom = 62.0
 text = "Join"
 
-[node name="Username" type="LineEdit" parent="."]
-offset_left = 11.0
-offset_top = 62.0
-offset_right = 151.253
-offset_bottom = 93.0
-placeholder_text = "Username"
-
 [node name="Send" type="Button" parent="."]
-offset_left = 8.0
-offset_top = -94.0
-offset_right = 55.0
-offset_bottom = -63.0
+offset_left = 82.0
+offset_top = -145.0
+offset_right = 129.0
+offset_bottom = -114.0
 text = "Send
 "
 
 [node name="Message" type="LineEdit" parent="."]
-offset_left = 8.0
-offset_top = -125.0
-offset_right = 148.253
-offset_bottom = -94.0
+offset_left = 60.0
+offset_top = -186.0
+offset_right = 200.253
+offset_bottom = -155.0
 placeholder_text = "Message"
 
-[node name="Messages" type="TextEdit" parent="."]
-offset_left = 173.0
-offset_top = -285.0
-offset_right = 600.0
-offset_bottom = -7.0
+[node name="IntDisplay" type="TextEdit" parent="."]
+offset_left = 298.0
+offset_top = -245.0
+offset_right = 454.0
+offset_bottom = -207.0
 editable = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
