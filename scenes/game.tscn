@@ -17,6 +17,7 @@ position = Vector2(-1152, -648)
 anchor_mode = 0
 
 [node name="Player1CAM" type="Camera2D" parent="."]
+position = Vector2(-5, -163)
 anchor_mode = 0
 enabled = false
 
@@ -71,21 +72,10 @@ text = "show cards
 "
 script = ExtResource("5_wpfdb")
 
-[node name="Label2" type="Label" parent="Player1CAM"]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="HostCAM" type="Camera2D" parent="."]
 position = Vector2(0, -648)
 anchor_mode = 0
 enabled = false
-
-[node name="Button3" type="Button" parent="HostCAM"]
-offset_left = 578.0
-offset_top = 403.0
-offset_right = 627.0
-offset_bottom = 434.0
-text = "+5"
 
 [node name="Label5" type="Label" parent="HostCAM"]
 offset_left = 525.0
@@ -99,13 +89,23 @@ text = "Host
 unique_name_in_owner = true
 script = ExtResource("1_6hv34")
 
-[node name="Text" type="TextEdit" parent="Manager"]
-offset_left = 771.0
-offset_top = 283.0
-offset_right = 855.0
-offset_bottom = 315.0
-placeholder_text = "c"
+[node name="Display" type="TextEdit" parent="Manager"]
+offset_left = 291.0
+offset_top = -89.0
+offset_right = 473.0
+offset_bottom = -24.0
 editable = false
 
+[node name="Message" type="LineEdit" parent="Manager"]
+offset_left = 579.0
+offset_top = -73.0
+offset_right = 646.063
+offset_bottom = -42.0
+
+[node name="Button" type="Button" parent="Manager"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "send"
+
 [connection signal="pressed" from="Player1CAM/Button" to="Player1CAM/Button" method="_on_pressed"]
-[connection signal="pressed" from="HostCAM/Button3" to="Manager" method="_on_send_pressed"]
+[connection signal="pressed" from="Manager/Button" to="Manager" method="_on_send_pressed"]

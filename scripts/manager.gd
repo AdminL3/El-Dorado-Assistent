@@ -117,22 +117,8 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 
-@onready var text = $Text
-
-var numver = 0
-	
-
-func _on_send_pressed():
-	rpc("add_int_rpc", 5)
-	
 
 
-@rpc("any_peer", "call_local")
-func add_int_rpc(value: int):
-	numver = numver + value
-	text.text = str(numver)
-	print(numver)
-	
 	
 func checkvalue(player):
 	var playe = players[player]
@@ -183,3 +169,45 @@ func buycard(shopcard, player):
 		store[shopcard] = store[shopcard]-1
 	print(store[shopcard])
 
+
+
+
+
+func create_host():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_server(1477)
+	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
+	multiplayer.multiplayer_peer = peer
+	print("created host")
+	
+func joinroom():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client("79.199.160.21", 1477)
+	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
+	multiplayer.multiplayer_peer = peer
+	print("joined room")
+
+
+
+
+
+var shared_int: int = 0
+
+@onready var message = $Message
+@onready var int_display = $Display
+
+func _on_send_pressed():
+	var value = message.text
+	value = int(value)
+	print(str(value) + " sent")
+	rpc("add_int_rpc", value)
+
+
+
+@rpc("any_peer", "call_local")
+func add_int_rpc(value: int):
+	shared_int += value
+	update_int_display()
+
+func update_int_display():
+	int_display.text = str(shared_int)
