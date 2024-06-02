@@ -2,7 +2,7 @@ extends Node
 
 class_name Manager
 
-var player
+var playerselected = 0
 
 var startcards = []
 var cards = {
@@ -50,8 +50,8 @@ var o4 = []
 var p4 = [h4, n4, o4]
 
 var players = [p1, p2, p3, p4]
-@onready var newt = $"../HostCAM/New"
 @onready var handt = $"../HostCAM/Hand"
+@onready var newt = $"../HostCAM/New"
 @onready var oldt = $"../HostCAM/Old"
 
 var store = []
@@ -80,7 +80,7 @@ func _ready():
 	for i in 18:
 		store.append(3)
 	
-	var playe = players[0]
+	var playe = players[playerselected]
 	var hand = playe[0]
 	var new = playe[1]
 	var old = playe[2]
@@ -131,8 +131,12 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 	
-	handt.text = str(hand)
+	playe = players[playerselected]
+	hand = playe[0]
+	new = playe[1]
+	old = playe[2]
 	newt.text = str(new)
+	handt.text = str(hand)
 	oldt.text = str(old)
 
 
@@ -221,8 +225,11 @@ func _on_host_send_pressed():
 
 @rpc("any_peer", "call_local")
 func add_int_rpc(players):
-	
-	update_int_display()
-
-func update_int_display():
-	int_display.text = str(players)
+	var new_array = players
+	var p = new_array[0]
+	var hand = p1[0]
+	var new = p1[1]
+	var old = p1[2]
+	newt.text = str(new)
+	handt.text = str(hand)
+	oldt.text = str(old)

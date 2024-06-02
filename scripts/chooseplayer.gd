@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var playerboss = $"."
 
 @onready var manager = %Manager
 @onready var intro_cam = $"../IntroCAM"
@@ -12,31 +13,24 @@ extends Node2D
 
 func _on_button_pressed():
 	loadscene(0)
-	player_1cam.enabled = true
-	manager.joinroom()
 
 func _on_button_2_pressed():
 	loadscene(1)
-	player_2cam.enabled = true
-	manager.joinroom()
 	
 func _on_button_3_pressed():
 	loadscene(2)
-	player_3cam.enabled = true
-	manager.joinroom()
 
 func _on_button_4_pressed():
 	loadscene(3)
-	player_4cam.enabled = true
-	manager.joinroom()
 
 func _on_host_pressed():
 	loadscene(4)
 	host_cam.enabled = true
 	manager.create_host()
+	playerboss.joinroom()
 
 
 func loadscene(player):
 	intro_cam.enabled = false
-	manager.player = player
+	playerboss.playerselected = player
 	print("Player: " + str(manager.player))
