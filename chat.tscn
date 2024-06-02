@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7o14g56qujfv"]
+
+[ext_resource type="Script" path="res://chat.gd" id="1_n5ywl"]
+
+[node name="Chat" type="Node2D"]
+script = ExtResource("1_n5ywl")
+
+[node name="Host" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 31.0
+offset_right = 41.0
+offset_bottom = 62.0
+text = "Join"
+
+[node name="Username" type="LineEdit" parent="."]
+offset_left = 11.0
+offset_top = 62.0
+offset_right = 151.253
+offset_bottom = 93.0
+placeholder_text = "Username"
+
+[node name="Send" type="Button" parent="."]
+offset_left = 8.0
+offset_top = -94.0
+offset_right = 55.0
+offset_bottom = -63.0
+text = "Send
+"
+
+[node name="Message" type="LineEdit" parent="."]
+offset_left = 8.0
+offset_top = -125.0
+offset_right = 148.253
+offset_bottom = -94.0
+placeholder_text = "Message"
+
+[node name="Messages" type="TextEdit" parent="."]
+offset_left = 173.0
+offset_top = -285.0
+offset_right = 600.0
+offset_bottom = -7.0
+editable = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(203, -117)
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Send" to="." method="_on_send_pressed"]
