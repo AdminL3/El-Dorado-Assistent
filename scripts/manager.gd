@@ -87,8 +87,8 @@ func showcards(player):
 #player [0;3]
 func draw(player):
 	var playe = players[player]
-	var new = playe[0]
-	var hand = playe[1]
+	var hand = playe[0]
+	var new = playe[1]
 	var old = playe[2]
 	if hand.size() < 4:
 		if new.size() !=0:
@@ -107,8 +107,8 @@ func draw(player):
 
 func playcard(card, player):
 	var playe = players[player]
-	var new = playe[0]
-	var hand = playe[1]
+	var hand = playe[0]
+	var new = playe[1]
 	var old = playe[2]
 	if hand.has(card):
 		old.append(card)
@@ -120,7 +120,7 @@ func playcard(card, player):
 
 func checkvalue(player):
 	var playe = players[player]
-	var hand = playe[1]
+	var hand = playe[0]
 	var value = 0
 	var size = hand.size()
 	for x in hand:
@@ -166,6 +166,3 @@ func buycard(shopcard, player):
 	else:
 		store[shopcard] = store[shopcard]-1
 	print(store[shopcard])
-
-
-
