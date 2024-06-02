@@ -97,7 +97,7 @@ func draw(player):
 			print(hand)
 		else:
 			print("No cards left - Shuffle")
-			for x in 8:
+			for x in old:
 				var card = old.pick_random()
 				new.append(card)
 				old.erase(card)
