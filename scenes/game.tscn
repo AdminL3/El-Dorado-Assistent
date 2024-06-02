@@ -75,14 +75,6 @@ script = ExtResource("5_wpfdb")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="TextEdit" type="TextEdit" parent="Player1CAM"]
-offset_left = 771.0
-offset_top = 283.0
-offset_right = 855.0
-offset_bottom = 315.0
-placeholder_text = "c"
-editable = false
-
 [node name="HostCAM" type="Camera2D" parent="."]
 position = Vector2(0, -648)
 anchor_mode = 0
@@ -106,6 +98,14 @@ text = "Host
 [node name="Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_6hv34")
+
+[node name="Text" type="TextEdit" parent="Manager"]
+offset_left = 771.0
+offset_top = 283.0
+offset_right = 855.0
+offset_bottom = 315.0
+placeholder_text = "c"
+editable = false
 
 [connection signal="pressed" from="Player1CAM/Button" to="Player1CAM/Button" method="_on_pressed"]
 [connection signal="pressed" from="HostCAM/Button3" to="Manager" method="_on_send_pressed"]

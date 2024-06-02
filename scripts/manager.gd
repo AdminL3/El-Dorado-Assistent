@@ -117,8 +117,8 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 
+@onready var text = $Text
 
-@onready var text_edit = $"../Player1CAM/TextEdit"
 var numver = 0
 	
 
@@ -130,7 +130,7 @@ func _on_send_pressed():
 @rpc("any_peer", "call_local")
 func add_int_rpc(value: int):
 	numver = numver + value
-	text_edit.text = str(numver)
+	text.text = str(numver)
 	print(numver)
 	
 	
