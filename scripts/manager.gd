@@ -50,6 +50,9 @@ var o4 = []
 var p4 = [h4, n4, o4]
 
 var players = [p1, p2, p3, p4]
+@onready var newt = $"../HostCAM/New"
+@onready var handt = $"../HostCAM/Hand"
+@onready var oldt = $"../HostCAM/Old"
 
 var store = []
 func _ready():
@@ -76,6 +79,14 @@ func _ready():
 	#add store cards
 	for i in 18:
 		store.append(3)
+	
+	var playe = players[0]
+	var hand = playe[0]
+	var new = playe[1]
+	var old = playe[2]
+	handt.text = hand
+	newt.text = new
+	oldt.text = old
 
 
 func showcards(player):
@@ -116,6 +127,7 @@ func playcard(card, player):
 		print("played: "+ str(cards[card]))
 	else:
 		print("Dont have card")
+	
 
 
 
