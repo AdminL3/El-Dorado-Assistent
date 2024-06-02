@@ -50,12 +50,18 @@ var o4 = []
 var p4 = [h4, n4, o4]
 
 var players = [p1, p2, p3, p4]
-@onready var handt = $"../HostCAM/Hand"
-@onready var newt = $"../HostCAM/New"
-@onready var oldt = $"../HostCAM/Old"
 
 var store = []
-func _ready():
+
+
+
+
+@onready var newt = $"../PlayerCAM/New"
+@onready var handt = $"../PlayerCAM/Hand"
+@onready var oldt = $"../PlayerCAM/Old"
+
+
+func if_is_host():
 	#shuffle starter cards into hands
 	for i in range(4):
 		startcards = [0, 0, 0, 0, 1, 1, 1, 2]
@@ -79,14 +85,14 @@ func _ready():
 	#add store cards
 	for i in 18:
 		store.append(3)
-	
-	var playe = players[playerselected]
-	var hand = playe[0]
-	var new = playe[1]
-	var old = playe[2]
-	handt.text = str(hand)
-	newt.text = str(new)
-	oldt.text = str(old)
+	if !playerselected==4:
+		var playe = players[playerselected]
+		var hand = playe[0]
+		var new = playe[1]
+		var old = playe[2]
+		handt.text = str(hand)
+		newt.text = str(new)
+		oldt.text = str(old)
 
 
 func showcards(player):
@@ -95,7 +101,7 @@ func showcards(player):
 	print("New: " + str(playe[1]))
 	print("Old: " + str(playe[2]))
 
-#player [0;3]
+
 func draw(player):
 	var playe = players[player]
 	var hand = playe[0]
@@ -140,8 +146,6 @@ func playcard(card, player):
 	oldt.text = str(old)
 
 
-
-	
 func checkvalue(player):
 	var playe = players[player]
 	var hand = playe[0]
@@ -179,6 +183,8 @@ func checkvalue(player):
 
 
 	#shopcard means its the x card in the shop
+
+
 func buycard(shopcard, player):
 	var cardvalue = checkvalue(player)
 	print("Card Value: " + str(cardvalue))
@@ -195,12 +201,14 @@ func buycard(shopcard, player):
 
 
 
+
 func create_host():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(1477)
 	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
 	multiplayer.multiplayer_peer = peer
 	print("created host")
+	if_is_host()
 	
 func joinroom():
 	var peer = ENetMultiplayerPeer.new()
