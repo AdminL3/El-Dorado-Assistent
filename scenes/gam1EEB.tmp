@@ -196,4 +196,3 @@ offset_bottom = -609.0
 text = "Send!"
 
 [connection signal="pressed" from="Player1CAM/Button" to="Player1CAM/Button" method="_on_pressed"]
-[connection signal="pressed" from="Manager/Button" to="Manager" method="_on_host_send_pressed"]

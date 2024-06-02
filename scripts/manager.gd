@@ -209,23 +209,20 @@ func joinroom():
 
 
 
-var shared_int: int = 0
 
 @onready var message = $Message
 @onready var int_display = $Display
 
-func _on_send_pressed():
-	var value = message.text
-	value = int(value)
-	print(str(value) + " sent")
-	rpc("add_int_rpc", value)
+func _on_host_send_pressed():
+	print("Host Sent")
+	rpc("add_int_rpc", players)
 
 
 
 @rpc("any_peer", "call_local")
-func add_int_rpc(value: int):
-	shared_int += value
+func add_int_rpc(players):
+	
 	update_int_display()
 
 func update_int_display():
-	int_display.text = str(shared_int)
+	int_display.text = str(players)
