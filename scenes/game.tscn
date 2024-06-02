@@ -144,7 +144,7 @@ offset_top = 215.0
 offset_right = 292.0
 offset_bottom = 383.0
 
-[node name="Hand_" type="Label" parent="HostCAM"]
+[node name="Hand_2" type="Label" parent="HostCAM"]
 offset_left = 299.0
 offset_top = 190.0
 offset_right = 413.0

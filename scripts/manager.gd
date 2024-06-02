@@ -84,9 +84,9 @@ func _ready():
 	var hand = playe[0]
 	var new = playe[1]
 	var old = playe[2]
-	handt.text = hand
-	newt.text = new
-	oldt.text = old
+	handt.text = str(hand)
+	newt.text = str(new)
+	oldt.text = str(old)
 
 
 func showcards(player):
@@ -114,6 +114,9 @@ func draw(player):
 				old.erase(card)
 	else:
 		print("Already have 4 cards")
+	handt.text = str(hand)
+	newt.text = str(new)
+	oldt.text = str(old)
 
 
 func playcard(card, player):
@@ -128,6 +131,9 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 	
+	handt.text = str(hand)
+	newt.text = str(new)
+	oldt.text = str(old)
 
 
 
