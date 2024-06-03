@@ -72,18 +72,21 @@ text = "show cards
 script = ExtResource("5_wpfdb")
 
 [node name="New" type="TextEdit" parent="PlayerCAM"]
+visible = false
 offset_left = 147.0
 offset_top = 3.0
 offset_right = 266.0
 offset_bottom = 171.0
 
 [node name="Hand" type="TextEdit" parent="PlayerCAM"]
+visible = false
 offset_left = 270.0
 offset_top = 2.0
 offset_right = 389.0
 offset_bottom = 170.0
 
 [node name="Old" type="TextEdit" parent="PlayerCAM"]
+visible = false
 offset_left = 392.0
 offset_top = 2.0
 offset_right = 511.0
@@ -154,10 +157,10 @@ unique_name_in_owner = true
 script = ExtResource("1_6hv34")
 
 [node name="Display" type="TextEdit" parent="Manager"]
-offset_left = 582.0
-offset_top = 33.0
-offset_right = 764.0
-offset_bottom = 98.0
+offset_left = 549.0
+offset_top = 26.0
+offset_right = 731.0
+offset_bottom = 91.0
 editable = false
 
 [node name="Send" type="Button" parent="Manager"]
@@ -168,8 +171,26 @@ offset_bottom = 83.0
 text = "Send!"
 
 [node name="LineEdit" type="LineEdit" parent="Manager"]
-offset_right = 67.0625
-offset_bottom = 31.0
+offset_left = 852.0
+offset_top = 44.0
+offset_right = 919.063
+offset_bottom = 75.0
+
+[node name="Host" type="Button" parent="Manager"]
+offset_left = 241.0
+offset_top = 29.0
+offset_right = 285.0
+offset_bottom = 60.0
+text = "Host"
+
+[node name="Join" type="Button" parent="Manager"]
+offset_left = 313.0
+offset_top = 30.0
+offset_right = 351.0
+offset_bottom = 61.0
+text = "Join"
 
 [connection signal="pressed" from="PlayerCAM/Button" to="PlayerCAM/Button" method="_on_pressed"]
 [connection signal="pressed" from="Manager/Send" to="Manager" method="_on_send_pressed"]
+[connection signal="pressed" from="Manager/Host" to="Manager" method="_on_host_pressed"]
+[connection signal="pressed" from="Manager/Join" to="Manager" method="_on_join_pressed"]

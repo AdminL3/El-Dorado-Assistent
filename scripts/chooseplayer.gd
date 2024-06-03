@@ -23,11 +23,9 @@ func _on_button_4_pressed():
 func _on_host_pressed():
 	intro_cam.enabled = false
 	host_cam.enabled = true
-	manager.create_host()
 
 
 func loadscene(player):
 	intro_cam.enabled = false
 	manager.playerselected = player
 	print("Player " + str(manager.playerselected)+ " joined room")
-	manager.joinroom()
