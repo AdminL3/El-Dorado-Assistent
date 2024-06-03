@@ -55,10 +55,9 @@ var store = []
 
 
 
-
-@onready var newt = $"../PlayerCAM/New"
-@onready var handt = $"../PlayerCAM/Hand"
-@onready var oldt = $"../PlayerCAM/Old"
+@onready var newbox = $"../PlayerCAM/New"
+@onready var handbox = $"../PlayerCAM/Hand"
+@onready var oldbox = $"../PlayerCAM/Old"
 
 
 func if_is_host():
@@ -90,9 +89,9 @@ func if_is_host():
 		var hand = playe[0]
 		var new = playe[1]
 		var old = playe[2]
-		handt.text = str(hand)
-		newt.text = str(new)
-		oldt.text = str(old)
+		handbox.text = str(hand)
+		newbox.text = str(new)
+		oldbox.text = str(old)
 
 
 func showcards(player):
@@ -120,9 +119,12 @@ func draw(player):
 				old.erase(card)
 	else:
 		print("Already have 4 cards")
-	handt.text = str(hand)
-	newt.text = str(new)
-	oldt.text = str(old)
+	handbox.text = str(hand)
+	newbox.text = str(new)
+	oldbox.text = str(old)
+	print(hand)
+	print(new)
+	print(old)
 
 
 func playcard(card, player):
@@ -141,9 +143,12 @@ func playcard(card, player):
 	hand = playe[0]
 	new = playe[1]
 	old = playe[2]
-	newt.text = str(new)
-	handt.text = str(hand)
-	oldt.text = str(old)
+	handbox.text = str(hand)
+	newbox.text = str(new)
+	oldbox.text = str(old)
+	print(hand)
+	print(new)
+	print(old)
 
 
 func checkvalue(player):
@@ -215,29 +220,37 @@ func joinroom():
 	peer.create_client("79.199.160.21", 1477)
 	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
 	multiplayer.multiplayer_peer = peer
-	print("joined room")
 
 
 
 
 
-
-@onready var message = $Message
-@onready var int_display = $Display
+@onready var display = $Display
 
 func _on_host_send_pressed():
 	print("Host Sent")
-	rpc("add_int_rpc", players)
+	rpc("add_int_rpc", "5")
+func _on_player_send_pressed():
+	print("Player Sent")
+	rpc("add_int_rpc", "6")
 
 
 
 @rpc("any_peer", "call_local")
 func add_int_rpc(players):
-	var new_array = players
-	var p = new_array[0]
-	var hand = p1[0]
-	var new = p1[1]
-	var old = p1[2]
-	newt.text = str(new)
-	handt.text = str(hand)
-	oldt.text = str(old)
+	uptdi(players)
+	#var new_array = players
+	#var p = new_array[0]
+	#var hand = p1[0]
+	#var new = p1[1]
+	#var old = p1[2]
+	#handbox.text = str(hand)
+	#newbox.text = str(new)
+	#oldbox.text = str(old)
+	#print(hand)
+	#print(new)
+	#print(old)
+	
+func uptdi(x):
+	display.text = x
+		

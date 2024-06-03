@@ -29,5 +29,5 @@ func _on_host_pressed():
 func loadscene(player):
 	intro_cam.enabled = false
 	manager.playerselected = player
-	print("Player: " + str(manager.playerselected))
+	print("Player " + str(manager.playerselected)+ " joined room")
 	manager.joinroom()
