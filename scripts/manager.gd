@@ -223,34 +223,23 @@ func joinroom():
 
 
 
+var shared_int = 1
+@onready var message = $LineEdit
+	
+@onready var int_display = $Display
 
-
-@onready var display = $Display
-
-func _on_host_send_pressed():
-	print("Host Sent")
-	rpc("add_int_rpc", "5")
-func _on_player_send_pressed():
-	print("Player Sent")
-	rpc("add_int_rpc", "6")
+func _on_send_pressed():
+	var value = message.text
+	value = int(value)
+	print(str(value) + " sent")
+	rpc("add_int_rpc", value)
 
 
 
 @rpc("any_peer", "call_local")
-func add_int_rpc(players):
-	uptdi(players)
-	#var new_array = players
-	#var p = new_array[0]
-	#var hand = p1[0]
-	#var new = p1[1]
-	#var old = p1[2]
-	#handbox.text = str(hand)
-	#newbox.text = str(new)
-	#oldbox.text = str(old)
-	#print(hand)
-	#print(new)
-	#print(old)
-	
-func uptdi(x):
-	display.text = x
-		
+func add_int_rpc(value: int):
+	shared_int += value
+	update_int_display()
+
+func update_int_display():
+	int_display.text = str(shared_int)

@@ -160,20 +160,16 @@ offset_right = 764.0
 offset_bottom = 98.0
 editable = false
 
-[node name="Button" type="Button" parent="Manager"]
-offset_left = 863.0
-offset_top = 24.0
-offset_right = 914.0
-offset_bottom = 55.0
-text = "Send!"
-
-[node name="Button2" type="Button" parent="Manager"]
+[node name="Send" type="Button" parent="Manager"]
 offset_left = 989.0
 offset_top = 52.0
 offset_right = 1040.0
 offset_bottom = 83.0
 text = "Send!"
 
+[node name="LineEdit" type="LineEdit" parent="Manager"]
+offset_right = 67.0625
+offset_bottom = 31.0
+
 [connection signal="pressed" from="PlayerCAM/Button" to="PlayerCAM/Button" method="_on_pressed"]
-[connection signal="pressed" from="Manager/Button" to="Manager" method="_on_host_send_pressed"]
-[connection signal="pressed" from="Manager/Button2" to="Manager" method="_on_player_send_pressed"]
+[connection signal="pressed" from="Manager/Send" to="Manager" method="_on_send_pressed"]
