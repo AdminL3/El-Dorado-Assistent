@@ -1,20 +1,56 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
 
-[ext_resource type="PackedScene" uid="uid://d0f7lpoptlh8h" path="res://scenes/intro.tscn" id="1_0cpk6"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
-[ext_resource type="PackedScene" uid="uid://dwfwlg8llps47" path="res://scenes/draw.tscn" id="2_iktyp"]
-[ext_resource type="PackedScene" uid="uid://dsv4k87mb3pm4" path="res://scenes/playcard.tscn" id="3_fcegi"]
-[ext_resource type="PackedScene" uid="uid://b0raxsd6u4k5l" path="res://scenes/buy_card.tscn" id="4_a2ejp"]
-[ext_resource type="Script" path="res://scripts/showcards.gd" id="5_wpfdb"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Intro" parent="." instance=ExtResource("1_0cpk6")]
-position = Vector2(-589, -328)
+script = ExtResource("1_6hv34")
 
 [node name="IntroCAM" type="Camera2D" parent="."]
 position = Vector2(-1152, -648)
 anchor_mode = 0
+
+[node name="1" type="Button" parent="IntroCAM"]
+layout_direction = 1
+offset_left = 505.0
+offset_top = 214.0
+offset_right = 575.0
+offset_bottom = 245.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Player 1
+"
+
+[node name="2" type="Button" parent="IntroCAM"]
+layout_direction = 1
+offset_left = 684.0
+offset_top = 298.0
+offset_right = 754.0
+offset_bottom = 329.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Player 2
+"
+
+[node name="3" type="Button" parent="IntroCAM"]
+layout_direction = 1
+offset_left = 465.0
+offset_top = 410.0
+offset_right = 535.0
+offset_bottom = 441.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Player 3
+"
+
+[node name="4" type="Button" parent="IntroCAM"]
+layout_direction = 1
+offset_left = 674.0
+offset_top = 448.0
+offset_right = 744.0
+offset_bottom = 479.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Player 4"
 
 [node name="PlayerCAM" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -27,49 +63,13 @@ offset_right = 596.0
 offset_bottom = 336.0
 text = "Player 1"
 
-[node name="Draw" parent="PlayerCAM" instance=ExtResource("2_iktyp")]
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 113.0
-offset_bottom = 36.0
-text = "draw Player1"
-
-[node name="Playcard" parent="PlayerCAM" instance=ExtResource("3_fcegi")]
-offset_left = 5.0
-offset_top = 46.0
-offset_right = 80.0
-offset_bottom = 123.0
-text = "PLayer1
-play
-reisende"
-
-[node name="Playcard2" parent="PlayerCAM" instance=ExtResource("3_fcegi")]
-offset_left = 12.0
-offset_top = 132.0
-offset_right = 85.0
-offset_bottom = 209.0
-text = "PLayer1
-play
-forscher"
-card = 1
-
-[node name="buy card" parent="PlayerCAM" instance=ExtResource("4_a2ejp")]
-offset_left = 20.0
-offset_top = 304.0
-offset_right = 131.0
-offset_bottom = 381.0
-text = "Buy card 
-player 0
-card 0"
-
-[node name="Button" type="Button" parent="PlayerCAM"]
-offset_left = 9.0
-offset_top = 242.0
-offset_right = 104.0
-offset_bottom = 273.0
+[node name="Showcards" type="Button" parent="PlayerCAM"]
+offset_left = 68.0
+offset_top = 238.0
+offset_right = 163.0
+offset_bottom = 269.0
 text = "show cards
 "
-script = ExtResource("5_wpfdb")
 
 [node name="New" type="TextEdit" parent="PlayerCAM"]
 visible = false
@@ -92,105 +92,36 @@ offset_top = 2.0
 offset_right = 511.0
 offset_bottom = 170.0
 
-[node name="HostCAM" type="Camera2D" parent="."]
-position = Vector2(-7, -540)
-anchor_mode = 0
-enabled = false
-
-[node name="Label5" type="Label" parent="HostCAM"]
-offset_left = 491.0
-offset_top = 13.0
-offset_right = 553.0
-offset_bottom = 36.0
-text = "Host
-"
-
-[node name="ColorRect" type="ColorRect" parent="HostCAM"]
-offset_right = 69.0
-offset_bottom = 148.0
-
-[node name="Online" type="Label" parent="HostCAM/ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Online:"
-
-[node name="Player1" type="Label" parent="HostCAM/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 59.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Player1"
-
-[node name="Player2" type="Label" parent="HostCAM/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 59.0
-offset_bottom = 66.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Player1"
-
-[node name="Player3" type="Label" parent="HostCAM/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 67.0
-offset_right = 59.0
-offset_bottom = 90.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Player1"
-
-[node name="Player4" type="Label" parent="HostCAM/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 89.0
-offset_right = 59.0
-offset_bottom = 112.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Player1"
-
-[node name="Manager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_6hv34")
-
-[node name="Display" type="TextEdit" parent="Manager"]
+[node name="Display" type="TextEdit" parent="."]
 offset_left = 549.0
-offset_top = 26.0
+offset_top = 62.0
 offset_right = 731.0
-offset_bottom = 91.0
+offset_bottom = 127.0
 editable = false
 
-[node name="Send" type="Button" parent="Manager"]
+[node name="Send" type="Button" parent="."]
 offset_left = 989.0
 offset_top = 52.0
 offset_right = 1040.0
 offset_bottom = 83.0
 text = "Send!"
 
-[node name="LineEdit" type="LineEdit" parent="Manager"]
+[node name="LineEdit" type="LineEdit" parent="."]
 offset_left = 852.0
 offset_top = 44.0
 offset_right = 919.063
 offset_bottom = 75.0
 
-[node name="Host" type="Button" parent="Manager"]
-offset_left = 241.0
-offset_top = 29.0
-offset_right = 285.0
-offset_bottom = 60.0
-text = "Host"
-
-[node name="Join" type="Button" parent="Manager"]
+[node name="magic" type="Button" parent="."]
 offset_left = 313.0
 offset_top = 30.0
 offset_right = 351.0
 offset_bottom = 61.0
-text = "Join"
+text = "Send data"
 
-[connection signal="pressed" from="PlayerCAM/Button" to="PlayerCAM/Button" method="_on_pressed"]
-[connection signal="pressed" from="Manager/Send" to="Manager" method="_on_send_pressed"]
-[connection signal="pressed" from="Manager/Host" to="Manager" method="_on_host_pressed"]
-[connection signal="pressed" from="Manager/Join" to="Manager" method="_on_join_pressed"]
+[connection signal="pressed" from="IntroCAM/1" to="." method="joinas1"]
+[connection signal="pressed" from="IntroCAM/2" to="." method="joinas2"]
+[connection signal="pressed" from="IntroCAM/3" to="." method="joinas3"]
+[connection signal="pressed" from="IntroCAM/4" to="." method="joinas4"]
+[connection signal="pressed" from="PlayerCAM/Showcards" to="." method="_on_showcards_pressed"]
+[connection signal="pressed" from="magic" to="." method="modify_people"]

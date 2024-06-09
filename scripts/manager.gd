@@ -1,7 +1,5 @@
 extends Node
 
-class_name Manager
-
 var playerselected = 0
 
 var startcards = []
@@ -54,10 +52,9 @@ var players = [p1, p2, p3, p4]
 var store = []
 
 
-
-@onready var newbox = $"../PlayerCAM/New"
-@onready var handbox = $"../PlayerCAM/Hand"
-@onready var oldbox = $"../PlayerCAM/Old"
+@onready var newbox = $PlayerCAM/New
+@onready var handbox = $PlayerCAM/Hand
+@onready var oldbox = $PlayerCAM/Old
 
 
 func if_is_host():
@@ -202,3 +199,99 @@ func buycard(shopcard, player):
 		store[shopcard] = store[shopcard]-1
 	print(store[shopcard])
 
+
+
+
+@onready var intro_cam = $IntroCAM
+@onready var player_cam = $PlayerCAM
+
+
+
+
+
+func _ready():
+	if OS.has_feature("dedicated_server"):
+		print("Starting dedicated server...")
+		become_host()	
+	else:
+		become_client()
+		print("Starting client side...")
+
+
+func joinas1():
+	loadscene(0)
+
+func joinas2():
+	loadscene(1)
+	
+func joinas3():
+	loadscene(2)
+
+func joinas4():
+	loadscene(3)
+
+
+
+func loadscene(player):
+	intro_cam.enabled = false
+	playerselected = player
+	print("Player " + str(playerselected)+ " joined room")
+
+
+
+var peer = ENetMultiplayerPeer.new()
+var people = []
+@onready var display = $Display
+
+
+
+func become_host():
+	peer.create_server(8080)
+	multiplayer.multiplayer_peer = peer
+	
+	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	
+func _on_peer_connected(id):
+	print("Client connected with ID: %d" % id)
+	_update_text()
+
+func _on_peer_disconnected(id):
+	print("Client disconnected with ID: %d" % id)
+	people.erase(id)
+	print(people)
+
+
+
+func become_client():
+	peer.create_client("localhost", 8080)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(_on_connected)
+
+func _on_connected(id):
+	if id == multiplayer.get_unique_id():
+		_update_text()
+
+func modify_people():
+	# Example function to modify the people array
+	people.append("0")
+	rpc("broadcast_people", people)
+	print("People modified and broadcasted: ", people)
+	_update_text()
+
+@rpc("any_peer")
+func broadcast_people(updated_people):
+	people = updated_people
+	print("People received and updated by client: ", people)
+	_update_text()
+
+
+func _update_text():
+	# Update the text edit with the current people array
+	display.text = str(people)
+
+
+
+
+func _on_showcards_pressed():
+	showcards(0)
