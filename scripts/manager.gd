@@ -202,6 +202,10 @@ func buycard(shopcard, player):
 
 
 
+
+
+
+
 @onready var intro_cam = $IntroCAM
 @onready var player_cam = $PlayerCAM
 
@@ -262,7 +266,6 @@ func _on_peer_disconnected(id):
 	print(people)
 
 
-
 func become_client():
 	peer.create_client("localhost", 8080)
 	multiplayer.multiplayer_peer = peer
@@ -272,8 +275,8 @@ func _on_connected(id):
 	if id == multiplayer.get_unique_id():
 		_update_text()
 
+#linked button
 func modify_people():
-	# Example function to modify the people array
 	people.append("0")
 	rpc("broadcast_people", people)
 	print("People modified and broadcasted: ", people)
