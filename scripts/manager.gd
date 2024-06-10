@@ -55,6 +55,8 @@ var old = []
 var player = [hand, new, old]
 
 
+var vorne = []
+var hinten = []
 var store = []
 
 
@@ -73,7 +75,13 @@ func setstore():
 	#add store cards
 	for i in 18:
 		store.append(3)
+	for i in 6:
+		vorne.append(i+3)
+	for i in 12:
+		hinten.append(i+9)
 	print(store)
+	print(hinten)
+	print(vorne)
 	
 func register_player():
 	#shuffle starter cards into hands
@@ -187,25 +195,39 @@ func buycard(shopcard):
 		#enough money?
 		if cardvalue >= prices[shopcard]:
 			
-			#how many cards
-			var amount = store[shopcard]
-			
-			#enough cards?
-			if amount != 0:
-				#buycard
-				print(str(amount) + " available")
-				store[shopcard] = store[shopcard]-1
-				old.append(shopcard)
+			#is card up front or is open
+			if vorne.has(shopcard) or vorne.size() < 6:
+				print("Is vorne or less than 6 cards up front")
 				
-				#update everything
-				handbox.text = str(hand)
-				newbox.text = str(new)
-				oldbox.text = str(old)
+				#how many cards
+				var amount = store[shopcard]
 				
-				#send store around
-				modify_people()
+				#enough cards?
+				if amount != 0:
+					
+					print(str(amount) + " available")
+					# -1 for shop
+					store[shopcard] = store[shopcard]-1
+					#add to old
+					old.append(shopcard)
+					#check if empty now
+					if amount - 1 == 0:
+						#remove from vorne
+						vorne.erase(shopcard)
+						print("size now "+ str(vorne.size()))
+					
+					
+					#update everything
+					handbox.text = str(hand)
+					newbox.text = str(new)
+					oldbox.text = str(old)
+					
+					#send store around
+					modify_people()
+				else:
+					print("No more left")
 			else:
-				print("No more left")
+				print("Card not in front")
 	
 
 
