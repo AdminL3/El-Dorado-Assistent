@@ -215,7 +215,9 @@ func buycard(shopcard):
 						#remove from vorne
 						vorne.erase(shopcard)
 						print("size now "+ str(vorne.size()))
-					
+					if vorne.size() < 6:
+						vorne.append(shopcard)
+						hinten.erase(shopcard)
 					
 					#update everything
 					handbox.text = str(hand)
