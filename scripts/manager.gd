@@ -196,14 +196,17 @@ func buycard(shopcard):
 				print(str(amount) + " available")
 				store[shopcard] = store[shopcard]-1
 				old.append(shopcard)
+				
+				#update everything
+				handbox.text = str(hand)
+				newbox.text = str(new)
+				oldbox.text = str(old)
+				
+				#send store around
+				modify_people()
 			else:
 				print("No more left")
-			
-	handbox.text = str(hand)
-	newbox.text = str(new)
-	oldbox.text = str(old)
-	#sent store around
-	modify_people()
+	
 
 
 
