@@ -1,6 +1,7 @@
 extends Node
 
-var playerselected = 0
+var playerselected
+var ishost = false
 
 var startcards = []
 var cards = {
@@ -26,83 +27,80 @@ var cards = {
 	19 : "Ureinwohner",
 	20 : "Kaptain"
 }
+var prices = {
+	3 : 1,
+	4 : 3,
+	5 : 2,
+	6 : 2,
+	7 : 3,
+	8 : 4,
+	9 : 4,
+	10 : 4,
+	11 : 5,
+	12 : 3,
+	13 : 3,
+	14 : 5,
+	15 : 4,
+	16 : 2,
+	17 : 4,
+	18 : 3,
+	19 : 5,
+	20 : 2
 
-var h1 = []
-var n1 = []
-var o1 = []
-var p1 = [h1, n1, o1]
+}
 
-var h2 = []
-var n2 = []
-var o2 = []
-var p2 = [h2, n2, o2]
+var hand = []
+var new = []
+var old = []
+var player = [hand, new, old]
 
-var h3 = []
-var n3 = []
-var o3 = []
-var p3 = [h3, n3, o3]
-
-var h4 = []
-var n4 = []
-var o4 = []
-var p4 = [h4, n4, o4]
-
-var players = [p1, p2, p3, p4]
 
 var store = []
 
 
-@onready var newbox = $PlayerCAM/New
-@onready var handbox = $PlayerCAM/Hand
-@onready var oldbox = $PlayerCAM/Old
+
+@onready var intro_cam = $IntroCAM
+@onready var player_cam = $PlayerCAM
 
 
-func if_is_host():
-	#shuffle starter cards into hands
-	for i in range(4):
-		startcards = [0, 0, 0, 0, 1, 1, 1, 2]
-		var player = players[i]
-		var new = player[1]
-		var hand = player[0]
-		for x in 8:
-			var card = startcards.pick_random()
-			new.append(card)
-			startcards.erase(card)
-		#put 4 cards in hand
-		for x in range(4):
-			hand.append(new[0])
-			new.remove_at(0)
-		
-	print("Drawer:")
-	print(n1,n2,n3,n4)
-	print("Hands:")
-	print(h1,h2,h3,h4)
-	
+@onready var newbox = $New
+@onready var handbox = $Hand
+@onready var oldbox = $Old
+
+
+
+func setstore():
 	#add store cards
 	for i in 18:
 		store.append(3)
-	if !playerselected==4:
-		var playe = players[playerselected]
-		var hand = playe[0]
-		var new = playe[1]
-		var old = playe[2]
-		handbox.text = str(hand)
-		newbox.text = str(new)
-		oldbox.text = str(old)
+	print(store)
+	
+func register_player():
+	#shuffle starter cards into hands
+	startcards = [0, 0, 0, 0, 1, 1, 1, 2]
+	for x in 8:
+		var card = startcards.pick_random()
+		new.append(card)
+		startcards.erase(card)
+	
+	print("Drawer:")
+	print(new)
+	print("Hand:")
+	print(hand)
+	
+		
+	handbox.text = str(hand)
+	newbox.text = str(new)
+	oldbox.text = str(old)
 
 
-func showcards(player):
-	var playe = players[player]
-	print("Hand: " + str(playe[0]))
-	print("New: " + str(playe[1]))
-	print("Old: " + str(playe[2]))
+func showcards():
+	print("Hand: " + hand)
+	print("New: " + new)
+	print("Old: " + old)
 
 
-func draw(player):
-	var playe = players[player]
-	var hand = playe[0]
-	var new = playe[1]
-	var old = playe[2]
+func draw():
 	if hand.size() < 4:
 		if new.size() !=0:
 			hand.append(new[0])
@@ -119,16 +117,9 @@ func draw(player):
 	handbox.text = str(hand)
 	newbox.text = str(new)
 	oldbox.text = str(old)
-	print(hand)
-	print(new)
-	print(old)
 
 
-func playcard(card, player):
-	var playe = players[player]
-	var hand = playe[0]
-	var new = playe[1]
-	var old = playe[2]
+func playcard(card):
 	if hand.has(card):
 		old.append(card)
 		hand.erase(card)
@@ -136,21 +127,12 @@ func playcard(card, player):
 	else:
 		print("Dont have card")
 	
-	playe = players[playerselected]
-	hand = playe[0]
-	new = playe[1]
-	old = playe[2]
 	handbox.text = str(hand)
 	newbox.text = str(new)
 	oldbox.text = str(old)
-	print(hand)
-	print(new)
-	print(old)
 
 
-func checkvalue(player):
-	var playe = players[player]
-	var hand = playe[0]
+func checkvalue():
 	var value = 0
 	var size = hand.size()
 	for x in hand:
@@ -184,30 +166,47 @@ func checkvalue(player):
 
 
 
-	#shopcard means its the x card in the shop
+
+@onready var line = $line
 
 
-func buycard(shopcard, player):
-	var cardvalue = checkvalue(player)
-	print("Card Value: " + str(cardvalue))
-	#is card available?
-	var amount = store[shopcard]
-	print(amount)
-	if amount == 0:
-		print("No have")
-	else:
-		store[shopcard] = store[shopcard]-1
-	print(store[shopcard])
+func _on_buycard_0_pressed():
+	buycard(int(line.text))
+
+
+#shopcard is the buywant card in the shop
+func buycard(shopcard):
+	#is it a shopcard?
+	if shopcard > 2:
+		#its a card that can be bought
+		
+		#money
+		var cardvalue = checkvalue()
+		print("Card Value: " + str(cardvalue))
+		
+		#enough money?
+		if cardvalue >= prices[shopcard]:
+			
+			#how many cards
+			var amount = store[shopcard]
+			
+			#enough cards?
+			if amount != 0:
+				#buycard
+				print(str(amount) + " available")
+				store[shopcard] = store[shopcard]-1
+				old.append(shopcard)
+			else:
+				print("No more left")
+			
+	handbox.text = str(hand)
+	newbox.text = str(new)
+	oldbox.text = str(old)
+	#sent store around
+	modify_people()
 
 
 
-
-
-
-
-
-@onready var intro_cam = $IntroCAM
-@onready var player_cam = $PlayerCAM
 
 
 
@@ -216,11 +215,12 @@ func buycard(shopcard, player):
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		print("Starting dedicated server...")
-		become_host()	
+		ishost = true
+		become_host()
+		setstore()
 	else:
-		become_client()
 		print("Starting client side...")
-
+		become_client()
 
 func joinas1():
 	loadscene(0)
@@ -234,37 +234,29 @@ func joinas3():
 func joinas4():
 	loadscene(3)
 
-
-
 func loadscene(player):
 	intro_cam.enabled = false
 	playerselected = player
-	print("Player " + str(playerselected)+ " joined room")
-
-
+	register_player()
+	print("Player " + str(playerselected) + " joined room")
 
 var peer = ENetMultiplayerPeer.new()
-var people = []
+
 @onready var display = $Display
-
-
 
 func become_host():
 	peer.create_server(8080)
 	multiplayer.multiplayer_peer = peer
-	
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
+	rpc_id(id, "broadcast_people", store)  # Send the store array to the newly connected client
 	_update_text()
 
 func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
-	people.erase(id)
-	print(people)
-
 
 func become_client():
 	peer.create_client("localhost", 8080)
@@ -273,28 +265,21 @@ func become_client():
 
 func _on_connected(id):
 	if id == multiplayer.get_unique_id():
+		print("Connected to server with ID: %d" % id)
 		_update_text()
 
-#linked button
+# Linked button
 func modify_people():
-	people.append("0")
-	rpc("broadcast_people", people)
-	print("People modified and broadcasted: ", people)
+	rpc("broadcast_people", store)
+	print("New: ", store)
 	_update_text()
 
 @rpc("any_peer")
-func broadcast_people(updated_people):
-	people = updated_people
-	print("People received and updated by client: ", people)
+func broadcast_people(updated_store):
+	store = updated_store
+	print("People received and updated by client: ", store)
 	_update_text()
 
-
 func _update_text():
-	# Update the text edit with the current people array
-	display.text = str(people)
+	display.text = str(store)
 
-
-
-
-func _on_showcards_pressed():
-	showcards(0)
