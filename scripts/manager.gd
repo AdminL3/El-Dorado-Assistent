@@ -147,23 +147,18 @@ func checkvalue():
 		if x == 0:
 			value += 1
 			size -= 1
-			print("You have Reisende")
 		elif x == 6:
 			value += 2
 			size -= 1
-			print("You have Fotografin")
 		elif x == 7:
 			value += 4
 			size -= 1
-			print("You have Schatztruhe")
 		elif x == 13:
 			value += 3
 			size -= 1
-			print("You have Journalistin")
 		elif x == 14:
 			value += 4
 			size -= 1
-			print("You have Millionärin")
 	#add half value cards
 	value = value + size*0.5
 	
@@ -197,7 +192,6 @@ func buycard(shopcard):
 			
 			#is card up front or is open
 			if vorne.has(shopcard) or vorne.size() < 6:
-				print("Is vorne or less than 6 cards up front")
 				
 				#how many cards
 				var amount = store[shopcard]
@@ -205,7 +199,6 @@ func buycard(shopcard):
 				#enough cards?
 				if amount != 0:
 					
-					print(str(amount) + " available")
 					# -1 for shop
 					store[shopcard] = store[shopcard]-1
 					#add to old
@@ -214,7 +207,6 @@ func buycard(shopcard):
 					if amount - 1 == 0:
 						#remove from vorne
 						vorne.erase(shopcard)
-						print("size now "+ str(vorne.size()))
 					if vorne.size() < 6:
 						vorne.append(shopcard)
 						hinten.erase(shopcard)
@@ -227,9 +219,9 @@ func buycard(shopcard):
 					#send store around
 					modify_people()
 				else:
-					print("No more left")
+					print("No more cards left")
 			else:
-				print("Card not in front")
+				print("Card not accesible")
 
 
 
@@ -308,6 +300,6 @@ func broadcast_people(updated_store):
 func _update_text():
 	var text = ""
 	for i in 18:
-		text = text + cards[i+3] + ": "+ store[i] + "\n"
+		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
 	
-	display.text = str(cards)
+	display.text = text

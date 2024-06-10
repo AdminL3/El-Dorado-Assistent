@@ -57,10 +57,10 @@ anchor_mode = 0
 enabled = false
 
 [node name="Display" type="TextEdit" parent="."]
-offset_left = 311.0
-offset_top = 445.0
-offset_right = 476.0
-offset_bottom = 731.0
+offset_left = 624.0
+offset_top = 100.0
+offset_right = 872.0
+offset_bottom = 515.0
 editable = false
 
 [node name="line" type="LineEdit" parent="."]
