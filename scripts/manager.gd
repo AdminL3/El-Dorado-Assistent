@@ -69,7 +69,7 @@ func setstore():
 	for i in 3:
 		store.append(0)
 	for i in 18:
-		store.append(3)
+		store.append(3)	
 	for i in 6:
 		vorne.append(i+3)
 	for i in 12:
@@ -93,22 +93,21 @@ func register_player():
 
 
 func draw():
-	if hand.size() < 4:
-		if new.size() !=0:
-			hand.append(new[0])
-			new.remove_at(0)	
-			print(hand)
-		else:
-			print("No cards left - Shuffle")
-			print(old)
-			for x in old.size():
-				var card = old.pick_random()
-				new.append(card)
-				old.erase(card)
-			print(old)
+	if hand.size() > 3:
+		print("Watch out! Already have 4")
+	
+	if new.size() !=0:
+		hand.append(new[0])
+		new.remove_at(0)	
+		print(hand)
 	else:
-		print("Already have 4 cards")
-		
+		print("No cards left - Shuffle")
+		print(old)
+		for x in old.size():
+			var card = old.pick_random()
+			new.append(card)
+			old.erase(card)
+		print(old)
 	_update_text()
 
 
