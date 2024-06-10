@@ -122,7 +122,7 @@ func testplay3():
 	playcard(3)
 
 
-func playcard(card):
+func playcard(card):	
 	if hand.has(card):
 		old.append(card)
 		hand.erase(card)
@@ -259,7 +259,7 @@ func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
 
 func become_client():
-	peer.create_client("localhost", 8080)
+	peer.create_client("52.138.195.100", 8080)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_connected)
 	register_player()
