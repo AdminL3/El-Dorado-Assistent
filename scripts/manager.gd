@@ -85,7 +85,8 @@ func register_player():
 		var card = startcards.pick_random()
 		new.append(card)
 		startcards.erase(card)
-	
+	for i in 4:
+		draw()
 	_update_text()
 
 
