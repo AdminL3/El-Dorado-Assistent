@@ -100,15 +100,17 @@ func draw():
 			print(hand)
 		else:
 			print("No cards left - Shuffle")
-			for x in old:
+			print(old)
+			for x in old.size():
 				var card = old.pick_random()
 				new.append(card)
 				old.erase(card)
+			print(old)
 	else:
 		print("Already have 4 cards")
-	
-	
+		
 	_update_text()
+
 
 
 func testplay():
