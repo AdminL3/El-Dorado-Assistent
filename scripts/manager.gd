@@ -69,6 +69,8 @@ var store = []
 
 func setstore():
 	#add store cards
+	for i in 3:
+		store.append(0)
 	for i in 18:
 		store.append(3)
 	for i in 6:
@@ -295,7 +297,7 @@ func broadcast_people(updated_store, newvorne, newhinten):
 func _update_text():
 	var text = ""
 	for i in 18:
-		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
+		text = text + str(cards[i+3]) + ": "+ str(store[i+3]) + "\n"
 	display.text = text
 	vornebox.text = str(vorne)
 	hintenbox.text = str(hinten)
