@@ -283,3 +283,4 @@ func broadcast_people(updated_store):
 func _update_text():
 	display.text = str(store)
 
+	
