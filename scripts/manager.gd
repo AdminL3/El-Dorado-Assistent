@@ -274,17 +274,21 @@ func broadcast_people(updated_store, newvorne, newhinten):
 @onready var newbox = $New
 @onready var handbox = $Hand
 @onready var oldbox = $Old
-@onready var display = $Display
 
+@onready var vornebox = $Vorne
+@onready var hintenbox = $Hinten
+
+var text
 func _update_text():
-	var text = "Hinten: \n"
+	text = ""
 	for i in hinten:
 		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
-	text = text + "\nVorne: \n"
+	hintenbox.text = text
+	
+	text = ""
 	for i in vorne:
 		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
-	display.text = text
-	
+	vornebox.text = text
 	
 	
 	handbox.text = str(hand)

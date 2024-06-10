@@ -9,51 +9,74 @@ script = ExtResource("1_6hv34")
 anchor_mode = 0
 enabled = false
 
-[node name="Display" type="TextEdit" parent="."]
-offset_left = 571.0
-offset_top = 108.0
-offset_right = 819.0
-offset_bottom = 523.0
+[node name="Label" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 137.0
+offset_right = 549.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 31
+text = "Vorne:"
+
+[node name="Vorne" type="TextEdit" parent="."]
+offset_left = 398.0
+offset_top = 183.0
+offset_right = 611.0
+offset_bottom = 533.0
+editable = false
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 132.0
+offset_right = 825.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 31
+text = "Hinten:"
+
+[node name="Hinten" type="TextEdit" parent="."]
+offset_left = 684.0
+offset_top = 178.0
+offset_right = 898.0
+offset_bottom = 541.0
 editable = false
 
 [node name="line" type="LineEdit" parent="."]
-offset_left = 336.0
-offset_top = 138.0
-offset_right = 403.063
-offset_bottom = 169.0
+offset_left = 147.0
+offset_top = 42.0
+offset_right = 214.063
+offset_bottom = 73.0
 placeholder_text = "5"
 
 [node name="Buy" type="Button" parent="."]
-offset_left = 227.0
-offset_top = 140.0
-offset_right = 322.0
-offset_bottom = 171.0
+offset_left = 38.0
+offset_top = 44.0
+offset_right = 133.0
+offset_bottom = 75.0
 text = "Buy:"
 
 [node name="Draw" type="Button" parent="."]
-offset_left = 55.0
-offset_top = 249.0
-offset_right = 150.0
-offset_bottom = 280.0
+offset_left = 269.0
+offset_top = 46.0
+offset_right = 364.0
+offset_bottom = 77.0
 text = "Draw"
 
 [node name="New" type="TextEdit" parent="."]
-offset_left = 308.0
-offset_top = 253.0
-offset_right = 546.0
-offset_bottom = 298.0
+offset_left = 60.0
+offset_top = 205.0
+offset_right = 298.0
+offset_bottom = 250.0
 
 [node name="Hand" type="TextEdit" parent="."]
-offset_left = 304.0
-offset_top = 317.0
-offset_right = 544.0
-offset_bottom = 357.0
+offset_left = 56.0
+offset_top = 269.0
+offset_right = 296.0
+offset_bottom = 309.0
 
 [node name="Old" type="TextEdit" parent="."]
-offset_left = 308.0
-offset_top = 386.0
-offset_right = 538.0
-offset_bottom = 427.0
+offset_left = 60.0
+offset_top = 338.0
+offset_right = 290.0
+offset_bottom = 379.0
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
