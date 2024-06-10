@@ -16,20 +16,6 @@ offset_right = 819.0
 offset_bottom = 523.0
 editable = false
 
-[node name="Vorne" type="TextEdit" parent="."]
-offset_left = 843.0
-offset_top = 261.0
-offset_right = 1124.0
-offset_bottom = 368.0
-editable = false
-
-[node name="Hinten" type="TextEdit" parent="."]
-offset_left = 838.0
-offset_top = 151.0
-offset_right = 1113.0
-offset_bottom = 248.0
-editable = false
-
 [node name="line" type="LineEdit" parent="."]
 offset_left = 336.0
 offset_top = 138.0

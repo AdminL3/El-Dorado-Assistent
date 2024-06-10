@@ -61,9 +61,6 @@ var store = []
 
 
 
-@onready var newbox = $New
-@onready var handbox = $Hand
-@onready var oldbox = $Old
 
 
 
@@ -89,21 +86,9 @@ func register_player():
 		new.append(card)
 		startcards.erase(card)
 	
-	print("Drawer:")
-	print(new)
-	print("Hand:")
-	print(hand)
-	
-		
-	handbox.text = str(hand)
-	newbox.text = str(new)
-	oldbox.text = str(old)
+	_update_text()
 
 
-func showcards():
-	print("Hand: " + hand)
-	print("New: " + new)
-	print("Old: " + old)
 
 
 func draw():
@@ -120,9 +105,9 @@ func draw():
 				old.erase(card)
 	else:
 		print("Already have 4 cards")
-	handbox.text = str(hand)
-	newbox.text = str(new)
-	oldbox.text = str(old)
+	
+	
+	_update_text()
 
 
 func playcard(card):
@@ -133,9 +118,7 @@ func playcard(card):
 	else:
 		print("Dont have card")
 	
-	handbox.text = str(hand)
-	newbox.text = str(new)
-	oldbox.text = str(old)
+	_update_text()
 
 
 func checkvalue():
@@ -217,9 +200,7 @@ func buycard(shopcard):
 							hinten.erase(shopcard)
 					
 					#update everything
-					handbox.text = str(hand)
-					newbox.text = str(new)
-					oldbox.text = str(old)
+					_update_text()
 					
 					#send store around
 					modify_people()
@@ -290,14 +271,22 @@ func broadcast_people(updated_store, newvorne, newhinten):
 
 
 
+@onready var newbox = $New
+@onready var handbox = $Hand
+@onready var oldbox = $Old
 @onready var display = $Display
-@onready var vornebox = $Vorne
-@onready var hintenbox = $Hinten
 
 func _update_text():
-	var text = ""
-	for i in 18:
-		text = text + str(cards[i+3]) + ": "+ str(store[i+3]) + "\n"
+	var text = "Hinten: \n"
+	for i in hinten:
+		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
+	text = text + "\nVorne: \n"
+	for i in vorne:
+		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
 	display.text = text
-	vornebox.text = str(vorne)
-	hintenbox.text = str(hinten)
+	
+	
+	
+	handbox.text = str(hand)
+	newbox.text = str(new)
+	oldbox.text = str(old)
