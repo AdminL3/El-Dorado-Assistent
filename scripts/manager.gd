@@ -111,6 +111,10 @@ func draw():
 	_update_text()
 
 
+func testplay():
+	playcard(0)
+
+
 func playcard(card):
 	if hand.has(card):
 		old.append(card)

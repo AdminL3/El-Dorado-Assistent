@@ -78,5 +78,13 @@ offset_top = 338.0
 offset_right = 290.0
 offset_bottom = 379.0
 
+[node name="Testplay" type="Button" parent="."]
+offset_left = 445.0
+offset_top = 43.0
+offset_right = 548.0
+offset_bottom = 74.0
+text = "test play card"
+
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
+[connection signal="pressed" from="Testplay" to="." method="testplay"]
