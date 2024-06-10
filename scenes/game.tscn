@@ -59,8 +59,8 @@ enabled = false
 [node name="Display" type="TextEdit" parent="."]
 offset_left = 311.0
 offset_top = 445.0
-offset_right = 537.0
-offset_bottom = 497.0
+offset_right = 476.0
+offset_bottom = 731.0
 editable = false
 
 [node name="line" type="LineEdit" parent="."]

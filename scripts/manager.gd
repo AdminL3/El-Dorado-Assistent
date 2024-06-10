@@ -230,8 +230,6 @@ func buycard(shopcard):
 					print("No more left")
 			else:
 				print("Card not in front")
-	
-
 
 
 
@@ -308,6 +306,8 @@ func broadcast_people(updated_store):
 	_update_text()
 
 func _update_text():
-	display.text = str(store)
-
+	var text = ""
+	for i in 18:
+		text = text + cards[i+3] + ": "+ store[i] + "\n"
 	
+	display.text = str(cards)
