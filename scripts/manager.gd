@@ -113,6 +113,12 @@ func draw():
 
 func testplay():
 	playcard(0)
+func testplay1():
+	playcard(1)
+func testplay2():
+	playcard(2)
+func testplay3():
+	playcard(3)
 
 
 func playcard(card):
