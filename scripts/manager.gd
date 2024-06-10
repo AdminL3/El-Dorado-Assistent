@@ -1,7 +1,5 @@
 extends Node
 
-var playerselected
-var ishost = false
 
 var startcards = []
 var cards = {
@@ -61,8 +59,6 @@ var store = []
 
 
 
-@onready var intro_cam = $IntroCAM
-@onready var player_cam = $PlayerCAM
 
 
 @onready var newbox = $New
@@ -232,33 +228,18 @@ func buycard(shopcard):
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		print("Starting dedicated server...")
-		ishost = true
 		become_host()
 		setstore()
 	else:
 		print("Starting client side...")
 		become_client()
 
-func joinas1():
-	loadscene(0)
 
-func joinas2():
-	loadscene(1)
-	
-func joinas3():
-	loadscene(2)
 
-func joinas4():
-	loadscene(3)
 
-func loadscene(player):
-	intro_cam.enabled = false
-	playerselected = player
-	register_player()
-	print("Player " + str(playerselected) + " joined room")
+
 
 var peer = ENetMultiplayerPeer.new()
-
 
 
 func become_host():
@@ -279,6 +260,7 @@ func become_client():
 	peer.create_client("localhost", 8080)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_connected)
+	register_player()
 
 func _on_connected(id):
 	if id == multiplayer.get_unique_id():

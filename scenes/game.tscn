@@ -5,54 +5,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
 
-[node name="IntroCAM" type="Camera2D" parent="."]
-position = Vector2(-1152, -648)
-anchor_mode = 0
-
-[node name="1" type="Button" parent="IntroCAM"]
-layout_direction = 1
-offset_left = 505.0
-offset_top = 214.0
-offset_right = 575.0
-offset_bottom = 245.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Player 1
-"
-
-[node name="2" type="Button" parent="IntroCAM"]
-layout_direction = 1
-offset_left = 684.0
-offset_top = 298.0
-offset_right = 754.0
-offset_bottom = 329.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Player 2
-"
-
-[node name="3" type="Button" parent="IntroCAM"]
-layout_direction = 1
-offset_left = 465.0
-offset_top = 410.0
-offset_right = 535.0
-offset_bottom = 441.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Player 3
-"
-
-[node name="4" type="Button" parent="IntroCAM"]
-layout_direction = 1
-offset_left = 674.0
-offset_top = 448.0
-offset_right = 744.0
-offset_bottom = 479.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Player 4"
-
-[node name="PlayerCAM" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 enabled = false
 
@@ -116,9 +69,5 @@ offset_top = 386.0
 offset_right = 538.0
 offset_bottom = 427.0
 
-[connection signal="pressed" from="IntroCAM/1" to="." method="joinas1"]
-[connection signal="pressed" from="IntroCAM/2" to="." method="joinas2"]
-[connection signal="pressed" from="IntroCAM/3" to="." method="joinas3"]
-[connection signal="pressed" from="IntroCAM/4" to="." method="joinas4"]
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
