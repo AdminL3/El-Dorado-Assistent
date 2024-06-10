@@ -57,10 +57,24 @@ anchor_mode = 0
 enabled = false
 
 [node name="Display" type="TextEdit" parent="."]
-offset_left = 624.0
-offset_top = 100.0
-offset_right = 872.0
-offset_bottom = 515.0
+offset_left = 571.0
+offset_top = 108.0
+offset_right = 819.0
+offset_bottom = 523.0
+editable = false
+
+[node name="Vorne" type="TextEdit" parent="."]
+offset_left = 843.0
+offset_top = 261.0
+offset_right = 1124.0
+offset_bottom = 368.0
+editable = false
+
+[node name="Hinten" type="TextEdit" parent="."]
+offset_left = 838.0
+offset_top = 151.0
+offset_right = 1113.0
+offset_bottom = 248.0
 editable = false
 
 [node name="line" type="LineEdit" parent="."]

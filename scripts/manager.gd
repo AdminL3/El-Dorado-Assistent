@@ -259,7 +259,7 @@ func loadscene(player):
 
 var peer = ENetMultiplayerPeer.new()
 
-@onready var display = $Display
+
 
 func become_host():
 	peer.create_server(8080)
@@ -269,7 +269,7 @@ func become_host():
 	
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
-	rpc_id(id, "broadcast_people", store)  # Send the store array to the newly connected client
+	rpc_id(id, "broadcast_people", store, vorne, hinten)  # Send the store array to the newly connected client
 	_update_text()
 
 func _on_peer_disconnected(id):
@@ -287,19 +287,26 @@ func _on_connected(id):
 
 # Linked button
 func modify_people():
-	rpc("broadcast_people", store)
-	print("New: ", store)
+	rpc("broadcast_people", store, vorne, hinten)
 	_update_text()
 
 @rpc("any_peer")
-func broadcast_people(updated_store):
+func broadcast_people(updated_store, newvorne, newhinten):
 	store = updated_store
-	print("People received and updated by client: ", store)
+	hinten = newhinten
+	vorne = newvorne
 	_update_text()
+
+
+
+@onready var display = $Display
+@onready var vornebox = $Vorne
+@onready var hintenbox = $Hinten
 
 func _update_text():
 	var text = ""
 	for i in 18:
 		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
-	
 	display.text = text
+	vornebox.text = str(vorne)
+	hintenbox.text = str(hinten)
