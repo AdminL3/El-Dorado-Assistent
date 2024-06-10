@@ -203,9 +203,16 @@ func buycard(shopcard):
 					if amount - 1 == 0:
 						#remove from vorne
 						vorne.erase(shopcard)
-					if vorne.size() < 6:
-						vorne.append(shopcard)
-						hinten.erase(shopcard)
+						
+					#if shop is open
+					elif vorne.size() < 6:
+						
+						#check if already front
+						if !vorne.has(shopcard):
+						
+							#move to front
+							vorne.append(shopcard)
+							hinten.erase(shopcard)
 					
 					#update everything
 					handbox.text = str(hand)
