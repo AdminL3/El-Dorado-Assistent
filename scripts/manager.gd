@@ -111,15 +111,10 @@ func draw():
 	_update_text()
 
 
+@onready var line_2 = $line2
 
 func testplay():
-	playcard(0)
-func testplay1():
-	playcard(1)
-func testplay2():
-	playcard(2)
-func testplay3():
-	playcard(3)
+	playcard(int(line_2.text))
 
 
 func playcard(card):	
@@ -302,7 +297,62 @@ func _update_text():
 		text = text + str(cards[i]) + ": "+ str(store[i]) + "\n"
 	vornebox.text = text
 	
+	#show cards by name
+	text = ""
+	for i in hand:
+		text = text + str(cards[i]) + "\n"
+	handbox.text = text
+	text = ""
+	for i in new:
+		text = text + str(cards[i]) + "\n"
+	newbox.text = text
+	text = ""
+	for i in old:
+		text = text + str(cards[i]) + "\n"
+	oldbox.text = text
 	
-	handbox.text = str(hand)
-	newbox.text = str(new)
-	oldbox.text = str(old)
+	
+
+var handpath = "user://hand.save"
+var newpath = "user://new.save"
+var oldpath = "user://old.save"
+var storepath = "user://store.save"
+var vornepath = "user://storevorne.save"
+var hintenpath = "user://storehinten.save"
+var paths = [handpath, newpath, oldpath]
+var loadvariables = [hand, new, old]
+func savedata():
+	var loadvariables = [hand, new, old]
+	print(store)
+	for i in 6:
+		if i < 3: 
+			var file = FileAccess.open(paths[i], FileAccess.WRITE)
+			file.store_var(loadvariables[i])
+			print("Saved Data..."+ str(loadvariables[i]))
+		elif i == 3:
+			var file = FileAccess.open(storepath, FileAccess.WRITE)
+			file.store_var(store)
+		elif i==4:
+			var file = FileAccess.open(vornepath, FileAccess.WRITE)
+			file.store_var(vorne)
+		elif i==5:
+			var file = FileAccess.open(hintenpath, FileAccess.WRITE)
+			file.store_var(hinten)
+			
+	
+func loaddata():
+	var file
+	file = FileAccess.open(handpath, FileAccess.READ)
+	hand = file.get_var()
+	file = FileAccess.open(newpath, FileAccess.READ)
+	new = file.get_var()
+	file = FileAccess.open(oldpath, FileAccess.READ)
+	old = file.get_var()
+	file = FileAccess.open(storepath, FileAccess.READ)
+	store = file.get_var()
+	file = FileAccess.open(vornepath, FileAccess.READ)
+	vorne = file.get_var()
+	file = FileAccess.open(hintenpath, FileAccess.READ)
+	hinten = file.get_var()
+	_update_text()
+	print("Data loaded...")

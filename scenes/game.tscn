@@ -9,34 +9,43 @@ script = ExtResource("1_6hv34")
 anchor_mode = 0
 enabled = false
 
+[node name="Store" type="Label" parent="."]
+offset_left = 828.0
+offset_top = 168.0
+offset_right = 953.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 31
+text = "Store
+"
+
 [node name="Label" type="Label" parent="."]
-offset_left = 424.0
-offset_top = 137.0
-offset_right = 549.0
-offset_bottom = 181.0
+offset_left = 682.0
+offset_top = 243.0
+offset_right = 807.0
+offset_bottom = 287.0
 theme_override_font_sizes/font_size = 31
 text = "Vorne:"
 
 [node name="Vorne" type="TextEdit" parent="."]
-offset_left = 398.0
-offset_top = 183.0
-offset_right = 611.0
-offset_bottom = 533.0
+offset_left = 645.0
+offset_top = 293.0
+offset_right = 858.0
+offset_bottom = 643.0
 editable = false
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 700.0
-offset_top = 132.0
-offset_right = 825.0
-offset_bottom = 176.0
+offset_left = 947.0
+offset_top = 242.0
+offset_right = 1072.0
+offset_bottom = 286.0
 theme_override_font_sizes/font_size = 31
 text = "Hinten:"
 
 [node name="Hinten" type="TextEdit" parent="."]
-offset_left = 684.0
-offset_top = 178.0
-offset_right = 898.0
-offset_bottom = 541.0
+offset_left = 931.0
+offset_top = 288.0
+offset_right = 1145.0
+offset_bottom = 651.0
 editable = false
 
 [node name="line" type="LineEdit" parent="."]
@@ -53,62 +62,61 @@ offset_right = 133.0
 offset_bottom = 75.0
 text = "Buy:"
 
+[node name="line2" type="LineEdit" parent="."]
+offset_left = 147.0
+offset_top = 81.0
+offset_right = 214.063
+offset_bottom = 112.0
+text = "0"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 83.0
+offset_right = 133.0
+offset_bottom = 114.0
+text = "Play"
+
 [node name="Draw" type="Button" parent="."]
-offset_left = 269.0
-offset_top = 46.0
-offset_right = 364.0
-offset_bottom = 77.0
+offset_left = 40.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 40.0
 text = "Draw"
 
 [node name="New" type="TextEdit" parent="."]
-offset_left = 60.0
-offset_top = 205.0
-offset_right = 298.0
-offset_bottom = 250.0
+offset_left = 44.0
+offset_top = 245.0
+offset_right = 191.0
+offset_bottom = 518.0
 
 [node name="Hand" type="TextEdit" parent="."]
-offset_left = 56.0
-offset_top = 269.0
-offset_right = 296.0
-offset_bottom = 309.0
+offset_left = 203.0
+offset_top = 249.0
+offset_right = 367.0
+offset_bottom = 516.0
 
 [node name="Old" type="TextEdit" parent="."]
-offset_left = 60.0
-offset_top = 338.0
-offset_right = 290.0
-offset_bottom = 379.0
+offset_left = 380.0
+offset_top = 252.0
+offset_right = 551.0
+offset_bottom = 517.0
 
-[node name="play0" type="Button" parent="."]
-offset_left = 476.0
-offset_top = 47.0
-offset_right = 589.0
-offset_bottom = 78.0
-text = "Playcard 0"
+[node name="Load Data" type="Button" parent="."]
+offset_left = 423.0
+offset_top = 83.0
+offset_right = 510.0
+offset_bottom = 114.0
+text = "Load Data"
 
-[node name="play1" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 48.0
-offset_right = 713.0
-offset_bottom = 79.0
-text = "Playcard 1"
-
-[node name="play2" type="Button" parent="."]
-offset_left = 475.0
-offset_top = 86.0
-offset_right = 588.0
-offset_bottom = 117.0
-text = "Playcard 2"
-
-[node name="play3" type="Button" parent="."]
-offset_left = 595.0
-offset_top = 86.0
-offset_right = 708.0
-offset_bottom = 117.0
-text = "Playcard 3"
+[node name="Save Data" type="Button" parent="."]
+offset_left = 532.0
+offset_top = 84.0
+offset_right = 619.0
+offset_bottom = 115.0
+text = "Save Data"
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
+[connection signal="pressed" from="Play" to="." method="testplay"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
-[connection signal="pressed" from="play0" to="." method="testplay"]
-[connection signal="pressed" from="play1" to="." method="testplay1"]
-[connection signal="pressed" from="play2" to="." method="testplay2"]
-[connection signal="pressed" from="play3" to="." method="testplay3"]
+[connection signal="pressed" from="Load Data" to="." method="loaddata"]
+[connection signal="pressed" from="Save Data" to="." method="savedata"]
