@@ -356,4 +356,3 @@ func loaddata():
 	hinten = file.get_var()
 	_update_text()
 	print("Data loaded...")
-	
