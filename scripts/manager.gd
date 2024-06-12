@@ -381,3 +381,16 @@ func sortcards():
 		if amount == 3:
 			children[0].global_position = Vector2(screenmitte - node_width, control.position.y)
 			children[2].global_position = Vector2(screenmitte + node_width, control.position.y)
+		if amount == 5:
+			children[0].global_position = Vector2(screenmitte - 2*node_width, control.position.y)
+			children[1].global_position = Vector2(screenmitte - node_width, control.position.y)
+			children[3].global_position = Vector2(screenmitte + node_width, control.position.y)
+			children[4].global_position = Vector2(screenmitte + 2*node_width, control.position.y)
+		if amount == 7:
+			children[0].global_position = Vector2(screenmitte - 3*node_width, control.position.y)
+			children[1].global_position = Vector2(screenmitte - 2*node_width, control.position.y)
+			children[2].global_position = Vector2(screenmitte - node_width, control.position.y)
+			children[4].global_position = Vector2(screenmitte + node_width, control.position.y)
+			children[5].global_position = Vector2(screenmitte + 2*node_width, control.position.y)
+			children[6].global_position = Vector2(screenmitte + 3*node_width, control.position.y)
+			
