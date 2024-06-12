@@ -1,19 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1v8p8x7uobfs"]
+[gd_scene load_steps=3 format=3 uid="uid://hor6e4auynog"]
 
-[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg" id="1_jae10"]
+[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg" id="1_f7f46"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n70p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1aa1t"]
 size = Vector2(156, 224)
 
-[node name="Card" type="Area2D"]
+[node name="Card" type="Control"]
+layout_mode = 3
+anchor_left = 0.067
+anchor_right = 0.067
+offset_left = -77.184
+offset_right = 77.816
+offset_bottom = 224.0
+grow_horizontal = 2
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2" type="Sprite2D" parent="Area2D"]
 position = Vector2(78, 112)
 scale = Vector2(0.206623, 0.206622)
-texture = ExtResource("1_jae10")
+texture = ExtResource("1_f7f46")
 region_enabled = true
 region_rect = Rect2(70, 50, 755.591, 1081.29)
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(78, 112)
-shape = SubResource("RectangleShape2D_4n70p")
+shape = SubResource("RectangleShape2D_1aa1t")
