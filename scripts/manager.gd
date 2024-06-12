@@ -354,5 +354,10 @@ func loaddata():
 	print("Data loaded...")
 
 
+@onready var h_box_container = $HBoxContainer
+@export var card_scene := preload("res://scenes/card.tscn")
 func _on_button_pressed():
-	pass
+	# Instance the new scene
+	var instance = card_scene.instantiate()
+	# Add the instance to the HBoxContainer
+	h_box_container.add_child(instance)
