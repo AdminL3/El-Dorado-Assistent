@@ -356,9 +356,9 @@ func loaddata():
 
 
 
+@onready var control = $Control
 var node_width = 160
 var basicpath = "res://assets/images/"
-@onready var control = $Control
 var scene = preload("res://scenes/card.tscn")
 
 func spawn_hand():
@@ -366,7 +366,6 @@ func spawn_hand():
 	for i in hand.size():
 		var instance = scene.instantiate()
 		control.add_child(instance)
-	set_hand_cards()
 
 func set_hand_cards():
 	var children = control.get_children()

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://hor6e4auynog"]
+[gd_scene load_steps=3 format=3 uid="uid://hor6e4auynog"]
+
+[ext_resource type="Script" path="res://scripts/Area2D.gd" id="1_dbi43"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aa1t"]
 size = Vector2(156, 224)
@@ -22,6 +24,7 @@ position = Vector2(78, 112)
 scale = Vector2(0.206623, 0.206622)
 region_enabled = true
 region_rect = Rect2(70, 50, 755.591, 1081.29)
+script = ExtResource("1_dbi43")
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(78, 112)

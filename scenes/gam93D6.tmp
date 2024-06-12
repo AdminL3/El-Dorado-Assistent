@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
-[ext_resource type="PackedScene" uid="uid://hor6e4auynog" path="res://scenes/card.tscn" id="2_5opue"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
@@ -119,13 +118,6 @@ offset_right = 297.0
 offset_bottom = 615.0
 text = "Spawn Hand"
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 340.0
-offset_top = 580.0
-offset_right = 463.0
-offset_bottom = 611.0
-text = "Set hand cards"
-
 [node name="Control" type="Control" parent="."]
 layout_direction = 2
 layout_mode = 3
@@ -141,17 +133,9 @@ offset_bottom = 866.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card" parent="." instance=ExtResource("2_5opue")]
-visible = false
-offset_left = 202.0
-offset_top = 555.0
-offset_right = 357.0
-offset_bottom = 779.0
-
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Play" to="." method="testplay"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
 [connection signal="pressed" from="Load Data" to="." method="loaddata"]
 [connection signal="pressed" from="Save Data" to="." method="savedata"]
 [connection signal="pressed" from="Button" to="." method="spawn_hand"]
-[connection signal="pressed" from="Button2" to="." method="set_hand_cards"]
