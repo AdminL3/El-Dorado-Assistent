@@ -220,7 +220,6 @@ func buycard(shopcard):
 
 
 
-
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		print("Starting dedicated server...")
@@ -229,7 +228,7 @@ func _ready():
 	else:
 		print("Starting client side...")
 		become_client()
-
+	
 
 
 
@@ -355,14 +354,23 @@ func loaddata():
 
 
 
-@onready var control = $Control
-var scene = preload("res://scenes/card.tscn")
-var next_position = Vector2(0, 0) # Starting position for the first card
-var offset = Vector2(128, 0) # Change this value to the width of your card
 
+
+@onready var control = $Control
+var control_size #site of control node for centering
+var scene = preload("res://scenes/card.tscn")
+var card_width = 128 # Width of each card
+var num_cards = 5 # Total number of cards to spawn
+var total_width = card_width * num_cards
+
+var start_x = (control_size - total_width) / 2 # Centering the cards
+
+var next_position = Vector2(start_x, 0) # Starting position for the first card
+var offset = Vector2(card_width, 0) # Change this value to the width of your card
 func _on_button_pressed():
 	var instance = scene.instantiate()
 	instance.position = next_position
 	control.add_child(instance)
 	next_position += offset # Update the position for the next card
+
 
