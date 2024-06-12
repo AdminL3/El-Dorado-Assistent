@@ -1,16 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1v8p8x7uobfs"]
 
-[ext_resource type="Texture2D" uid="uid://de24cmjptlbe4" path="res://icon.svg" id="1_8rgwj"]
+[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg" id="1_jae10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n70p"]
-size = Vector2(128, 128)
+size = Vector2(156, 224)
 
 [node name="Card" type="Area2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(64, 64)
-texture = ExtResource("1_8rgwj")
+position = Vector2(78, 112)
+scale = Vector2(0.206623, 0.206622)
+texture = ExtResource("1_jae10")
+region_enabled = true
+region_rect = Rect2(70, 50, 755.591, 1081.29)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(64, 64)
+position = Vector2(78, 112)
 shape = SubResource("RectangleShape2D_4n70p")

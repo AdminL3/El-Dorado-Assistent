@@ -125,10 +125,10 @@ text = "Add card"
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 36.0
-offset_top = 533.0
-offset_right = 575.0
-offset_bottom = 635.0
+offset_left = 32.0
+offset_top = 532.0
+offset_right = 632.0
+offset_bottom = 634.0
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Play" to="." method="testplay"]
