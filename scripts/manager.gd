@@ -357,12 +357,17 @@ func loaddata():
 
 
 var node_width = 160
+var basicpath = "res://assets/images/"
 @onready var control = $Control
 var scene = preload("res://scenes/card.tscn")
 
 func _on_button_pressed():
+	#spawning
+	
 	var instance = scene.instantiate()  # Changed from scene.instantiate() to scene.instance()
 	control.add_child(instance)
+	var area = instance.get_node("Area2D")
+	area.set("index", 1)
 	sortcards()
 
 func sortcards():
@@ -371,11 +376,15 @@ func sortcards():
 	var screen_center = 1152 / 2
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
-	
 	for i in range(amount):
 		children[i].global_position.x = start_x + i * node_width
+		
 		var area_2d = children[i].get_node("Area2D")  # Access the Area2D node
-		if area_2d:
-			area_2d.set("index", i)  # Set the exported variable "index" to the index value
-
+		
+			
+		var sprite_2d = area_2d.get_node("Sprite2D")  # Access the Sprite2D node
+		var path = basicpath + str(area_2d.get("index")) + ".jpg"
+		print(path)
+		sprite_2d.texture = load(path)
+		
 
