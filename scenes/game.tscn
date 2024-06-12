@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=3 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
+[ext_resource type="PackedScene" uid="uid://cts7lb4irwvkn" path="res://scenes/card.tscn" id="2_qcli0"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
@@ -116,12 +117,20 @@ offset_bottom = 115.0
 text = "Save Data"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 723.0
+offset_top = 76.0
+offset_right = 1094.0
+offset_bottom = 276.0
+
+[node name="Card" parent="HBoxContainer" instance=ExtResource("2_qcli0")]
+
+[node name="Card2" parent="HBoxContainer" instance=ExtResource("2_qcli0")]
 
 [node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 146.0
+offset_top = 579.0
+offset_right = 223.0
+offset_bottom = 610.0
 text = "Add card"
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
