@@ -50,7 +50,6 @@ var prices = {
 var hand = []
 var new = []
 var old = []
-var player = [hand, new, old]
 
 
 var vorne = []
@@ -278,6 +277,7 @@ func broadcast_people(updated_store, newvorne, newhinten):
 
 
 
+
 @onready var newbox = $New
 @onready var handbox = $Hand
 @onready var oldbox = $Old
@@ -310,17 +310,13 @@ func _update_text():
 	for i in old:
 		text = text + str(cards[i]) + "\n"
 	oldbox.text = text
-	
-	
 
-var handpath = "user://hand.save"
-var newpath = "user://new.save"
-var oldpath = "user://old.save"
+
+
+var paths = ["user://hand.save", "user://new.save", "user://old.save"]
 var storepath = "user://store.save"
 var vornepath = "user://storevorne.save"
 var hintenpath = "user://storehinten.save"
-var paths = [handpath, newpath, oldpath]
-var loadvariables = [hand, new, old]
 func savedata():
 	var loadvariables = [hand, new, old]
 	print(store)
@@ -342,11 +338,11 @@ func savedata():
 	
 func loaddata():
 	var file
-	file = FileAccess.open(handpath, FileAccess.READ)
+	file = FileAccess.open(paths[0], FileAccess.READ)
 	hand = file.get_var()
-	file = FileAccess.open(newpath, FileAccess.READ)
+	file = FileAccess.open(paths[1], FileAccess.READ)
 	new = file.get_var()
-	file = FileAccess.open(oldpath, FileAccess.READ)
+	file = FileAccess.open(paths[2], FileAccess.READ)
 	old = file.get_var()
 	file = FileAccess.open(storepath, FileAccess.READ)
 	store = file.get_var()
@@ -356,6 +352,3 @@ func loaddata():
 	hinten = file.get_var()
 	_update_text()
 	print("Data loaded...")
-
-
-#testing upload from 2nd device
