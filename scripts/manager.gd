@@ -355,9 +355,13 @@ func loaddata():
 
 
 @onready var h_box_container = $HBoxContainer
-@export var card_scene := preload("res://scenes/card.tscn")
+var scene = preload("res://scenes/card.tscn")
+var next_position = Vector2(0, 0) # Starting position for the first card
+var offset = Vector2(100, 0) # Change this value to the width of your card
+
 func _on_button_pressed():
-	# Instance the new scene
-	var instance = card_scene.instantiate()
-	# Add the instance to the HBoxContainer
+	var instance = scene.instantiate()
+	instance.position = next_position
 	h_box_container.add_child(instance)
+	next_position += offset # Update the position for the next card
+
