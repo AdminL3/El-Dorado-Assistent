@@ -35,6 +35,3 @@ layout_mode = 0
 offset_left = 61.5
 offset_top = -28.0
 offset_right = 114.5
-
-[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]

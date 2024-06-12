@@ -364,16 +364,16 @@ var scene = preload("res://scenes/card.tscn")
 func _on_button_pressed():
 	#spawning
 	
-	var instance = scene.instantiate()  # Changed from scene.instantiate() to scene.instance()
+	var instance = scene.instantiate()
 	control.add_child(instance)
 	var area = instance.get_node("Area2D")
 	area.set("index", 1)
-	sortcards()
+	set_hand_cards()
 
-func sortcards():
+func set_hand_cards():
 	var children = control.get_children()
 	var amount = children.size()
-	var screen_center = 1152 / 2
+	var screen_center = 1152 / 2 #screensize divided by 2
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
 	for i in range(amount):
@@ -381,10 +381,7 @@ func sortcards():
 		
 		var area_2d = children[i].get_node("Area2D")  # Access the Area2D node
 		
-			
 		var sprite_2d = area_2d.get_node("Sprite2D")  # Access the Sprite2D node
-		var path = basicpath + str(area_2d.get("index")) + ".jpg"
+		var path = basicpath + str(hand[i]) + ".jpg"
 		print(path)
 		sprite_2d.texture = load(path)
-		
-
