@@ -361,9 +361,10 @@ var node_width = 160
 var scene = preload("res://scenes/card.tscn")
 
 func _on_button_pressed():
-	var instance = scene.instantiate()
+	var instance = scene.instantiate()  # Changed from scene.instantiate() to scene.instance()
 	control.add_child(instance)
 	sortcards()
+
 func sortcards():
 	var children = control.get_children()
 	var amount = children.size()
@@ -373,8 +374,8 @@ func sortcards():
 	
 	for i in range(amount):
 		children[i].global_position.x = start_x + i * node_width
-		var card_text_edit = children[i].get_node("Index")
-		if card_text_edit:
-			card_text_edit.text = str(i)
+		var area_2d = children[i].get_node("Area2D")  # Access the Area2D node
+		if area_2d:
+			area_2d.set("index", i)  # Set the exported variable "index" to the index value
 
 
