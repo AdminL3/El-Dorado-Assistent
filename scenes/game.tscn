@@ -5,10 +5,6 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
 
-[node name="Camera" type="Camera2D" parent="."]
-anchor_mode = 0
-enabled = false
-
 [node name="Store" type="Label" parent="."]
 offset_left = 828.0
 offset_top = 168.0
@@ -125,10 +121,10 @@ text = "Add card"
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 32.0
-offset_top = 532.0
-offset_right = 632.0
-offset_bottom = 634.0
+offset_left = 21.0
+offset_top = 531.0
+offset_right = 621.0
+offset_bottom = 539.0
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Play" to="." method="testplay"]
