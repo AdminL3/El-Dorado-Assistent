@@ -112,11 +112,11 @@ offset_bottom = 115.0
 text = "Save Data"
 
 [node name="Button" type="Button" parent="."]
-offset_left = 718.0
-offset_top = 98.0
-offset_right = 795.0
-offset_bottom = 129.0
-text = "Add card"
+offset_left = 220.0
+offset_top = 584.0
+offset_right = 297.0
+offset_bottom = 615.0
+text = "Spawn Hand"
 
 [node name="Control" type="Control" parent="."]
 layout_direction = 2
@@ -138,4 +138,4 @@ grow_vertical = 2
 [connection signal="pressed" from="Draw" to="." method="draw"]
 [connection signal="pressed" from="Load Data" to="." method="loaddata"]
 [connection signal="pressed" from="Save Data" to="." method="savedata"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="spawn_hand"]
