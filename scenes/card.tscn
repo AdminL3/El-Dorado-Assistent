@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cts7lb4irwvkn"]
+[gd_scene load_steps=3 format=3 uid="uid://c1v8p8x7uobfs"]
 
 [ext_resource type="Texture2D" uid="uid://de24cmjptlbe4" path="res://icon.svg" id="1_8rgwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n70p"]
-size = Vector2(136, 134)
+size = Vector2(128, 128)
 
 [node name="Card" type="Area2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
 texture = ExtResource("1_8rgwj")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_4n70p")

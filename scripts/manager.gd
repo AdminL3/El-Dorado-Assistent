@@ -354,14 +354,15 @@ func loaddata():
 	print("Data loaded...")
 
 
-@onready var h_box_container = $HBoxContainer
+
+@onready var control = $Control
 var scene = preload("res://scenes/card.tscn")
 var next_position = Vector2(0, 0) # Starting position for the first card
-var offset = Vector2(100, 0) # Change this value to the width of your card
+var offset = Vector2(128, 0) # Change this value to the width of your card
 
 func _on_button_pressed():
 	var instance = scene.instantiate()
 	instance.position = next_position
-	h_box_container.add_child(instance)
+	control.add_child(instance)
 	next_position += offset # Update the position for the next card
 
