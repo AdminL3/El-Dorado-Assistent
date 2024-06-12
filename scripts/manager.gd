@@ -366,14 +366,18 @@ func _on_button_pressed():
 	sortcards()
 
 func sortcards():
-	var node_width = 70
+	var node_width = 160
 	var control_width = 700
 	var children = control.get_children()
 	var amount = children.size()
-	var mitte = control_width/2
+	var screenmitte = control_width/2
+	var nodemitte = amount/2 + 0.5
 	if amount % 2 == 0:
 		#even
 		pass
 	else:
-		#odd
-		pass
+		#set middle
+		children[nodemitte].global_position = Vector2(screenmitte, control.position.y)
+		if amount == 3:
+			children[0].global_position = Vector2(screenmitte - node_width, control.position.y)
+			children[2].global_position = Vector2(screenmitte + node_width, control.position.y)

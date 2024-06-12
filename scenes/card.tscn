@@ -7,12 +7,15 @@ size = Vector2(156, 224)
 
 [node name="Card" type="Control"]
 layout_mode = 3
-anchor_left = 0.067
-anchor_right = 0.067
-offset_left = -77.184
-offset_right = 77.816
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.5
+offset_right = 77.5
 offset_bottom = 224.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="Area2D" type="Area2D" parent="."]
 
