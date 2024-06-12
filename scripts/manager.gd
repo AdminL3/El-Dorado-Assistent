@@ -356,7 +356,7 @@ func loaddata():
 
 
 
-
+var node_width = 160
 @onready var control = $Control
 var scene = preload("res://scenes/card.tscn")
 
@@ -364,59 +364,17 @@ func _on_button_pressed():
 	var instance = scene.instantiate()
 	control.add_child(instance)
 	sortcards()
-
 func sortcards():
-	var node_width = 160
-	var widhthalf = node_width/2
-	var control_width = 700
 	var children = control.get_children()
 	var amount = children.size()
-	var screenmitte = control_width/2
-	var nodemitte = amount/2 + 0.5
-	var posy = control.position.y
-	if amount % 2 == 0:
-		#even
-		if amount == 2:
-			children[0].global_position = Vector2(screenmitte - widhthalf, posy)
-			children[1].global_position = Vector2(screenmitte + widhthalf, posy)
-		if amount == 4:
-			children[0].global_position = Vector2(screenmitte - 3*widhthalf, posy)
-			children[1].global_position = Vector2(screenmitte - widhthalf, posy)
-			children[2].global_position = Vector2(screenmitte + widhthalf, posy)
-			children[3].global_position = Vector2(screenmitte + 3*widhthalf, posy)
-		if amount == 6:
-			children[0].global_position = Vector2(screenmitte - 5*widhthalf, posy)
-			children[1].global_position = Vector2(screenmitte - 3*widhthalf, posy)
-			children[2].global_position = Vector2(screenmitte - widhthalf, posy)
-			children[3].global_position = Vector2(screenmitte + widhthalf, posy)
-			children[4].global_position = Vector2(screenmitte + 3*widhthalf, posy)
-			children[5].global_position = Vector2(screenmitte + 5*widhthalf, posy)
-		if amount == 8:
-			children[0].global_position = Vector2(screenmitte - 7*widhthalf, posy)
-			children[1].global_position = Vector2(screenmitte - 5*widhthalf, posy)
-			children[2].global_position = Vector2(screenmitte - 3*widhthalf, posy)
-			children[3].global_position = Vector2(screenmitte - widhthalf, posy)
-			children[4].global_position = Vector2(screenmitte + widhthalf, posy)
-			children[5].global_position = Vector2(screenmitte + 3*widhthalf, posy)
-			children[6].global_position = Vector2(screenmitte + 5*widhthalf, posy)
-			children[7].global_position = Vector2(screenmitte - 7*widhthalf, posy)
-		
-	else:
-		#set middle
-		children[nodemitte].global_position = Vector2(screenmitte, posy)
-		if amount == 3:
-			children[0].global_position = Vector2(screenmitte - node_width, posy)
-			children[2].global_position = Vector2(screenmitte + node_width, posy)
-		if amount == 5:
-			children[0].global_position = Vector2(screenmitte - 2*node_width, posy)
-			children[1].global_position = Vector2(screenmitte - node_width, posy)
-			children[3].global_position = Vector2(screenmitte + node_width, posy)
-			children[4].global_position = Vector2(screenmitte + 2*node_width, posy)
-		if amount == 7:
-			children[0].global_position = Vector2(screenmitte - 3*node_width, posy)
-			children[1].global_position = Vector2(screenmitte - 2*node_width, posy)
-			children[2].global_position = Vector2(screenmitte - node_width, posy)
-			children[4].global_position = Vector2(screenmitte + node_width, posy)
-			children[5].global_position = Vector2(screenmitte + 2*node_width, posy)
-			children[6].global_position = Vector2(screenmitte + 3*node_width, posy)
-			
+	var screen_center = 1152 / 2
+	var stack_width = node_width * amount
+	var start_x = screen_center - stack_width / 2
+	
+	for i in range(amount):
+		children[i].global_position.x = start_x + i * node_width
+		var card_text_edit = children[i].get_node("Index")
+		if card_text_edit:
+			card_text_edit.text = str(i)
+
+
