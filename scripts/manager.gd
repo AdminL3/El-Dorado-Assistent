@@ -356,3 +356,6 @@ func loaddata():
 	hinten = file.get_var()
 	_update_text()
 	print("Data loaded...")
+
+
+#testing upload from 2nd device
