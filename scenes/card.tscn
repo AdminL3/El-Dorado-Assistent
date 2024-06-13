@@ -26,9 +26,3 @@ region_rect = Rect2(70, 50, 755.591, 1081.29)
 [node name="CollisionShape2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(78, 112)
 shape = SubResource("RectangleShape2D_1aa1t")
-
-[node name="Index" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 61.5
-offset_top = -28.0
-offset_right = 114.5

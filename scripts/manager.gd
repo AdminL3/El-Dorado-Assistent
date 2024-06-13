@@ -1,5 +1,6 @@
 extends Node
 
+class_name Manager
 
 var startcards = []
 var cards = {
@@ -375,11 +376,22 @@ func set_hand_cards():
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
 	for i in range(amount):
+		#set position
 		children[i].global_position.x = start_x + i * node_width
 		
+		#set index
 		var area_2d = children[i].get_node("Area2D")
+		area_2d.set("index", i)
 		
+		#set sprite
 		var sprite_2d = area_2d.get_node("Sprite2D")
 		var path = basicpath + str(hand[i]) + ".jpg"
-		print(path)
 		sprite_2d.texture = load(path)
+
+
+@export var area_entered = -1
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if area_entered != -1:
+			print("Clicked")
