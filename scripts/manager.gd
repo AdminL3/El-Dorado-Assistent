@@ -357,7 +357,7 @@ func loaddata():
 
 
 @onready var control = $Control
-var node_width = 160
+var node_width = 270
 var basicpath = "res://assets/images/"
 var scene = preload("res://scenes/card.tscn")
 
@@ -366,6 +366,12 @@ func spawn_hand():
 	for i in hand.size():
 		var instance = scene.instantiate()
 		control.add_child(instance)
+		
+func delete_hand():
+	var children = control.get_children()
+	for i in children.size():
+		var instance = children[i]
+		instance.queue_free()
 
 func set_hand_cards():
 	var children = control.get_children()
@@ -375,11 +381,17 @@ func set_hand_cards():
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
 	for i in range(amount):
-		children[i].global_position.x = start_x + i * node_width
+		var card_1 = children[i]
+		card_1.global_position.x = start_x + i * node_width
 		
-		var area_2d = children[i].get_node("Area2D")
+		var sprite2d = card_1.get_node("Sprite2D")
 		
-		var sprite_2d = area_2d.get_node("Sprite2D")
+		card_1.set("index", i)
 		var path = basicpath + str(hand[i]) + ".jpg"
 		print(path)
-		sprite_2d.texture = load(path)
+		sprite2d.texture = load(path)
+
+
+func card_pressed(index):
+	if index != -1:
+		print(index)

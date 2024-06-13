@@ -1,8 +1,7 @@
-extends Sprite2D
+extends Button
 
+@export var index: int = -1
 
-func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print(get_rect().position)
-		#if get_rect().has_point(to_local(event.position)):
-		print("You clicked on Sprite!")
+func _on_pressed():
+	var node = get_tree().root.get_node("Game")
+	node.call("card_pressed", index)

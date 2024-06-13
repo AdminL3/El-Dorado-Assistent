@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://hor6e4auynog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1aa1t"]
+size = Vector2(156, 224)
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.5
+offset_right = 77.5
+offset_bottom = 224.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(78, 112)
+scale = Vector2(0.206623, 0.206622)
+region_enabled = true
+region_rect = Rect2(70, 50, 755.591, 1081.29)
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(78, 112)
+shape = SubResource("RectangleShape2D_1aa1t")
+
+[node name="Index" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 61.5
+offset_top = -28.0
+offset_right = 114.5
