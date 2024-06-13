@@ -357,7 +357,6 @@ func loaddata():
 
 
 @onready var control = $Control
-var node_width = 270
 var basicpath = "res://assets/images/"
 var scene = preload("res://scenes/card.tscn")
 
@@ -375,20 +374,24 @@ func delete_hand():
 		instance.queue_free()
 
 func set_hand_cards():
+	var node_width = 270
 	var viewport_size = get_viewport().size.x
 	var screen_center = viewport_size / 2
 	var children = control.get_children()
 	var amount = children.size()
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
-	for i in amount:
+	for i in range(amount):
 		var card_1 = children[i]
 		#set position
-		card_1.global_position.x = start_x + i * node_width
+		card_1.global_position.x = start_x + i * node_width - viewport_size/5
+
+
+
 		
 		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
-		var path = basicpath  + "0.jpg" #str(hand[i])
+		var path = basicpath + str(hand[i])  + ".jpg" #str(hand[i])
 		sprite2d.texture = load(path)
 		
 		#set index
@@ -400,7 +403,6 @@ func card_pressed(index):
 		print("Pressed " + str(index))
 		playcard(hand[index])
 		delete_hand()
-		# Assuming this code is inside a function
-		await get_tree().create_timer(0.05).timeout
-
+		#wait
+		await get_tree().create_timer(0.0001).timeout
 		spawn_hand()

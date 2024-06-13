@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxk01vr3rj6d0"
-path="res://.godot/imported/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg-a0c23313790c8b575c23ae0504608a40.ctex"
+path="res://.godot/imported/Default.jpg-2b3d4ae26d827033781fa7c424c7ce6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg"
-dest_files=["res://.godot/imported/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg-a0c23313790c8b575c23ae0504608a40.ctex"]
+source_file="res://assets/Default.jpg"
+dest_files=["res://.godot/imported/Default.jpg-2b3d4ae26d827033781fa7c424c7ce6d.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c77ghih45fkca"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_p4ysi"]
-[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg" id="1_te56a"]
+[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default.jpg" id="1_te56a"]
 
 [node name="Card" type="Button"]
 offset_right = 252.0

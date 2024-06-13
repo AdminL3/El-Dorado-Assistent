@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ufrmpwmppysg"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_78tfl"]
-[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default_create_one_board_game_card_with_a_banner_at_the_top_wi_2.jpg" id="1_etknt"]
+[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default.jpg" id="1_etknt"]
 
 [node name="Card" type="Sprite2D"]
 scale = Vector2(0.261261, 0.261261)
