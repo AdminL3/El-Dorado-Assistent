@@ -1,10 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=10 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="Script" path="res://scripts/cam.gd" id="2_q3s86"]
 [ext_resource type="Texture2D" uid="uid://buc1uk7u4ou5j" path="res://assets/back.png" id="3_kj12x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50kp2"]
+content_margin_left = 94.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayx4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qro82"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1g3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ocy4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
@@ -157,16 +168,20 @@ position = Vector2(7578, 2628)
 shape = SubResource("RectangleShape2D_n5hgs")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -225.0
-offset_top = 194.0
-offset_right = -43.0
-offset_bottom = 469.0
+offset_left = -351.0
+offset_top = 159.0
+offset_right = -66.0
+offset_bottom = 484.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_50kp2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ayx4i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qro82")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_n1g3j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ocy4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(94.25, 137.295)
+position = Vector2(142, 164)
 scale = Vector2(0.729572, 0.729572)
 texture = ExtResource("3_kj12x")
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Buttons/Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Buttons/BuyFree" to="." method="buycard_free"]
