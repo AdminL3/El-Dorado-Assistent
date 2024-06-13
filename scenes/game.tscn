@@ -6,6 +6,12 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
 
+[node name="Card" parent="." instance=ExtResource("2_5opue")]
+offset_left = 60.0
+offset_top = 558.0
+offset_right = 215.0
+offset_bottom = 782.0
+
 [node name="Store" type="Label" parent="."]
 offset_left = 828.0
 offset_top = 168.0
@@ -140,13 +146,6 @@ offset_right = 2257.0
 offset_bottom = 866.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Card" parent="." instance=ExtResource("2_5opue")]
-visible = false
-offset_left = 202.0
-offset_top = 555.0
-offset_right = 357.0
-offset_bottom = 779.0
 
 [connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Play" to="." method="testplay"]
