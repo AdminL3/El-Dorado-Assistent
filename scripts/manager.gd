@@ -1,5 +1,6 @@
 extends Node
 
+class_name Manager
 
 var startcards = []
 var cards = {
@@ -365,3 +366,33 @@ func _on_button_pressed():
 	h_box_container.add_child(instance)
 	next_position += offset # Update the position for the next card
 
+<<<<<<< Updated upstream
+=======
+func set_hand_cards():
+	var children = control.get_children()
+	var amount = children.size()
+	var viewport_size = get_viewport().size.x
+	var screen_center = viewport_size / 2
+	var stack_width = node_width * amount
+	var start_x = screen_center - stack_width / 2
+	for i in range(amount):
+		#set position
+		children[i].global_position.x = start_x + i * node_width
+		
+		#set index
+		var area_2d = children[i].get_node("Area2D")
+		area_2d.set("index", i)
+		
+		#set sprite
+		var sprite_2d = area_2d.get_node("Sprite2D")
+		var path = basicpath + str(hand[i]) + ".jpg"
+		sprite_2d.texture = load(path)
+
+
+@export var area_entered = -1
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if area_entered != -1:
+			print("Clicked")
+>>>>>>> Stashed changes
