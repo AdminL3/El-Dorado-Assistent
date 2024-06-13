@@ -221,7 +221,6 @@ func buycard(shopcard):
 
 
 
-
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		print("Starting dedicated server...")
@@ -230,7 +229,7 @@ func _ready():
 	else:
 		print("Starting client side...")
 		become_client()
-
+	
 
 
 
@@ -355,19 +354,20 @@ func loaddata():
 	print("Data loaded...")
 
 
-@onready var h_box_container = $HBoxContainer
+
+
+
+@onready var control = $Control
+var node_width = 160
+var basicpath = "res://assets/images/"
 var scene = preload("res://scenes/card.tscn")
-var next_position = Vector2(0, 0) # Starting position for the first card
-var offset = Vector2(100, 0) # Change this value to the width of your card
 
-func _on_button_pressed():
-	var instance = scene.instantiate()
-	instance.position = next_position
-	h_box_container.add_child(instance)
-	next_position += offset # Update the position for the next card
+func spawn_hand():
+	#spawning
+	for i in hand.size():
+		var instance = scene.instantiate()
+		control.add_child(instance)
 
-<<<<<<< Updated upstream
-=======
 func set_hand_cards():
 	var children = control.get_children()
 	var amount = children.size()
@@ -395,4 +395,3 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if area_entered != -1:
 			print("Clicked")
->>>>>>> Stashed changes
