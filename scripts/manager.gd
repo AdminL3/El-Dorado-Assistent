@@ -396,4 +396,3 @@ func _input(event):
 		if area_entered != -1:
 			print("Clicked")
 
-#test
