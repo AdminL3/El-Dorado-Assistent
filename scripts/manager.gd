@@ -86,9 +86,6 @@ func setstore():
 		vorne.append(i+3)
 	for i in 12:
 		hinten.append(i+9)
-	print(store)
-	print(hinten)
-	print(vorne)
 	
 func register_player():
 	#shuffle starter cards into hands
@@ -113,12 +110,10 @@ func draw():
 		print(hand)
 	else:
 		print("No cards left - Shuffle")
-		print(old)
 		for x in old.size():
 			var card = old.pick_random()
 			new.append(card)
 			old.erase(card)
-		print(old)
 	_update_text()
 	update_display()
 
@@ -395,8 +390,6 @@ func set_hand_cards():
 
 
 
-		print(hand)
-		print(hand[i])
 		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
 		var path = basicpath + str(hand[i])  + ".jpg" #str(hand[i])
