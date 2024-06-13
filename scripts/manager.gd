@@ -366,6 +366,7 @@ func spawn_hand():
 	for i in hand.size():
 		var instance = scene.instantiate()
 		control.add_child(instance)
+	set_hand_cards()
 		
 func delete_hand():
 	var children = control.get_children()
@@ -374,24 +375,32 @@ func delete_hand():
 		instance.queue_free()
 
 func set_hand_cards():
-	var children = control.get_children()
-	var amount = children.size()
 	var viewport_size = get_viewport().size.x
 	var screen_center = viewport_size / 2
+	var children = control.get_children()
+	var amount = children.size()
 	var stack_width = node_width * amount
 	var start_x = screen_center - stack_width / 2
-	for i in range(amount):
+	for i in amount:
 		var card_1 = children[i]
+		#set position
 		card_1.global_position.x = start_x + i * node_width
 		
+		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
-		
-		card_1.set("index", i)
-		var path = basicpath + str(hand[i]) + ".jpg"
-		print(path)
+		var path = basicpath  + "0.jpg" #str(hand[i])
 		sprite2d.texture = load(path)
+		
+		#set index
+		card_1.set("index", i)
 
 
 func card_pressed(index):
 	if index != -1:
-		print(index)
+		print("Pressed " + str(index))
+		playcard(hand[index])
+		delete_hand()
+		# Assuming this code is inside a function
+		await get_tree().create_timer(0.05).timeout
+
+		spawn_hand()
