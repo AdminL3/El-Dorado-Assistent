@@ -44,12 +44,12 @@ offset_right = 166.0
 offset_bottom = 78.0
 text = "Buy:"
 
-[node name="Play" type="Button" parent="Buttons"]
+[node name="BuyFree" type="Button" parent="Buttons"]
 offset_left = 71.0
-offset_top = 86.0
+offset_top = 84.0
 offset_right = 166.0
-offset_bottom = 117.0
-text = "Play"
+offset_bottom = 115.0
+text = "Buy Free:"
 
 [node name="Draw" type="Button" parent="Buttons"]
 offset_left = 73.0
@@ -74,9 +74,9 @@ text = "Save Data"
 
 [node name="Button" type="Button" parent="Buttons"]
 offset_left = 308.0
-offset_top = 42.0
+offset_top = 41.0
 offset_right = 413.0
-offset_bottom = 73.0
+offset_bottom = 72.0
 text = "Spawn Hand"
 
 [node name="Button3" type="Button" parent="Buttons"]
@@ -87,19 +87,11 @@ offset_bottom = 112.0
 text = "Delete hand"
 
 [node name="line" type="LineEdit" parent="."]
-offset_left = 180.0
-offset_top = 45.0
-offset_right = 247.063
-offset_bottom = 76.0
+offset_left = 181.0
+offset_top = 66.0
+offset_right = 248.063
+offset_bottom = 97.0
 text = "6"
-metadata/_edit_use_anchors_ = true
-
-[node name="line2" type="LineEdit" parent="."]
-offset_left = 180.0
-offset_top = 84.0
-offset_right = 247.063
-offset_bottom = 115.0
-text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="Vorne" type="TextEdit" parent="."]
@@ -164,7 +156,7 @@ position = Vector2(7578, 2628)
 shape = SubResource("RectangleShape2D_n5hgs")
 
 [connection signal="pressed" from="Buttons/Buy" to="." method="_on_buycard_0_pressed"]
-[connection signal="pressed" from="Buttons/Play" to="." method="testplay"]
+[connection signal="pressed" from="Buttons/BuyFree" to="." method="buycard_free"]
 [connection signal="pressed" from="Buttons/Draw" to="." method="draw"]
 [connection signal="pressed" from="Buttons/Load Data" to="." method="loaddata"]
 [connection signal="pressed" from="Buttons/Save Data" to="." method="savedata"]

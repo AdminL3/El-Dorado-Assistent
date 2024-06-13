@@ -44,8 +44,8 @@ var prices = {
 	18 : 3,
 	19 : 5,
 	20 : 2
-
 }
+
 
 var hand = []
 var new = []
@@ -97,8 +97,6 @@ func register_player():
 		var card = startcards.pick_random()
 		new.append(card)
 		startcards.erase(card)
-	for i in 4:
-		draw()
 	_update_text()
 	update_display()
 
@@ -122,17 +120,16 @@ func draw():
 			old.erase(card)
 		print(old)
 	_update_text()
+	update_display()
 
 
-
-func playcard(card):	
+func playcard(card):
 	if hand.has(card):
 		old.append(card)
 		hand.erase(card)
 		print("played: "+ str(cards[card]))
 	else:
 		print("Dont have card")
-	
 	_update_text()
 
 
@@ -165,15 +162,20 @@ func checkvalue():
 
 
 
-
-#shopcard is the buywant card in the shop
-func buycard(shopcard):
+func buycard_free():
+	buycard(int(line.text), true)
+	
+	
+	#shopcard is the buywant card in the shop
+func buycard(shopcard, free):
 	#is it a shopcard?
 	if shopcard > 2:
 		#its a card that can be bought
 		
 		#money
 		var cardvalue = checkvalue()
+		if free:
+			cardvalue = 10
 		print("Card Value: " + str(cardvalue))
 		
 		#enough money?
@@ -393,7 +395,8 @@ func set_hand_cards():
 
 
 
-		
+		print(hand)
+		print(hand[i])
 		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
 		var path = basicpath + str(hand[i])  + ".jpg" #str(hand[i])
@@ -419,12 +422,10 @@ func update_display():
 
 
 
-#testing
+
+
 @onready var line = $line
-@onready var line_2 = $line2
 
 
 func _on_buycard_0_pressed():
-	buycard(int(line.text))
-func testplay():
-	playcard(int(line_2.text))
+	buycard(int(line.text), false)
