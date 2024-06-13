@@ -62,6 +62,19 @@ var store = []
 
 
 
+func _ready():
+	if OS.has_feature("dedicated_server"):
+		print("Starting dedicated server...")
+		become_host()
+		setstore()
+	else:
+		print("Starting client side...")
+		become_client()
+	
+	
+
+#functions
+
 
 func setstore():
 	#add store cards
@@ -87,6 +100,7 @@ func register_player():
 	for i in 4:
 		draw()
 	_update_text()
+	update_display()
 
 
 
@@ -109,11 +123,6 @@ func draw():
 		print(old)
 	_update_text()
 
-
-@onready var line_2 = $line2
-
-func testplay():
-	playcard(int(line_2.text))
 
 
 func playcard(card):	
@@ -155,13 +164,6 @@ func checkvalue():
 	return value
 
 
-
-
-@onready var line = $line
-
-
-func _on_buycard_0_pressed():
-	buycard(int(line.text))
 
 
 #shopcard is the buywant card in the shop
@@ -220,19 +222,11 @@ func buycard(shopcard):
 
 
 
-func _ready():
-	if OS.has_feature("dedicated_server"):
-		print("Starting dedicated server...")
-		become_host()
-		setstore()
-	else:
-		print("Starting client side...")
-		become_client()
-	
 
 
 
 
+#multiplayer
 
 var peer = ENetMultiplayerPeer.new()
 
@@ -277,6 +271,9 @@ func broadcast_people(updated_store, newvorne, newhinten):
 
 
 
+
+#updating text
+
 @onready var newbox = $New
 @onready var handbox = $Hand
 @onready var oldbox = $Old
@@ -309,8 +306,12 @@ func _update_text():
 	for i in old:
 		text = text + str(cards[i]) + "\n"
 	oldbox.text = text
+	
 
 
+
+
+#saving and loading data
 
 var paths = ["user://hand.save", "user://new.save", "user://old.save"]
 var storepath = "user://store.save"
@@ -356,6 +357,10 @@ func loaddata():
 
 
 
+
+
+#visual representation
+
 @onready var control = $Control
 var basicpath = "res://assets/images/"
 var scene = preload("res://scenes/card.tscn")
@@ -400,9 +405,26 @@ func set_hand_cards():
 
 func card_pressed(index):
 	if index != -1:
-		print("Pressed " + str(index))
 		playcard(hand[index])
+		update_display()
+		
+func update_display():
 		delete_hand()
 		#wait
 		await get_tree().create_timer(0.0001).timeout
 		spawn_hand()
+	
+
+
+
+
+
+#testing
+@onready var line = $line
+@onready var line_2 = $line2
+
+
+func _on_buycard_0_pressed():
+	buycard(int(line.text))
+func testplay():
+	playcard(int(line_2.text))

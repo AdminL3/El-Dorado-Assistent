@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=4 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="Script" path="res://scripts/cam.gd" id="2_q3s86"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hgs"]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
 
-[node name="Store" type="Label" parent="."]
+[node name="Labels" type="Node" parent="."]
+
+[node name="Store" type="Label" parent="Labels"]
 offset_left = 797.0
 offset_top = 22.0
 offset_right = 922.0
@@ -15,7 +19,7 @@ theme_override_font_sizes/font_size = 31
 text = "Store
 "
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Labels"]
 offset_left = 651.0
 offset_top = 97.0
 offset_right = 776.0
@@ -23,14 +27,7 @@ offset_bottom = 141.0
 theme_override_font_sizes/font_size = 31
 text = "Vorne:"
 
-[node name="Vorne" type="TextEdit" parent="."]
-offset_left = 614.0
-offset_top = 147.0
-offset_right = 827.0
-offset_bottom = 497.0
-editable = false
-
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="Labels"]
 offset_left = 916.0
 offset_top = 96.0
 offset_right = 1041.0
@@ -38,12 +35,56 @@ offset_bottom = 140.0
 theme_override_font_sizes/font_size = 31
 text = "Hinten:"
 
-[node name="Hinten" type="TextEdit" parent="."]
-offset_left = 900.0
-offset_top = 142.0
-offset_right = 1114.0
-offset_bottom = 505.0
-editable = false
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Buy" type="Button" parent="Buttons"]
+offset_left = 71.0
+offset_top = 47.0
+offset_right = 166.0
+offset_bottom = 78.0
+text = "Buy:"
+
+[node name="Play" type="Button" parent="Buttons"]
+offset_left = 71.0
+offset_top = 86.0
+offset_right = 166.0
+offset_bottom = 117.0
+text = "Play"
+
+[node name="Draw" type="Button" parent="Buttons"]
+offset_left = 73.0
+offset_top = 12.0
+offset_right = 168.0
+offset_bottom = 43.0
+text = "Draw"
+
+[node name="Load Data" type="Button" parent="Buttons"]
+offset_left = 143.0
+offset_top = 151.0
+offset_right = 230.0
+offset_bottom = 182.0
+text = "Load Data"
+
+[node name="Save Data" type="Button" parent="Buttons"]
+offset_left = 24.0
+offset_top = 151.0
+offset_right = 111.0
+offset_bottom = 182.0
+text = "Save Data"
+
+[node name="Button" type="Button" parent="Buttons"]
+offset_left = 308.0
+offset_top = 42.0
+offset_right = 413.0
+offset_bottom = 73.0
+text = "Spawn Hand"
+
+[node name="Button3" type="Button" parent="Buttons"]
+offset_left = 305.0
+offset_top = 81.0
+offset_right = 428.0
+offset_bottom = 112.0
+text = "Delete hand"
 
 [node name="line" type="LineEdit" parent="."]
 offset_left = 180.0
@@ -51,14 +92,6 @@ offset_top = 45.0
 offset_right = 247.063
 offset_bottom = 76.0
 text = "6"
-metadata/_edit_use_anchors_ = true
-
-[node name="Buy" type="Button" parent="."]
-offset_left = 71.0
-offset_top = 47.0
-offset_right = 166.0
-offset_bottom = 78.0
-text = "Buy:"
 metadata/_edit_use_anchors_ = true
 
 [node name="line2" type="LineEdit" parent="."]
@@ -69,21 +102,19 @@ offset_bottom = 115.0
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="Play" type="Button" parent="."]
-offset_left = 71.0
-offset_top = 86.0
-offset_right = 166.0
-offset_bottom = 117.0
-text = "Play"
-metadata/_edit_use_anchors_ = true
+[node name="Vorne" type="TextEdit" parent="."]
+offset_left = 614.0
+offset_top = 147.0
+offset_right = 827.0
+offset_bottom = 497.0
+editable = false
 
-[node name="Draw" type="Button" parent="."]
-offset_left = 73.0
-offset_top = 12.0
-offset_right = 168.0
-offset_bottom = 43.0
-text = "Draw"
-metadata/_edit_use_anchors_ = true
+[node name="Hinten" type="TextEdit" parent="."]
+offset_left = 900.0
+offset_top = 142.0
+offset_right = 1114.0
+offset_bottom = 505.0
+editable = false
 
 [node name="New" type="TextEdit" parent="."]
 offset_left = 25.0
@@ -103,34 +134,6 @@ offset_top = 204.0
 offset_right = 532.0
 offset_bottom = 469.0
 
-[node name="Load Data" type="Button" parent="."]
-offset_left = 143.0
-offset_top = 151.0
-offset_right = 230.0
-offset_bottom = 182.0
-text = "Load Data"
-
-[node name="Save Data" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 151.0
-offset_right = 111.0
-offset_bottom = 182.0
-text = "Save Data"
-
-[node name="Button" type="Button" parent="."]
-offset_left = 308.0
-offset_top = 42.0
-offset_right = 413.0
-offset_bottom = 73.0
-text = "Spawn Hand"
-
-[node name="Button3" type="Button" parent="."]
-offset_left = 305.0
-offset_top = 81.0
-offset_right = 428.0
-offset_bottom = 112.0
-text = "Delete hand"
-
 [node name="Control" type="Control" parent="."]
 layout_direction = 2
 layout_mode = 3
@@ -146,18 +149,24 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CameraController" type="CharacterBody2D" parent="."]
 position = Vector2(571, 372)
 script = ExtResource("2_q3s86")
+metadata/_edit_lock_ = true
 
-[node name="Camera" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera" type="Camera2D" parent="CameraController"]
 zoom = Vector2(0.87, 0.87)
 process_callback = 0
 
-[connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
-[connection signal="pressed" from="Play" to="." method="testplay"]
-[connection signal="pressed" from="Draw" to="." method="draw"]
-[connection signal="pressed" from="Load Data" to="." method="loaddata"]
-[connection signal="pressed" from="Save Data" to="." method="savedata"]
-[connection signal="pressed" from="Button" to="." method="spawn_hand"]
-[connection signal="pressed" from="Button3" to="." method="delete_hand"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraController"]
+visible = false
+position = Vector2(7578, 2628)
+shape = SubResource("RectangleShape2D_n5hgs")
+
+[connection signal="pressed" from="Buttons/Buy" to="." method="_on_buycard_0_pressed"]
+[connection signal="pressed" from="Buttons/Play" to="." method="testplay"]
+[connection signal="pressed" from="Buttons/Draw" to="." method="draw"]
+[connection signal="pressed" from="Buttons/Load Data" to="." method="loaddata"]
+[connection signal="pressed" from="Buttons/Save Data" to="." method="savedata"]
+[connection signal="pressed" from="Buttons/Button" to="." method="spawn_hand"]
+[connection signal="pressed" from="Buttons/Button3" to="." method="delete_hand"]
