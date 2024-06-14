@@ -208,7 +208,7 @@ func buycard(shopcard, free):
 					_update_text()
 					
 					#send store around
-					modify_people()
+					modify_store()
 				else:
 					print("No more cards left")
 			else:
@@ -236,7 +236,7 @@ func become_host():
 	
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
-	rpc_id(id, "broadcast_people", store, vorne, hinten)  # Send the store array to the newly connected client
+	rpc_id(id, "broadcast_store", store, vorne, hinten)  # Send the store array to the newly connected client
 	_update_text()
 
 func _on_peer_disconnected(id):
@@ -254,12 +254,12 @@ func _on_connected(id):
 		_update_text()
 
 # Linked button
-func modify_people():
-	rpc("broadcast_people", store, vorne, hinten)
+func modify_store():
+	rpc("broadcast_store", store, vorne, hinten)
 	_update_text()
 
 @rpc("any_peer")
-func broadcast_people(updated_store, newvorne, newhinten):
+func broadcast_store(updated_store, newvorne, newhinten):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
@@ -422,3 +422,6 @@ func update_display():
 
 func _on_buycard_0_pressed():
 	buycard(int(line.text), false)
+	
+func become_store():
+	get_tree().change_scene_to_file("res://scenes/store.tscn")
