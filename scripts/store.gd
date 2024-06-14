@@ -18,9 +18,10 @@ func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
 
 func start_store():
-	peer.create_client("localhost", 8080)
+	peer.create_client("localhost", 8080) #change ip here
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_connected)
+	update_display()
 
 func _on_connected(id):
 	if id == multiplayer.get_unique_id():
@@ -41,7 +42,7 @@ func broadcast_store(updated_store, newvorne, newhinten):
 
 #visual representation
 
-@onready var control = $Control
+@onready var control = $Vorne
 var basicpath = "res://assets/images/"
 var scene = preload("res://scenes/card.tscn")
 
