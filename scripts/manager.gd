@@ -68,7 +68,6 @@ func _ready():
 		become_host()
 		setstore()
 	else:
-		print("Starting client side...")
 		become_client()
 	
 	
@@ -169,9 +168,9 @@ func buycard(shopcard, free):
 		
 		#money
 		var cardvalue = checkvalue()
+		print("Card Value: " + str(cardvalue))
 		if free:
 			cardvalue = 10
-		print("Card Value: " + str(cardvalue))
 		
 		#enough money?
 		if cardvalue >= prices[shopcard]:
@@ -235,23 +234,26 @@ func become_host():
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	
 func _on_peer_connected(id):
+	#this happpens on server
 	print("Client connected with ID: %d" % id)
 	rpc_id(id, "broadcast_store", store, vorne, hinten)  # Send the store array to the newly connected client
-	
-	rpc_id(id, "get_store", id)  # Send the store array to the newly connected client
-	
 	_update_text()
-
+	
 func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
 
+
+
+
 func become_client():
+	#client side
+	print("Connecting to server")
 	peer.create_client("localhost", 8080)
 	multiplayer.multiplayer_peer = peer
 	register_player()
 
 
-# Linked button
+
 func modify_store():
 	rpc("broadcast_store", store, vorne, hinten)
 	_update_text()
@@ -261,9 +263,8 @@ func broadcast_store(updated_store, newvorne, newhinten):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
-	print(store)	
+	print(store)
 	_update_text()
-
 
 
 

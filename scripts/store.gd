@@ -7,7 +7,7 @@ var hinten = []
 func _ready():
 	print("Starting store...")
 	start_store()
-	
+
 
 
 #multiplayer
@@ -19,13 +19,8 @@ func start_store():
 	multiplayer.multiplayer_peer = peer
 
 
-@rpc("any_peer")
-func get_store(zwei):
-	print("test")
 
 
-
-#visual representation
 
 @onready var control = $Vorne
 var basicpath = "res://assets/images/"
