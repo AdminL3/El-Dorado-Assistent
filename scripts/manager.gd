@@ -244,14 +244,12 @@ func _on_peer_disconnected(id):
 
 
 
-
 func become_client():
 	#client side
 	print("Connecting to server")
 	peer.create_client("localhost", 8080)
 	multiplayer.multiplayer_peer = peer
 	register_player()
-
 
 
 func modify_store():
@@ -263,8 +261,9 @@ func broadcast_store(updated_store, newvorne, newhinten):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
-	print(store)
+	print("store")
 	_update_text()
+
 
 
 

@@ -17,8 +17,12 @@ var peer = ENetMultiplayerPeer.new()
 func start_store():
 	peer.create_client("localhost", 8080) #change ip here
 	multiplayer.multiplayer_peer = peer
+	print("Shop Connected")
 
 
+@rpc("any_peer")
+func broadcast_store(updated_store, newvorne, newhinten):
+	print("received")
 
 
 
