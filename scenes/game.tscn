@@ -102,6 +102,14 @@ offset_right = 540.0
 offset_bottom = 88.0
 text = "Delete hand"
 
+[node name="Broadcast" type="Button" parent="Buttons"]
+offset_left = 469.0
+offset_top = 128.0
+offset_right = 592.0
+offset_bottom = 159.0
+text = "Broadcast
+"
+
 [node name="line" type="LineEdit" parent="."]
 offset_left = 293.0
 offset_top = 42.0
@@ -185,4 +193,5 @@ texture = ExtResource("3_kj12x")
 [connection signal="pressed" from="Buttons/Button" to="." method="spawn_hand"]
 [connection signal="pressed" from="Buttons/Button2" to="." method="become_store"]
 [connection signal="pressed" from="Buttons/Button3" to="." method="delete_hand"]
+[connection signal="pressed" from="Buttons/Broadcast" to="." method="modify_store"]
 [connection signal="pressed" from="Button" to="." method="draw"]
