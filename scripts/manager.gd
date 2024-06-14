@@ -454,23 +454,18 @@ func spawn_store():
 		vorne_display.add_child(instance)
 		
 		
+	
+	var node_width = 270
+	var viewport_size = vorne_display.size.x
+	var screen_center = viewport_size / 2
 	var children = vorne_display.get_children()
 	var amount = children.size()
-	
-	var node_width = 280
-	var control_size = control.size.x
-	var stack_width = amount * node_width
-	var control_pos = vorne_display.get_screen_position()
-	
+	var stack_width = node_width * amount
+	var start_x = screen_center - stack_width / 2 - vorne_display.position.x
 	for i in range(amount):
 		var card_1 = children[i]
-		
-		var cardposition = control_pos.x + control_size/2 - stack_width/2 + i * node_width
-		print(control_pos.x)
-		print(i)
-		print(cardposition)
 		#set position
-		card_1.global_position.x = cardposition
+		card_1.global_position.x = start_x + i * node_width - screen_center
 
 
 		#set image

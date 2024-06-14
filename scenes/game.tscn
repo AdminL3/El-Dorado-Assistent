@@ -162,7 +162,7 @@ position = Vector2(574, 374)
 process_callback = 0
 
 [node name="Store" type="Camera2D" parent="."]
-position = Vector2(2111, 1480)
+position = Vector2(583, 1443)
 process_callback = 0
 
 [node name="Hinten2" type="Control" parent="Store"]
