@@ -14,29 +14,14 @@ func _ready():
 
 var peer = ENetMultiplayerPeer.new()
 
-func _on_peer_disconnected(id):
-	print("Client disconnected with ID: %d" % id)
-
 func start_store():
 	peer.create_client("localhost", 8080) #change ip here
 	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_on_connected)
-	update_display()
 
-func _on_connected(id):
-	if id == multiplayer.get_unique_id():
-		print("Connected to server with ID: %d" % id)
-
-# Linked button
-func modify_store():
-	rpc("broadcast_store", store, vorne, hinten)
 
 @rpc("any_peer")
-func broadcast_store(updated_store, newvorne, newhinten):
-	store = updated_store
-	hinten = newhinten
-	vorne = newvorne
-
+func get_store(zwei):
+	print("test")
 
 
 

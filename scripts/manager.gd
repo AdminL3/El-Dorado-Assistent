@@ -237,6 +237,9 @@ func become_host():
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
 	rpc_id(id, "broadcast_store", store, vorne, hinten)  # Send the store array to the newly connected client
+	
+	rpc_id(id, "get_store", id)  # Send the store array to the newly connected client
+	
 	_update_text()
 
 func _on_peer_disconnected(id):
@@ -245,13 +248,8 @@ func _on_peer_disconnected(id):
 func become_client():
 	peer.create_client("localhost", 8080)
 	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_on_connected)
 	register_player()
 
-func _on_connected(id):
-	if id == multiplayer.get_unique_id():
-		print("Connected to server with ID: %d" % id)
-		_update_text()
 
 # Linked button
 func modify_store():
@@ -263,8 +261,8 @@ func broadcast_store(updated_store, newvorne, newhinten):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
+	print(store)	
 	_update_text()
-
 
 
 
