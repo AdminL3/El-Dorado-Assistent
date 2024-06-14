@@ -392,7 +392,7 @@ func set_hand_cards():
 
 		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
-		var path = basicpath + str(hand[i])  + ".jpg" #str(hand[i])
+		var path = basicpath + str(hand[i])  + ".jpg"
 		sprite2d.texture = load(path)
 		
 		#set index
@@ -448,33 +448,45 @@ func delete_store():
 	
 		
 func spawn_store():
-	#spawning
-	for i in vorne.size():
-		var instance = scene.instantiate()
-		vorne_display.add_child(instance)
-		
-		
 	
 	var node_width = 270
 	var viewport_size = vorne_display.size.x
 	var screen_center = viewport_size / 2
-	var children = vorne_display.get_children()
-	var amount = children.size()
-	var stack_width = node_width * amount
-	var start_x = screen_center - stack_width / 2 - vorne_display.position.x
-	for i in range(amount):
-		var card_1 = children[i]
-		#set position
-		card_1.global_position.x = start_x + i * node_width - screen_center
-
-
-		#set image
-		var sprite2d = card_1.get_node("Sprite2D")
-		var path = basicpath  + "1.jpg"  #set path!!
-		sprite2d.texture = load(path)
+	
+	var controllers = [vorne_display, hinten_1, hinten_2]
+	
+	
+	#spawning vorne
+	for i in vorne.size():
+		var instance = scene.instantiate()
+		vorne_display.add_child(instance)
+	for i in hinten.size():
+		var instance = scene.instantiate()
+		if i < 6:
+			hinten_1.add_child(instance)
+		else:
+			hinten_2.add_child(instance)
+			
 		
-		#set index
-		card_1.set("index", i)
+		
+	for i in 3:
+		var controller = controllers[i]
+		var children = controller.get_children()
+		var amount = children.size()
+		var stack_width = node_width * amount
+		var start_x = screen_center - stack_width / 2 - controller.position.x
+		for j in range(amount):
+			var card = children[j]
+			#set position
+			card.global_position.x = start_x + j * node_width - screen_center
+			
+			
+			#set image
+			var sprite2d = card.get_node("Sprite2D")
+			var path = basicpath  + "add stuff here" + "1.jpg"
+			sprite2d.texture = load(path)
+		
+		
 		
 func update_store():
 		delete_store()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
-[ext_resource type="Texture2D" uid="uid://buc1uk7u4ou5j" path="res://assets/back.png" id="3_kj12x"]
+[ext_resource type="Texture2D" uid="uid://buc1uk7u4ou5j" path="res://assets/logo.png" id="3_kj12x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50kp2"]
 content_margin_left = 94.0
@@ -159,35 +159,34 @@ grow_vertical = 2
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(574, 374)
-process_callback = 0
 
 [node name="Store" type="Camera2D" parent="."]
-position = Vector2(583, 1443)
-process_callback = 0
+position = Vector2(576, 1442)
+enabled = false
 
 [node name="Hinten2" type="Control" parent="Store"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -575.0
-offset_top = -328.0
-offset_right = 575.0
-offset_bottom = -140.0
+offset_left = -576.0
+offset_top = -530.0
+offset_right = 576.0
+offset_bottom = -505.0
 
 [node name="Hinten1" type="Control" parent="Store"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -575.0
-offset_top = -144.0
-offset_right = 579.0
-offset_bottom = 30.0
+offset_left = -576.0
+offset_top = -180.0
+offset_right = 576.0
+offset_bottom = -155.0
 
 [node name="Vorne" type="Control" parent="Store"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -579.0
-offset_top = 123.0
-offset_right = 572.0
-offset_bottom = 323.0
+offset_left = -576.0
+offset_top = 170.0
+offset_right = 576.0
+offset_bottom = 195.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = -239.0
