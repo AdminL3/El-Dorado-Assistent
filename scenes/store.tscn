@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ajutf23x61j"]
+
+[ext_resource type="Script" path="res://scripts/store.gd" id="1_5giur"]
+
+[node name="Store" type="Node2D"]
+script = ExtResource("1_5giur")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Hinten2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 188.0
+
+[node name="Hinten1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 184.0
+offset_right = 1154.0
+offset_bottom = 358.0
+
+[node name="Vorne" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 451.0
+offset_right = 1157.0
+offset_bottom = 651.0
