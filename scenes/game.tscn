@@ -163,6 +163,7 @@ position = Vector2(574, 374)
 [node name="Store" type="Camera2D" parent="."]
 position = Vector2(576, 1442)
 enabled = false
+zoom = Vector2(0.905, 0.905)
 
 [node name="Hinten2" type="Control" parent="Store"]
 layout_mode = 3
