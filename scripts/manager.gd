@@ -469,6 +469,7 @@ func spawn_store():
 			
 		
 		
+	var counter = 0
 	for i in 3:
 		var controller = controllers[i]
 		var children = controller.get_children()
@@ -480,12 +481,14 @@ func spawn_store():
 			#set position
 			card.global_position.x = start_x + j * node_width - screen_center
 			
-			
+			var vorne_hinten = []
+			vorne_hinten.append_array(vorne)
+			vorne_hinten.append_array(hinten)
 			#set image
 			var sprite2d = card.get_node("Sprite2D")
-			var path = basicpath  + "add stuff here" + "1.jpg"
+			var path = basicpath  + str(vorne_hinten[counter]) + ".jpg"
 			sprite2d.texture = load(path)
-		
+			counter += 1
 		
 		
 func update_store():
