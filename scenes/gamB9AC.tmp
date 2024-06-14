@@ -186,7 +186,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = -579.0
 offset_top = 123.0
-offset_right = 572.0
+offset_right = 582.0
 offset_bottom = 323.0
 
 [node name="Button" type="Button" parent="."]

@@ -21,8 +21,10 @@ func start_store():
 
 
 @rpc("any_peer")
-func broadcast_store(updated_store, newvorne, newhinten):
-	print("received")
+func receive_data(json_data):
+	print("json data")
+	# Process received_data as needed
+
 
 
 

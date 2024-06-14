@@ -244,6 +244,8 @@ func _on_peer_disconnected(id):
 
 
 
+
+
 func become_client():
 	#client side
 	print("Connecting to server")
@@ -416,10 +418,72 @@ func update_display():
 
 
 @onready var line = $line
+@onready var camera = $Camera
+@onready var storecam = $Store
 
 
 func _on_buycard_0_pressed():
 	buycard(int(line.text), false)
 	
+	
+	
+	
+	
+	#store
+@onready var hinten_2 = $Store/Hinten2
+@onready var hinten_1 = $Store/Hinten1
+@onready var vorne_display = $Store/Vorne
+
 func become_store():
-	get_tree().change_scene_to_file("res://scenes/store.tscn")
+	camera.enabled = false
+	storecam.enabled = true
+	update_store()
+	
+	
+func delete_store():
+	var children = vorne_display.get_children()
+	for i in children.size():
+		var instance = children[i]
+		instance.queue_free()
+	
+		
+func spawn_store():
+	#spawning
+	for i in vorne.size():
+		var instance = scene.instantiate()
+		vorne_display.add_child(instance)
+		
+		
+	var children = vorne_display.get_children()
+	var amount = children.size()
+	
+	var node_width = 280
+	var control_size = control.size.x
+	var stack_width = amount * node_width
+	var control_pos = vorne_display.get_screen_position()
+	
+	for i in range(amount):
+		var card_1 = children[i]
+		
+		var cardposition = control_pos.x + control_size/2 - stack_width/2 + i * node_width
+		print(control_pos.x)
+		print(i)
+		print(cardposition)
+		#set position
+		card_1.global_position.x = cardposition
+
+
+		#set image
+		var sprite2d = card_1.get_node("Sprite2D")
+		var path = basicpath  + "1.jpg"  #set path!!
+		sprite2d.texture = load(path)
+		
+		#set index
+		card_1.set("index", i)
+		
+func update_store():
+		delete_store()
+		#wait
+		await get_tree().create_timer(0.0001).timeout
+		spawn_store()
+	

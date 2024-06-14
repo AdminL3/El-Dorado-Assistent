@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://7ajutf23x61j"]
 
-[ext_resource type="Script" path="res://scripts/manager.gd" id="1_raoda"]
+[ext_resource type="Script" path="res://scripts/store.gd" id="1_5giur"]
 
 [node name="Store" type="Node2D"]
-script = ExtResource("1_raoda")
+script = ExtResource("1_5giur")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
