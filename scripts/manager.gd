@@ -392,7 +392,7 @@ func set_hand_cards():
 
 		#set image
 		var sprite2d = card_1.get_node("Sprite2D")
-		var path = basicpath + str(hand[i])  + ".jpg"
+		var path = basicpath + str(hand[i])  + ".png"
 		sprite2d.texture = load(path)
 		
 		#set index
@@ -486,7 +486,7 @@ func spawn_store():
 			vorne_hinten.append_array(hinten)
 			#set image
 			var sprite2d = card.get_node("Sprite2D")
-			var path = basicpath  + str(vorne_hinten[counter]) + ".jpg"
+			var path = basicpath  + str(vorne_hinten[counter]) + ".png"
 			sprite2d.texture = load(path)
 			counter += 1
 		
