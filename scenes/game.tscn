@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
-[ext_resource type="Texture2D" uid="uid://buc1uk7u4ou5j" path="res://assets/logo.png" id="3_kj12x"]
+[ext_resource type="Texture2D" uid="uid://bgnvp7a0tpmfy" path="res://assets/logo.png" id="3_kj12x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50kp2"]
 content_margin_left = 94.0
