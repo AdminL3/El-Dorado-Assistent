@@ -57,7 +57,7 @@ var hinten = []
 var store = []
 
 
-
+var isstore = false
 
 
 
@@ -263,8 +263,10 @@ func broadcast_store(updated_store, newvorne, newhinten):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
-	print("store")
 	_update_text()
+	if isstore:
+		print("update store")
+		update_store()
 
 
 
@@ -438,14 +440,23 @@ func become_store():
 	camera.enabled = false
 	storecam.enabled = true
 	update_store()
+	print("isstore")
+	isstore = true
 	
 	
 func delete_store():
-	var children = vorne_display.get_children()
-	for i in children.size():
-		var instance = children[i]
+	var children1 = vorne_display.get_children()
+	var children2 = hinten_1.get_children()
+	var children3 = hinten_2.get_children()
+	for i in children1.size():
+		var instance = children1[i]
 		instance.queue_free()
-	
+	for i in children2.size():
+		var instance = children2[i]
+		instance.queue_free()
+	for i in children3.size():
+		var instance = children3[i]
+		instance.queue_free()
 		
 func spawn_store():
 	
@@ -468,8 +479,10 @@ func spawn_store():
 			hinten_2.add_child(instance)
 			
 		
-		
 	var counter = 0
+	var vorne_hinten = []
+	vorne_hinten.append_array(vorne)
+	vorne_hinten.append_array(hinten)
 	for i in 3:
 		var controller = controllers[i]
 		var children = controller.get_children()
@@ -481,9 +494,6 @@ func spawn_store():
 			#set position
 			card.global_position.x = start_x + j * node_width - screen_center
 			
-			var vorne_hinten = []
-			vorne_hinten.append_array(vorne)
-			vorne_hinten.append_array(hinten)
 			#set image
 			var sprite2d = card.get_node("Sprite2D")
 			var path = basicpath  + str(vorne_hinten[counter]) + ".png"
