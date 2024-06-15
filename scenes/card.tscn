@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c77ghih45fkca"]
+[gd_scene load_steps=2 format=3 uid="uid://c77ghih45fkca"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_p4ysi"]
-[ext_resource type="Texture2D" uid="uid://bxk01vr3rj6d0" path="res://assets/Default.jpg" id="1_te56a"]
 
 [node name="Card" type="Button"]
-offset_right = 252.0
-offset_bottom = 336.0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 233.0
+offset_bottom = 323.0
 script = ExtResource("1_p4ysi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(126, 168.333)
-scale = Vector2(0.283784, 0.283784)
-texture = ExtResource("1_te56a")
+position = Vector2(113, 161)
+scale = Vector2(0.0931872, 0.0931872)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
