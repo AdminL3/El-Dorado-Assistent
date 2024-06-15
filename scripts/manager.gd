@@ -458,6 +458,10 @@ func delete_store():
 		var instance = children3[i]
 		instance.queue_free()
 		
+		
+		
+var vornealt
+var hintenalt
 func spawn_store():
 	
 	var node_width = 270
@@ -465,7 +469,8 @@ func spawn_store():
 	var screen_center = viewport_size / 2
 	
 	var controllers = [vorne_display, hinten_1, hinten_2]
-	
+	vornealt = vorne
+	hintenalt = hinten
 	
 	#spawning vorne
 	for i in vorne.size():
@@ -501,7 +506,13 @@ func spawn_store():
 			counter += 1
 		
 		
+func we_need_update():
+	if vornealt == vorne and hintenalt == hinten:
+			return false
+	else:
+		return true
 func update_store():
+	if we_need_update():
 		delete_store()
 		#wait
 		await get_tree().create_timer(0.0001).timeout
