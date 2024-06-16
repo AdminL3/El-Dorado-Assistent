@@ -185,9 +185,9 @@ offset_bottom = -155.0
 layout_mode = 3
 anchors_preset = 0
 offset_left = -576.0
-offset_top = 170.0
+offset_top = 175.0
 offset_right = 576.0
-offset_bottom = 195.0
+offset_bottom = 200.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = -239.0
