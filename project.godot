@@ -11,14 +11,21 @@ config_version=5
 [application]
 
 config/name="El Dorado Assistent"
+config/description="Card Assistent for the Board Game \"Wettlauf nach El Dorado\" by Ravensburger"
+config/version="1.0"
 run/main_scene="res://scenes/game.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/logo.png"
+boot_splash/fullsize=false
+config/icon="res://assets/logo.png"
 
 [display]
 
 window/size/mode=2
+window/size/initial_position_type=3
 
-[rendering]
+[filesystem]
 
-textures/canvas_textures/default_texture_filter=2
+import/blender/enabled=false
+import/fbx/enabled=false
