@@ -246,7 +246,7 @@ func _on_peer_disconnected(id):
 
 
 
-var ip = "localhost"
+var ip = "52.138.195.100"
 
 func become_client():
 	#client side
