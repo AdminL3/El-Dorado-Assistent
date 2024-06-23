@@ -160,7 +160,8 @@ func checkvalue():
 
 	
 	
-	#shopcard is the buywant card in the shop
+#shopcard is the buywant card in the shop
+#free means fernsprechgerät
 func buycard(shopcard, free):
 	#is it a shopcard?
 	if shopcard > 2:
@@ -176,7 +177,7 @@ func buycard(shopcard, free):
 		if cardvalue >= prices[shopcard]:
 			
 			#is card up front or is open
-			if vorne.has(shopcard) or vorne.size() < 6:
+			if vorne.has(shopcard) or vorne.size() < 6 or free:
 				
 				#how many cards
 				var amount = store[shopcard]
@@ -190,19 +191,26 @@ func buycard(shopcard, free):
 					old.append(shopcard)
 					add_history("You bought " + cards[shopcard])
 					#check if empty now
-					if amount - 1 == 0:
+					if amount - 1 <= 0:
 						#remove from vorne
 						vorne.erase(shopcard)
+						hinten.erase(shopcard)
 						
 					#if shop is open
 					elif vorne.size() < 6:
 						
 						#check if already front
 						if !vorne.has(shopcard):
-						
-							#move to front
-							vorne.append(shopcard)
-							hinten.erase(shopcard)
+							#if not fernsprechgerät
+							if !free:
+								#move to front
+								vorne.append(shopcard)
+								hinten.erase(shopcard)
+								add_history("You bought " + cards[shopcard] + "and moved it to the front.")
+							else:
+								add_history("You bought " + cards[shopcard] + "with the Fernsprechgerät.")
+						else:
+							add_history("You bought " + cards[shopcard] + "with the Fernsprechgerät.")
 					
 					#update everything
 					_update_text()
@@ -215,7 +223,8 @@ func buycard(shopcard, free):
 				add_history("This card is not accessible.")
 		else:
 			add_history("You're too poor.")
-
+	else:
+		add_history("You can't buy that card.")
 
 
 
