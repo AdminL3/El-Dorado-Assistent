@@ -58,13 +58,15 @@ var store = []
 
 
 var isstore = false
+@onready var history = $History
 
-
+func add_history(text):
+	history.text = str(text) + "\n" + history.text
 
 
 func _ready():
 	if OS.has_feature("dedicated_server"):
-		print("Starting dedicated server...")
+		add_history("Starting dedicated server...")
 		become_host()
 		setstore()
 	else:
@@ -101,14 +103,14 @@ func register_player():
 
 func draw():
 	if hand.size() > 3:
-		print("Watch out! Already have 4")
+		add_history("Watch out! You already have 4 cards.")
 	
 	if new.size() !=0:
 		hand.append(new[0])
 		new.remove_at(0)	
-		print(hand)
+		add_history("Drawed "+ cards[hand[hand.size()-1]]+ ".")
 	else:
-		print("No cards left - Shuffle")
+		add_history("No cards left - Shuffled")
 		for x in old.size():
 			var card = old.pick_random()
 			new.append(card)
@@ -121,9 +123,9 @@ func playcard(card):
 	if hand.has(card):
 		old.append(card)
 		hand.erase(card)
-		print("played: "+ str(cards[card]))
+		add_history("Played "+ str(cards[card]) + ".")
 	else:
-		print("Dont have card")
+		add_history("You don't have that card.")
 	_update_text()
 
 
@@ -166,7 +168,7 @@ func buycard(shopcard, free):
 		
 		#money
 		var cardvalue = checkvalue()
-		print("Card Value: " + str(cardvalue))
+		add_history("Your card value is " + str(cardvalue) + ".")
 		if free:
 			cardvalue = 10
 		
@@ -186,6 +188,7 @@ func buycard(shopcard, free):
 					store[shopcard] = store[shopcard]-1
 					#add to old
 					old.append(shopcard)
+					add_history("You bought " + cards[shopcard])
 					#check if empty now
 					if amount - 1 == 0:
 						#remove from vorne
@@ -207,10 +210,11 @@ func buycard(shopcard, free):
 					#send store around
 					modify_store()
 				else:
-					print("No more cards left")
+					add_history("This card is not in store anymore.")
 			else:
-				print("Card not accesible")
-
+				add_history("This card is not accessible.")
+		else:
+			add_history("You're too poor.")
 
 
 
@@ -233,21 +237,21 @@ func become_host():
 	
 func _on_peer_connected(id):
 	#this happpens on server
-	print("Client connected with ID: %d" % id)
+	add_history("Client connected with ID: %d" % id)
 	rpc_id(id, "broadcast_store", store, vorne, hinten)  # Send the store array to the newly connected client
 	_update_text()
 	
 func _on_peer_disconnected(id):
-	print("Client disconnected with ID: %d" % id)
+	add_history("Client disconnected with ID: %d" % id)
 
 
 
-
+var ip = "localhost"
 
 func become_client():
 	#client side
-	print("Connecting to server")
-	peer.create_client("localhost", 8080)
+	add_history("Connecting to server with IP " + str(ip)+ "and port 8080.")
+	peer.create_client(ip, 8080)
 	multiplayer.multiplayer_peer = peer
 	register_player()
 
@@ -263,7 +267,7 @@ func broadcast_store(updated_store, newvorne, newhinten):
 	vorne = newvorne
 	_update_text()
 	if isstore:
-		print("update store")
+		add_history("Updated the store.")
 		update_store()
 
 
@@ -424,7 +428,7 @@ func update_display():
 func do_action():
 	var cardselected = card_select.selected
 	if cardselected == -1:
-		print("error")
+		add_history("Please select an option.")
 	else:
 		if action_select.selected == 0:
 			#buy
@@ -438,9 +442,9 @@ func do_action():
 func del_card(card_to_del):
 	if hand.has(card_to_del):
 		hand.erase(card_to_del)
-		print("Deleted: "+ str(cards[card_to_del]))
+		add_history("Deleted: "+ str(cards[card_to_del])+ ".")
 	else:
-		print("Dont have card")
+		add_history("You don't have that card.")
 	_update_text()
 	update_display()
 	
@@ -459,7 +463,7 @@ func become_store():
 	camera.enabled = false
 	storecam.enabled = true
 	update_store()
-	print("isstore")
+	add_history("You are now the store display")
 	isstore = true
 	
 	
@@ -468,8 +472,9 @@ func become_admin():
 	admincam.enabled = true
 
 func back_admin():
-	camera.enabled = true
 	admincam.enabled = false
+	storecam.enabled = false
+	camera.enabled = true
 	
 func delete_store():
 	var children1 = vorne_display.get_children()
