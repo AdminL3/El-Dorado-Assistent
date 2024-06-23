@@ -20,26 +20,26 @@ script = ExtResource("1_6hv34")
 [node name="Labels" type="Node" parent="."]
 
 [node name="Store" type="Label" parent="Labels"]
-offset_left = 909.0
+offset_left = 3247.0
 offset_top = -2.0
-offset_right = 1034.0
+offset_right = 3372.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 31
 text = "Store
 "
 
 [node name="Label" type="Label" parent="Labels"]
-offset_left = 763.0
+offset_left = 3101.0
 offset_top = 73.0
-offset_right = 888.0
+offset_right = 3226.0
 offset_bottom = 117.0
 theme_override_font_sizes/font_size = 31
 text = "Vorne:"
 
 [node name="Label2" type="Label" parent="Labels"]
-offset_left = 1028.0
+offset_left = 3366.0
 offset_top = 72.0
-offset_right = 1153.0
+offset_right = 3491.0
 offset_bottom = 116.0
 theme_override_font_sizes/font_size = 31
 text = "Hinten:"
@@ -60,47 +60,12 @@ offset_right = 278.0
 offset_bottom = 91.0
 text = "Buy Free:"
 
-[node name="Draw" type="Button" parent="Buttons"]
-offset_left = 185.0
-offset_top = -12.0
-offset_right = 280.0
-offset_bottom = 19.0
-text = "Draw"
-
-[node name="Load Data" type="Button" parent="Buttons"]
-offset_left = 255.0
-offset_top = 127.0
-offset_right = 342.0
-offset_bottom = 158.0
-text = "Load Data"
-
-[node name="Save Data" type="Button" parent="Buttons"]
-offset_left = 136.0
-offset_top = 127.0
-offset_right = 223.0
-offset_bottom = 158.0
-text = "Save Data"
-
-[node name="Button" type="Button" parent="Buttons"]
-offset_left = 420.0
-offset_top = 17.0
-offset_right = 525.0
-offset_bottom = 48.0
-text = "Spawn Hand"
-
 [node name="Button2" type="Button" parent="Buttons"]
 offset_left = 39.0
 offset_top = 34.0
 offset_right = 144.0
 offset_bottom = 65.0
 text = "Become Store"
-
-[node name="Button3" type="Button" parent="Buttons"]
-offset_left = 417.0
-offset_top = 57.0
-offset_right = 540.0
-offset_bottom = 88.0
-text = "Delete hand"
 
 [node name="line" type="LineEdit" parent="."]
 offset_left = 293.0
@@ -111,35 +76,35 @@ text = "6"
 metadata/_edit_use_anchors_ = true
 
 [node name="Vorne" type="TextEdit" parent="."]
-offset_left = 726.0
+offset_left = 3064.0
 offset_top = 123.0
-offset_right = 939.0
+offset_right = 3277.0
 offset_bottom = 473.0
 editable = false
 
 [node name="Hinten" type="TextEdit" parent="."]
-offset_left = 1012.0
+offset_left = 3350.0
 offset_top = 118.0
-offset_right = 1226.0
+offset_right = 3564.0
 offset_bottom = 481.0
 editable = false
 
 [node name="New" type="TextEdit" parent="."]
-offset_left = 137.0
+offset_left = 2494.0
 offset_top = 173.0
-offset_right = 284.0
+offset_right = 2641.0
 offset_bottom = 446.0
 
 [node name="Hand" type="TextEdit" parent="."]
-offset_left = 296.0
+offset_left = 2653.0
 offset_top = 177.0
-offset_right = 460.0
+offset_right = 2817.0
 offset_bottom = 444.0
 
 [node name="Old" type="TextEdit" parent="."]
-offset_left = 473.0
+offset_left = 2830.0
 offset_top = 180.0
-offset_right = 644.0
+offset_right = 3001.0
 offset_bottom = 445.0
 
 [node name="Control" type="Control" parent="."]
@@ -159,6 +124,10 @@ grow_vertical = 2
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(574, 374)
+
+[node name="Admin" type="Camera2D" parent="."]
+position = Vector2(2998, 374)
+enabled = false
 
 [node name="Store" type="Camera2D" parent="."]
 position = Vector2(576, 1442)
@@ -207,10 +176,5 @@ texture = ExtResource("3_kj12x")
 
 [connection signal="pressed" from="Buttons/Buy" to="." method="_on_buycard_0_pressed"]
 [connection signal="pressed" from="Buttons/BuyFree" to="." method="buycard_free"]
-[connection signal="pressed" from="Buttons/Draw" to="." method="draw"]
-[connection signal="pressed" from="Buttons/Load Data" to="." method="loaddata"]
-[connection signal="pressed" from="Buttons/Save Data" to="." method="savedata"]
-[connection signal="pressed" from="Buttons/Button" to="." method="spawn_hand"]
 [connection signal="pressed" from="Buttons/Button2" to="." method="become_store"]
-[connection signal="pressed" from="Buttons/Button3" to="." method="delete_hand"]
 [connection signal="pressed" from="Button" to="." method="draw"]
