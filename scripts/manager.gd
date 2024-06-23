@@ -422,8 +422,29 @@ func update_display():
 
 
 func do_action():
-	pass
+	var cardselected = card_select.selected
+	if cardselected == -1:
+		print("error")
+	else:
+		if action_select.selected == 0:
+			#buy
+			buycard(cardselected, false)
+		elif action_select.selected == 1:
+			buycard(cardselected, true)
+		elif action_select.selected == 2:
+			del_card(cardselected)
+			
 
+func del_card(card_to_del):
+	if hand.has(card_to_del):
+		hand.erase(card_to_del)
+		print("Deleted: "+ str(cards[card_to_del]))
+	else:
+		print("Dont have card")
+	_update_text()
+	update_display()
+	
+	
 	
 #store
 @onready var hinten_2 = $Store/Hinten2
@@ -432,6 +453,7 @@ func do_action():
 	
 @onready var storecam = $Store
 @onready var camera = $Camera
+@onready var admincam = $Admin/Admin
 
 func become_store():
 	camera.enabled = false
@@ -442,8 +464,12 @@ func become_store():
 	
 	
 func become_admin():
-	pass
-	
+	camera.enabled = false
+	admincam.enabled = true
+
+func back_admin():
+	camera.enabled = true
+	admincam.enabled = false
 	
 func delete_store():
 	var children1 = vorne_display.get_children()

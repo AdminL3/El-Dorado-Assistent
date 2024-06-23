@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=10 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
 [ext_resource type="FontFile" uid="uid://ohev4serabg1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_1b8vf"]
 [ext_resource type="Texture2D" uid="uid://bgnvp7a0tpmfy" path="res://assets/logo.png" id="3_kj12x"]
+[ext_resource type="FontFile" uid="uid://bgjlattw6v22s" path="res://assets/fonts/PixelOperator8.ttf" id="4_abrfg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50kp2"]
 content_margin_left = 94.0
@@ -80,6 +81,15 @@ offset_left = 2830.0
 offset_top = 180.0
 offset_right = 3001.0
 offset_bottom = 445.0
+
+[node name="Back Admin" type="Button" parent="Admin"]
+offset_left = 2372.0
+offset_top = 40.0
+offset_right = 2625.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_1b8vf")
+theme_override_font_sizes/font_size = 24
+text = "Go Back"
 
 [node name="Draw" type="Button" parent="."]
 offset_left = -239.0
@@ -253,6 +263,22 @@ offset_top = 175.0
 offset_right = 576.0
 offset_bottom = 200.0
 
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 1040.0
+offset_top = 20.0
+offset_right = 1266.0
+offset_bottom = 376.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1050.0
+offset_top = -18.0
+offset_right = 1267.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("4_abrfg")
+theme_override_font_sizes/font_size = 32
+text = "History:"
+
+[connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
 [connection signal="pressed" from="Become Store" to="." method="become_store"]
 [connection signal="pressed" from="Become Admin" to="." method="become_admin"]
