@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://m1y7bg1lro0b"]
+[gd_scene load_steps=9 format=3 uid="uid://m1y7bg1lro0b"]
 
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
+[ext_resource type="FontFile" uid="uid://ohev4serabg1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_1b8vf"]
 [ext_resource type="Texture2D" uid="uid://bgnvp7a0tpmfy" path="res://assets/logo.png" id="3_kj12x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50kp2"]
@@ -17,9 +18,9 @@ content_margin_left = 94.0
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6hv34")
 
-[node name="Labels" type="Node" parent="."]
+[node name="Admin" type="Node" parent="."]
 
-[node name="Store" type="Label" parent="Labels"]
+[node name="Store" type="Label" parent="Admin"]
 offset_left = 3247.0
 offset_top = -2.0
 offset_right = 3372.0
@@ -28,7 +29,7 @@ theme_override_font_sizes/font_size = 31
 text = "Store
 "
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="Label" type="Label" parent="Admin"]
 offset_left = 3101.0
 offset_top = 73.0
 offset_right = 3226.0
@@ -36,7 +37,7 @@ offset_bottom = 117.0
 theme_override_font_sizes/font_size = 31
 text = "Vorne:"
 
-[node name="Label2" type="Label" parent="Labels"]
+[node name="Label2" type="Label" parent="Admin"]
 offset_left = 3366.0
 offset_top = 72.0
 offset_right = 3491.0
@@ -44,68 +45,166 @@ offset_bottom = 116.0
 theme_override_font_sizes/font_size = 31
 text = "Hinten:"
 
-[node name="Buttons" type="Node" parent="."]
+[node name="Admin" type="Camera2D" parent="Admin"]
+position = Vector2(2998, 374)
+enabled = false
 
-[node name="Buy" type="Button" parent="Buttons"]
-offset_left = 183.0
-offset_top = 23.0
-offset_right = 278.0
-offset_bottom = 54.0
-text = "Buy:"
-
-[node name="BuyFree" type="Button" parent="Buttons"]
-offset_left = 183.0
-offset_top = 60.0
-offset_right = 278.0
-offset_bottom = 91.0
-text = "Buy Free:"
-
-[node name="Button2" type="Button" parent="Buttons"]
-offset_left = 39.0
-offset_top = 34.0
-offset_right = 144.0
-offset_bottom = 65.0
-text = "Become Store"
-
-[node name="line" type="LineEdit" parent="."]
-offset_left = 293.0
-offset_top = 42.0
-offset_right = 360.063
-offset_bottom = 73.0
-text = "6"
-metadata/_edit_use_anchors_ = true
-
-[node name="Vorne" type="TextEdit" parent="."]
+[node name="Vorne" type="TextEdit" parent="Admin"]
 offset_left = 3064.0
 offset_top = 123.0
 offset_right = 3277.0
 offset_bottom = 473.0
 editable = false
 
-[node name="Hinten" type="TextEdit" parent="."]
+[node name="Hinten" type="TextEdit" parent="Admin"]
 offset_left = 3350.0
 offset_top = 118.0
 offset_right = 3564.0
 offset_bottom = 481.0
 editable = false
 
-[node name="New" type="TextEdit" parent="."]
+[node name="New" type="TextEdit" parent="Admin"]
 offset_left = 2494.0
 offset_top = 173.0
 offset_right = 2641.0
 offset_bottom = 446.0
 
-[node name="Hand" type="TextEdit" parent="."]
+[node name="Hand" type="TextEdit" parent="Admin"]
 offset_left = 2653.0
 offset_top = 177.0
 offset_right = 2817.0
 offset_bottom = 444.0
 
-[node name="Old" type="TextEdit" parent="."]
+[node name="Old" type="TextEdit" parent="Admin"]
 offset_left = 2830.0
 offset_top = 180.0
 offset_right = 3001.0
 offset_bottom = 445.0
+
+[node name="Draw" type="Button" parent="."]
+offset_left = -239.0
+offset_top = 135.0
+offset_right = 46.0
+offset_bottom = 460.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_50kp2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ayx4i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qro82")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_n1g3j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ocy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draw"]
+position = Vector2(142, 164)
+scale = Vector2(0.729572, 0.729572)
+texture = ExtResource("3_kj12x")
+
+[node name="Become Store" type="Button" parent="."]
+offset_left = -244.0
+offset_top = -19.0
+offset_right = 81.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_1b8vf")
+theme_override_font_sizes/font_size = 24
+text = "Become Store"
+
+[node name="Become Admin" type="Button" parent="."]
+offset_left = -244.0
+offset_top = 40.0
+offset_right = 81.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_1b8vf")
+theme_override_font_sizes/font_size = 24
+text = "Admin Panel"
+
+[node name="Main" type="Node" parent="."]
+
+[node name="CardSelect" type="OptionButton" parent="Main"]
+offset_left = 146.0
+offset_top = 128.0
+offset_right = 476.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 32
+item_count = 21
+popup/item_0/text = "Reisende"
+popup/item_0/id = 0
+popup/item_1/text = "Forscher"
+popup/item_1/id = 1
+popup/item_2/text = "Matrose"
+popup/item_2/id = 2
+popup/item_3/text = "Kundschafter"
+popup/item_3/id = 3
+popup/item_4/text = "Entdecker"
+popup/item_4/id = 4
+popup/item_5/text = "Tausendsassa"
+popup/item_5/id = 5
+popup/item_6/text = "Fotografin"
+popup/item_6/id = 6
+popup/item_7/text = "Schatztruhe"
+popup/item_7/id = 7
+popup/item_8/text = "Fernsprechgerät"
+popup/item_8/id = 8
+popup/item_9/text = "Propellerflugzeug"
+popup/item_9/id = 9
+popup/item_10/text = "Abenteurerin"
+popup/item_10/id = 10
+popup/item_11/text = "Pionier"
+popup/item_11/id = 11
+popup/item_12/text = "Mächtige Machete"
+popup/item_12/id = 12
+popup/item_13/text = "Journalistin"
+popup/item_13/id = 13
+popup/item_14/text = "Millionärin"
+popup/item_14/id = 14
+popup/item_15/text = "Kartograph"
+popup/item_15/id = 15
+popup/item_16/text = "Kompass"
+popup/item_16/id = 16
+popup/item_17/text = "Wissenschaftlerin"
+popup/item_17/id = 17
+popup/item_18/text = "Reisetagebuch"
+popup/item_18/id = 18
+popup/item_19/text = "Ureinwohner"
+popup/item_19/id = 19
+popup/item_20/text = "Kaptain"
+popup/item_20/id = 20
+
+[node name="ActionSelect" type="OptionButton" parent="Main"]
+offset_left = 525.0
+offset_top = 128.0
+offset_right = 825.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 32
+item_count = 3
+selected = 0
+popup/item_0/text = "Buy"
+popup/item_0/id = 19
+popup/item_1/text = "Fernsprechgerät"
+popup/item_1/id = 20
+popup/item_2/text = "Throw away"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Main"]
+offset_left = 149.0
+offset_top = 85.0
+offset_right = 331.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 32
+text = "Select Card:"
+
+[node name="Label2" type="Label" parent="Main"]
+offset_left = 527.0
+offset_top = 85.0
+offset_right = 735.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 32
+text = "Select Action:"
+
+[node name="Go" type="Button" parent="Main"]
+offset_left = 885.0
+offset_top = 128.0
+offset_right = 979.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 32
+text = "GO!"
 
 [node name="Control" type="Control" parent="."]
 layout_direction = 2
@@ -124,10 +223,6 @@ grow_vertical = 2
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(574, 374)
-
-[node name="Admin" type="Camera2D" parent="."]
-position = Vector2(2998, 374)
-enabled = false
 
 [node name="Store" type="Camera2D" parent="."]
 position = Vector2(576, 1442)
@@ -158,23 +253,7 @@ offset_top = 175.0
 offset_right = 576.0
 offset_bottom = 200.0
 
-[node name="Button" type="Button" parent="."]
-offset_left = -239.0
-offset_top = 135.0
-offset_right = 46.0
-offset_bottom = 460.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_50kp2")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ayx4i")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_qro82")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_n1g3j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1ocy4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(142, 164)
-scale = Vector2(0.729572, 0.729572)
-texture = ExtResource("3_kj12x")
-
-[connection signal="pressed" from="Buttons/Buy" to="." method="_on_buycard_0_pressed"]
-[connection signal="pressed" from="Buttons/BuyFree" to="." method="buycard_free"]
-[connection signal="pressed" from="Buttons/Button2" to="." method="become_store"]
-[connection signal="pressed" from="Button" to="." method="draw"]
+[connection signal="pressed" from="Draw" to="." method="draw"]
+[connection signal="pressed" from="Become Store" to="." method="become_store"]
+[connection signal="pressed" from="Become Admin" to="." method="become_admin"]
+[connection signal="pressed" from="Main/Go" to="." method="do_action"]

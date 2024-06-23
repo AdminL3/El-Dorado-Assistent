@@ -156,8 +156,6 @@ func checkvalue():
 
 
 
-func buycard_free():
-	buycard(int(line.text), true)
 	
 	
 	#shopcard is the buywant card in the shop
@@ -273,12 +271,12 @@ func broadcast_store(updated_store, newvorne, newhinten):
 
 #updating text
 
-@onready var newbox = $New
-@onready var handbox = $Hand
-@onready var oldbox = $Old
+@onready var newbox = $Admin/New
+@onready var handbox = $Admin/Hand
+@onready var oldbox = $Admin/Old
 
-@onready var vornebox = $Vorne
-@onready var hintenbox = $Hinten
+@onready var vornebox = $Admin/Vorne
+@onready var hintenbox = $Admin/Hinten
 
 var text
 func _update_text():
@@ -419,22 +417,21 @@ func update_display():
 
 
 
-@onready var line = $line
-@onready var camera = $Camera
-@onready var storecam = $Store
+@onready var card_select = $Main/CardSelect
+@onready var action_select = $Main/ActionSelect
 
 
-func _on_buycard_0_pressed():
-	buycard(int(line.text), false)
+func do_action():
+	pass
+
 	
-	
-	
-	
-	
-	#store
+#store
 @onready var hinten_2 = $Store/Hinten2
 @onready var hinten_1 = $Store/Hinten1
 @onready var vorne_display = $Store/Vorne
+	
+@onready var storecam = $Store
+@onready var camera = $Camera
 
 func become_store():
 	camera.enabled = false
@@ -442,6 +439,10 @@ func become_store():
 	update_store()
 	print("isstore")
 	isstore = true
+	
+	
+func become_admin():
+	pass
 	
 	
 func delete_store():
