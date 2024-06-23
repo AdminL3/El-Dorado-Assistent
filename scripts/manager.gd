@@ -559,3 +559,18 @@ func update_store():
 		await get_tree().create_timer(0.0001).timeout
 		spawn_store()
 	
+
+
+
+
+func movetopcardleft(number):
+	if number==0:
+		new.append(hand[0])
+		hand.remove_at(0)
+		_update_text()
+		update_display()
+	elif number==1:
+		hand.append(old[0])
+		old.remove_at(0)
+		_update_text()
+		update_display()
