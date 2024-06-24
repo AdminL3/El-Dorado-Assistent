@@ -348,7 +348,8 @@ offset_top = 33.0
 offset_right = 601.0
 offset_bottom = 92.0
 theme_override_font_sizes/font_size = 32
-text = "Hi!"
+text = "what"
+placeholder_text = "Name"
 
 [connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]
 [connection signal="pressed" from="Admin/Actions/0" to="." method="movetopcardleft" binds= [0]]

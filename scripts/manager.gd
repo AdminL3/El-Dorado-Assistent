@@ -76,7 +76,6 @@ func _ready():
 	if OS.has_feature("dedicated_server"):
 		add_history("Starting dedicated server...")
 		become_host()
-	
 
 #functions
 
@@ -255,9 +254,12 @@ func become_host():
 
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
-	rpc_id(id, "broadcast_store", store, vorne, hinten, "Received Store from Server")
+	var action = "Received Store from Server"
+	print(action)
 	# Send the store array to the newly connected client
-	_update_text()
+	rpc_id(id, "broadcast_store", store, vorne, hinten, action)
+	
+	
 func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
 
@@ -275,28 +277,35 @@ func become_client():
 	add_history("Connecting to server with ")
 	peer.create_client(ip, 8080)
 	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	register_player()
 	
 
-func _on_player_connected(id):
-	if id != 1:
-		if connected:
-			add_history("New Player connected with ID " + str(id))
 func _on_player_disconnected(id):
-	add_history("Player Disconnected")
+	add_history(name + " disconnected")
 func _on_connected_ok():
 	add_history("Connected")
 	connected = true
+	rpc("broadcast_entry", my_name)
+	
 
 func modify_store(action):
 	rpc("broadcast_store", store, vorne, hinten, action)
 	_update_text()
 
+
+
+
+
+@rpc("any_peer")
+func broadcast_entry(name):
+	add_history(str(name) + "entered tje df")
+	
+	
 @rpc("any_peer")
 func broadcast_store(updated_store, newvorne, newhinten, action):
+	print(action)
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
