@@ -316,7 +316,6 @@ offset_left = 1040.0
 offset_top = 20.0
 offset_right = 1397.0
 offset_bottom = 376.0
-editable = false
 scroll_smooth = true
 
 [connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]

@@ -63,9 +63,10 @@ var connected = false
 
 
 @onready var history = $History
-
+var history_text = ""
 func add_history(text):
-	history.text = str(text) + "\n" + history.text
+	history_text = text + "\n" + history_text
+	history.text = history_text
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
@@ -256,7 +257,8 @@ func become_host():
 
 func _on_peer_connected(id):
 	print("Client connected with ID: %d" % id)
-	rpc_id(id, "broadcast_store", store, vorne, hinten, "Received Store from Server")  # Send the store array to the newly connected client
+	rpc_id(id, "broadcast_store", store, vorne, hinten, "Received Store from Server")
+	# Send the store array to the newly connected client
 	_update_text()
 func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
@@ -296,9 +298,7 @@ func broadcast_store(updated_store, newvorne, newhinten, action):
 	hinten = newhinten
 	vorne = newvorne
 	_update_text()
-	print("test")
-	add_history("test")
-	add_history(action)
+	add_history(str(action))
 	if isstore:
 		update_store()
 
