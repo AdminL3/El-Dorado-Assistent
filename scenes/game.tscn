@@ -340,7 +340,7 @@ offset_top = 33.0
 offset_right = 723.0
 offset_bottom = 92.0
 theme_override_font_sizes/font_size = 32
-text = "Send"
+text = "Connect"
 
 [node name="Name" type="TextEdit" parent="."]
 offset_left = 287.0

@@ -174,7 +174,6 @@ func buycard(shopcard, free):
 			
 			#money
 			var cardvalue = checkvalue()
-			add_history("Your card value is " + str(cardvalue) + ".")
 			if free:
 				cardvalue = 10
 			
@@ -221,7 +220,7 @@ func buycard(shopcard, free):
 						_update_text()
 						
 						#send store around
-						modify_store("Player bought " + cards[shopcard] + ".")
+						modify_store(" bought " + cards[shopcard] + ".")
 					else:
 						add_history("This card is not in store anymore.")
 				else:
@@ -231,7 +230,8 @@ func buycard(shopcard, free):
 		else:
 			add_history("You can't buy that card.")
 	else:
-		add_history("You are not connected! Please contact Administrator.")
+		add_history("Please contact Administrator.")
+		add_history("You are not connected!")
 
 
 
@@ -257,7 +257,7 @@ func _on_peer_connected(id):
 	var action = "Received Store from Server"
 	print(action)
 	# Send the store array to the newly connected client
-	rpc_id(id, "broadcast_store", store, vorne, hinten, action)
+	rpc_id(id, "broadcast_store", store, vorne, hinten, action, my_name)
 	
 	
 func _on_peer_disconnected(id):
@@ -284,33 +284,33 @@ func become_client():
 
 func _on_player_disconnected(id):
 	add_history(name + " disconnected")
-func _on_connected_ok():
-	add_history("Connected")
-	connected = true
-	rpc("broadcast_entry", my_name)
 	
+	
+func _on_connected_ok():
+	connected = true
+	print("Connected OK, broadcasting entry for", my_name)
+
+
+
 
 func modify_store(action):
-	rpc("broadcast_store", store, vorne, hinten, action)
+	rpc("broadcast_store", store, vorne, hinten, action, my_name)
 	_update_text()
 
 
 
 
-
 @rpc("any_peer")
-func broadcast_entry(name):
-	add_history(str(name) + "entered tje df")
-	
-	
-@rpc("any_peer")
-func broadcast_store(updated_store, newvorne, newhinten, action):
+func broadcast_store(updated_store, newvorne, newhinten, action, my_name2):
 	print(action)
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
 	_update_text()
-	add_history(str(action))
+	if my_name2:
+		add_history(str(my_name2)  + str(action))
+	else:
+		add_history(str(action))
 	if isstore:
 		update_store()
 
