@@ -1,4 +1,5 @@
 extends Node
+var ip = "localhost"
 
 
 var startcards = []
@@ -58,20 +59,24 @@ var store = []
 
 
 var isstore = false
+var connected = false
+
+
 @onready var history = $History
 
 func add_history(text):
 	history.text = str(text) + "\n" + history.text
 
+signal player_connected(peer_id, player_info)
+signal player_disconnected(peer_id)
+signal server_disconnected
 
 func _ready():
 	if OS.has_feature("dedicated_server"):
 		add_history("Starting dedicated server...")
 		become_host()
-		setstore()
 	else:
 		become_client()
-	
 	
 
 #functions
@@ -163,69 +168,72 @@ func checkvalue():
 #shopcard is the buywant card in the shop
 #free means fernsprechgerät
 func buycard(shopcard, free):
-	#is it a shopcard?
-	if shopcard > 2:
-		#its a card that can be bought
-		
-		#money
-		var cardvalue = checkvalue()
-		add_history("Your card value is " + str(cardvalue) + ".")
-		if free:
-			cardvalue = 10
-		
-		#enough money?
-		if cardvalue >= prices[shopcard]:
+	#check if connected
+	if connected:
+		#is it a shopcard?
+		if shopcard > 2:
+			#its a card that can be bought
 			
-			#is card up front or is open
-			if vorne.has(shopcard) or vorne.size() < 6 or free:
+			#money
+			var cardvalue = checkvalue()
+			add_history("Your card value is " + str(cardvalue) + ".")
+			if free:
+				cardvalue = 10
+			
+			#enough money?
+			if cardvalue >= prices[shopcard]:
 				
-				#how many cards
-				var amount = store[shopcard]
-				
-				#enough cards?
-				if amount != 0:
+				#is card up front or is open
+				if vorne.has(shopcard) or vorne.size() < 6 or free:
 					
-					# -1 for shop
-					store[shopcard] = store[shopcard]-1
-					#add to old
-					old.append(shopcard)
-					add_history("You bought " + cards[shopcard])
-					#check if empty now
-					if amount - 1 <= 0:
-						#remove from vorne
-						vorne.erase(shopcard)
-						hinten.erase(shopcard)
+					#how many cards
+					var amount = store[shopcard]
+					
+					#enough cards?
+					if amount != 0:
 						
-					#if shop is open
-					elif vorne.size() < 6:
-						
-						#check if already front
-						if !vorne.has(shopcard):
-							#if not fernsprechgerät
-							if !free:
-								#move to front
-								vorne.append(shopcard)
-								hinten.erase(shopcard)
-								add_history("You bought " + cards[shopcard] + "and moved it to the front.")
+						# -1 for shop
+						store[shopcard] = store[shopcard]-1
+						#add to old
+						old.append(shopcard)
+						add_history("You bought " + cards[shopcard])
+						#check if empty now
+						if amount - 1 <= 0:
+							#remove from vorne
+							vorne.erase(shopcard)
+							hinten.erase(shopcard)
+							
+						#if shop is open
+						elif vorne.size() < 6:
+							
+							#check if already front
+							if !vorne.has(shopcard):
+								#if not fernsprechgerät
+								if !free:
+									#move to front
+									vorne.append(shopcard)
+									hinten.erase(shopcard)
+									add_history("You bought " + cards[shopcard] + "and moved it to the front.")
+								else:
+									add_history("You bought " + cards[shopcard] + "with the Fernsprechgerät.")
 							else:
 								add_history("You bought " + cards[shopcard] + "with the Fernsprechgerät.")
-						else:
-							add_history("You bought " + cards[shopcard] + "with the Fernsprechgerät.")
-					
-					#update everything
-					_update_text()
-					
-					#send store around
-					modify_store()
+						
+						#update everything
+						_update_text()
+						
+						#send store around
+						modify_store("Player bought " + cards[shopcard] + ".")
+					else:
+						add_history("This card is not in store anymore.")
 				else:
-					add_history("This card is not in store anymore.")
+					add_history("This card is not accessible.")
 			else:
-				add_history("This card is not accessible.")
+				add_history("You're too poor.")
 		else:
-			add_history("You're too poor.")
+			add_history("You can't buy that card.")
 	else:
-		add_history("You can't buy that card.")
-
+		add_history("You are not connected! Please contact Administrator.")
 
 
 
@@ -243,40 +251,55 @@ func become_host():
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	setstore()
 	
+
 func _on_peer_connected(id):
-	#this happpens on server
-	add_history("Client connected with ID: %d" % id)
-	rpc_id(id, "broadcast_store", store, vorne, hinten)  # Send the store array to the newly connected client
+	print("Client connected with ID: %d" % id)
+	rpc_id(id, "broadcast_store", store, vorne, hinten, "Received Store from Server")  # Send the store array to the newly connected client
 	_update_text()
-	
 func _on_peer_disconnected(id):
-	add_history("Client disconnected with ID: %d" % id)
+	print("Client disconnected with ID: %d" % id)
 
 
 
-var ip = "52.138.195.100"
 
 func become_client():
 	#client side
-	add_history("Connecting to server with IP " + str(ip)+ "and port 8080.")
+	add_history("IP " + str(ip)+ "and port 8080.")
+	add_history("Connecting to server with ")
 	peer.create_client(ip, 8080)
 	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(_on_player_connected)
+	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_ok)
 	register_player()
+	
 
+func _on_player_connected(id):
+	if id != 1:
+		if connected:
+			add_history("New Player connected with ID " + str(id))
+func _on_player_disconnected(id):
+	add_history("Player Disconnected")
+func _on_connected_ok():
+	add_history("Connected")
+	connected = true
 
-func modify_store():
-	rpc("broadcast_store", store, vorne, hinten)
+func modify_store(action):
+	rpc("broadcast_store", store, vorne, hinten, action)
 	_update_text()
 
 @rpc("any_peer")
-func broadcast_store(updated_store, newvorne, newhinten):
+func broadcast_store(updated_store, newvorne, newhinten, action):
 	store = updated_store
 	hinten = newhinten
 	vorne = newvorne
 	_update_text()
+	print("test")
+	add_history("test")
+	add_history(action)
 	if isstore:
-		add_history("Updated the store.")
 		update_store()
 
 
@@ -565,12 +588,14 @@ func update_store():
 
 func movetopcardleft(number):
 	if number==0:
-		new.append(hand[0])
-		hand.remove_at(0)
+		var size = hand.size()
+		new.append(hand[size])
+		hand.remove_at(size)
 		_update_text()
 		update_display()
 	elif number==1:
-		hand.append(old[0])
-		old.remove_at(0)
+		var size = old.size()
+		hand.append(old[size])
+		old.remove_at(size)
 		_update_text()
 		update_display()
