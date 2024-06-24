@@ -613,13 +613,15 @@ func update_store():
 func movetopcardleft(number):
 	if number==0:
 		var size = hand.size()
-		new.append(hand[size])
-		hand.remove_at(size)
-		_update_text()
-		update_display()
+		if size > 0:
+			new.append(hand[size-1])
+			hand.remove_at(size-1)
+			_update_text()
+			update_display()
 	elif number==1:
 		var size = old.size()
-		hand.append(old[size])
-		old.remove_at(size)
-		_update_text()
-		update_display()
+		if size > 0:
+			hand.append(old[size-1])
+			old.remove_at(size-1)
+			_update_text()
+			update_display()
