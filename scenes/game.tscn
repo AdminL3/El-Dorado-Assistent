@@ -314,9 +314,23 @@ text = "History:"
 [node name="History" type="TextEdit" parent="."]
 offset_left = 1040.0
 offset_top = 20.0
-offset_right = 1397.0
+offset_right = 1352.0
 offset_bottom = 376.0
 scroll_smooth = true
+
+[node name="Message" type="TextEdit" parent="."]
+offset_left = 1043.0
+offset_top = 398.0
+offset_right = 1259.0
+offset_bottom = 434.0
+text = "Hi!"
+
+[node name="Send" type="Button" parent="."]
+offset_left = 1265.0
+offset_top = 398.0
+offset_right = 1341.0
+offset_bottom = 436.0
+text = "Send"
 
 [connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]
 [connection signal="pressed" from="Admin/Actions/0" to="." method="movetopcardleft" binds= [0]]
