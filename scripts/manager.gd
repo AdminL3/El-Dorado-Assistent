@@ -68,9 +68,6 @@ func add_history(text):
 	history_text = text + "\n" + history_text
 	history.text = history_text
 
-signal player_connected(peer_id, player_info)
-signal player_disconnected(peer_id)
-signal server_disconnected
 
 func _ready():
 	if OS.has_feature("dedicated_server"):
@@ -289,7 +286,6 @@ func _on_player_disconnected(id):
 func _on_connected_ok():
 	connected = true
 	print("Connected OK, broadcasting entry for", my_name)
-
 
 
 
