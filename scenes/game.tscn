@@ -115,10 +115,10 @@ offset_bottom = 498.0
 text = "Move top card left"
 
 [node name="1" type="Button" parent="Admin/Actions"]
-offset_left = 2842.0
-offset_top = 463.0
-offset_right = 2991.0
-offset_bottom = 495.0
+offset_left = 2834.0
+offset_top = 466.0
+offset_right = 2983.0
+offset_bottom = 498.0
 text = "Move top card left"
 
 [node name="Draw" type="Button" parent="."]
@@ -156,9 +156,9 @@ theme_override_font_sizes/font_size = 24
 text = "Admin Panel"
 
 [node name="Become Admin2" type="Button" parent="."]
-offset_left = -400.0
+offset_left = -440.0
 offset_top = 1015.0
-offset_right = -231.0
+offset_right = -271.0
 offset_bottom = 1074.0
 theme_override_fonts/font = ExtResource("2_1b8vf")
 theme_override_font_sizes/font_size = 24
@@ -348,15 +348,16 @@ offset_top = 33.0
 offset_right = 601.0
 offset_bottom = 92.0
 theme_override_font_sizes/font_size = 32
-text = "what"
+text = "Name"
 placeholder_text = "Name"
 
 [connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]
 [connection signal="pressed" from="Admin/Actions/0" to="." method="movetopcardleft" binds= [0]]
-[connection signal="pressed" from="Admin/Actions/1" to="." method="movetopcardleft" flags=6 binds= [1]]
+[connection signal="pressed" from="Admin/Actions/1" to="." method="movetopcardleft" binds= [1]]
 [connection signal="pressed" from="Draw" to="." method="draw"]
 [connection signal="pressed" from="Become Store" to="." method="become_store"]
 [connection signal="pressed" from="Become Admin" to="." method="become_admin"]
 [connection signal="pressed" from="Become Admin2" to="." method="back_admin"]
 [connection signal="pressed" from="Main/Go" to="." method="do_action"]
+[connection signal="pressed" from="Send" to="." method="send"]
 [connection signal="pressed" from="Connect" to="." method="become_client"]

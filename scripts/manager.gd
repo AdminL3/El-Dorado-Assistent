@@ -261,17 +261,15 @@ func _on_peer_disconnected(id):
 	print("Client disconnected with ID: %d" % id)
 
 
-
-@onready var name_line = $Name
 @onready var connect = $Connect
+@onready var name_line = $Name
 var my_name
 func become_client():
 	my_name = name_line.text
 	name_line.hide()
 	connect.hide()
 	#client side
-	add_history("IP " + str(ip)+ "and port 8080.")
-	add_history("Connecting to server with ")
+	add_history("Connecting to server with name: " + my_name)
 	peer.create_client(ip, 8080)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
@@ -281,11 +279,29 @@ func become_client():
 
 func _on_player_disconnected(id):
 	add_history(name + " disconnected")
-	
+
 	
 func _on_connected_ok():
+	add_history("Connected to Server")
 	connected = true
-	print("Connected OK, broadcasting entry for", my_name)
+	await get_tree().create_timer(0.5).timeout
+	send()
+
+
+
+@onready var message_line = $Message
+func send():
+	if message_line.text != "":
+		rpc("sendmessage", message_line.text, my_name)
+		message_line.text = ""
+	
+	
+
+@rpc("any_peer","call_local")
+func sendmessage(msg, usrn):
+	add_history(str(usrn) + ": " + msg)
+
+
 
 
 
