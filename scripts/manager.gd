@@ -76,8 +76,6 @@ func _ready():
 	if OS.has_feature("dedicated_server"):
 		add_history("Starting dedicated server...")
 		become_host()
-	else:
-		become_client()
 	
 
 #functions
@@ -265,8 +263,13 @@ func _on_peer_disconnected(id):
 
 
 
-
+@onready var name_line = $Name
+@onready var connect = $Connect
+var my_name
 func become_client():
+	my_name = name_line.text
+	name_line.hide()
+	connect.hide()
 	#client side
 	add_history("IP " + str(ip)+ "and port 8080.")
 	add_history("Connecting to server with ")

@@ -358,3 +358,4 @@ text = "Hi!"
 [connection signal="pressed" from="Become Admin" to="." method="become_admin"]
 [connection signal="pressed" from="Become Admin2" to="." method="back_admin"]
 [connection signal="pressed" from="Main/Go" to="." method="do_action"]
+[connection signal="pressed" from="Connect" to="." method="become_client"]
