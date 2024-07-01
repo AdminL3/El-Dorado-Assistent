@@ -625,3 +625,34 @@ func movetopcardleft(number):
 			old.remove_at(size-1)
 			_update_text()
 			update_display()
+			
+			
+@onready var vorne_edit = $Admin/VorneEdit
+@onready var hinten_edit = $Admin/HintenEdit
+@onready var store_edit = $Admin/StoreEdit
+
+
+func loadstoreforedit():
+	vorne_edit.text = str(vorne)
+	hinten_edit.text = str(hinten)
+	store_edit.text = str(store)
+
+func update_store_after_edit():
+	vorne = parse_array(vorne_edit.text)
+	hinten = parse_array(hinten_edit.text)
+	store = parse_array(store_edit.text)
+	modify_store(" manually edited the store.")
+	
+func parse_array(str):
+	# Remove the square brackets
+	var trimmed_str = str.substr(1, str.length() - 2)
+	
+	# Split the string by commas and remove any extra spaces
+	var str_array = trimmed_str.split(",")
+	
+	# Convert the strings to integers
+	var int_array = []
+	for elem in str_array:
+		int_array.append(int(elem.strip_edges()))
+		
+	return int_array
