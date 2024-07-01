@@ -121,6 +121,40 @@ offset_right = 2983.0
 offset_bottom = 498.0
 text = "Move top card left"
 
+[node name="Load" type="Button" parent="Admin"]
+offset_left = 3073.0
+offset_top = 504.0
+offset_right = 3194.0
+offset_bottom = 557.0
+theme_override_font_sizes/font_size = 32
+text = "Load"
+
+[node name="Update" type="Button" parent="Admin"]
+offset_left = 3073.0
+offset_top = 568.0
+offset_right = 3195.0
+offset_bottom = 621.0
+theme_override_font_sizes/font_size = 32
+text = "Update"
+
+[node name="VorneEdit" type="TextEdit" parent="Admin"]
+offset_left = 3232.0
+offset_top = 497.0
+offset_right = 3556.0
+offset_bottom = 534.0
+
+[node name="HintenEdit" type="TextEdit" parent="Admin"]
+offset_left = 3232.0
+offset_top = 548.0
+offset_right = 3556.0
+offset_bottom = 585.0
+
+[node name="StoreEdit" type="TextEdit" parent="Admin"]
+offset_left = 3232.0
+offset_top = 597.0
+offset_right = 3556.0
+offset_bottom = 634.0
+
 [node name="Draw" type="Button" parent="."]
 offset_left = -239.0
 offset_top = 135.0
@@ -354,6 +388,8 @@ placeholder_text = "Name"
 [connection signal="pressed" from="Admin/Back Admin" to="." method="back_admin"]
 [connection signal="pressed" from="Admin/Actions/0" to="." method="movetopcardleft" binds= [0]]
 [connection signal="pressed" from="Admin/Actions/1" to="." method="movetopcardleft" binds= [1]]
+[connection signal="pressed" from="Admin/Load" to="." method="loadstoreforedit"]
+[connection signal="pressed" from="Admin/Update" to="." method="update_store_after_edit"]
 [connection signal="pressed" from="Draw" to="." method="draw"]
 [connection signal="pressed" from="Become Store" to="." method="become_store"]
 [connection signal="pressed" from="Become Admin" to="." method="become_admin"]
