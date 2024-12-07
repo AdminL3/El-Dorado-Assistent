@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://m1y7bg1lro0b"]
+
+[ext_resource type="Script" path="res://scripts/manager.gd" id="1_6hv34"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_6hv34")
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
+
+[node name="Store" type="Label" parent="."]
+offset_left = 828.0
+offset_top = 168.0
+offset_right = 953.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 31
+text = "Store
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 682.0
+offset_top = 243.0
+offset_right = 807.0
+offset_bottom = 287.0
+theme_override_font_sizes/font_size = 31
+text = "Vorne:"
+
+[node name="Vorne" type="TextEdit" parent="."]
+offset_left = 645.0
+offset_top = 293.0
+offset_right = 858.0
+offset_bottom = 643.0
+editable = false
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 947.0
+offset_top = 242.0
+offset_right = 1072.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 31
+text = "Hinten:"
+
+[node name="Hinten" type="TextEdit" parent="."]
+offset_left = 931.0
+offset_top = 288.0
+offset_right = 1145.0
+offset_bottom = 651.0
+editable = false
+
+[node name="line" type="LineEdit" parent="."]
+offset_left = 147.0
+offset_top = 42.0
+offset_right = 214.063
+offset_bottom = 73.0
+text = "6"
+
+[node name="Buy" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 44.0
+offset_right = 133.0
+offset_bottom = 75.0
+text = "Buy:"
+
+[node name="line2" type="LineEdit" parent="."]
+offset_left = 147.0
+offset_top = 81.0
+offset_right = 214.063
+offset_bottom = 112.0
+text = "0"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 83.0
+offset_right = 133.0
+offset_bottom = 114.0
+text = "Play"
+
+[node name="Draw" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 40.0
+text = "Draw"
+
+[node name="New" type="TextEdit" parent="."]
+offset_left = 44.0
+offset_top = 245.0
+offset_right = 191.0
+offset_bottom = 518.0
+
+[node name="Hand" type="TextEdit" parent="."]
+offset_left = 203.0
+offset_top = 249.0
+offset_right = 367.0
+offset_bottom = 516.0
+
+[node name="Old" type="TextEdit" parent="."]
+offset_left = 380.0
+offset_top = 252.0
+offset_right = 551.0
+offset_bottom = 517.0
+
+[node name="Load Data" type="Button" parent="."]
+offset_left = 423.0
+offset_top = 83.0
+offset_right = 510.0
+offset_bottom = 114.0
+text = "Load Data"
+
+[node name="Save Data" type="Button" parent="."]
+offset_left = 532.0
+offset_top = 84.0
+offset_right = 619.0
+offset_bottom = 115.0
+text = "Save Data"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+offset_left = 723.0
+offset_top = 76.0
+offset_right = 1094.0
+offset_bottom = 276.0
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="."]
+offset_left = 146.0
+offset_top = 579.0
+offset_right = 223.0
+offset_bottom = 610.0
+text = "Add card"
+
+[connection signal="pressed" from="Buy" to="." method="_on_buycard_0_pressed"]
+[connection signal="pressed" from="Play" to="." method="testplay"]
+[connection signal="pressed" from="Draw" to="." method="draw"]
+[connection signal="pressed" from="Load Data" to="." method="loaddata"]
+[connection signal="pressed" from="Save Data" to="." method="savedata"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
